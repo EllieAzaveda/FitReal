@@ -25,10 +25,3 @@ If you want to see how we planned this project, click [here](https://trello.com/
 - [🧚 Ellie Azaveda](https://github.com/EllieAzaveda)
 - [⚡️ Jon Schlandt](https://github.com/jon-schlandt)
 
-### Inspiration
-
-![main-inso](https://user-images.githubusercontent.com/76409536/112737079-64a09080-8f1d-11eb-98bc-7b34c7191ee3.png)
-![inspo-1](https://user-images.githubusercontent.com/76409536/112732992-ecc56c80-8f02-11eb-9f9a-2b84083b5283.png)
-![inspo-2](https://user-images.githubusercontent.com/76409536/112733018-17afc080-8f03-11eb-97e6-aac71e43c149.png)
-![inspo-3](https://user-images.githubusercontent.com/76409536/112733065-60677980-8f03-11eb-9331-4e361927127c.png)
-![inspo-4](https://user-images.githubusercontent.com/76409536/112733285-a5d87680-8f04-11eb-89db-338206d2278d.png)
