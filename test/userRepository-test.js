@@ -2,7 +2,7 @@ const mocha = require("mocha");
 const chai = require("chai");
 const expect = chai.expect;
 
-const UserRepository = require("../src/UserRepository");
+const UserRepository = require("../src/UserRepository.js");
 
 describe("UserRepository", () => {
   let data;
@@ -37,7 +37,7 @@ describe("UserRepository", () => {
 
   it("should store user data", () => {
     const userRepo = new UserRepository(data);
-    expect(userRepo.data).to.equal(data);
+    expect(userRepo.data).to.deep.equal(data);
   })
 
   describe("getUserData", () => {
@@ -47,15 +47,15 @@ describe("UserRepository", () => {
       userRepo = new UserRepository(data);
     });
 
-    it("should return user-specific data using a user's ID", () => {
+    it.only("should return user-specific data using a user's ID", () => {
       const firstId = userRepo.data[0].id;
       const secondId = userRepo.data[1].id;
       
       const firstDataSet = userRepo.getUserData(firstId);
       const secondDataSet = userRepo.getUserData(secondId);
 
-      expect(firstDataSet).to.equal(userRepo.data[0]);
-      expect(secondDataSet).to.equal(userRepo.data[1]);
+      expect(firstDataSet).to.deep.equal(userRepo.data[0]);
+      expect(secondDataSet).to.deep.equal(userRepo.data[1]);
     });
 
     it ("should return 'undefined' if an invalid ID is supplied", () => {
