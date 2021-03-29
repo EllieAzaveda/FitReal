@@ -65,4 +65,17 @@ describe("UserRepository", () => {
       expect(invalidData).to.be.undefined;
     })
   });
+
+  describe("calcAvgStepGoal", () => {
+    let userRepo;
+
+    beforeEach("setup initial UserRepository", () => {
+      userRepo = new UserRepository(data);
+    });
+
+    it("should calculate and return the average step goal across all user data", () => {
+      const avgStepGoal = userRepo.calcAvgStepGoal();
+      expect(avgStepGoal).to.equal(6503);
+    });
+  });
 })
