@@ -47,7 +47,7 @@ describe("UserRepository", () => {
       userRepo = new UserRepository(data);
     });
 
-    it.only("should return user-specific data using a user's ID", () => {
+    it("should return user-specific data using a user's ID", () => {
       const firstId = userRepo.data[0].id;
       const secondId = userRepo.data[1].id;
       
@@ -58,11 +58,11 @@ describe("UserRepository", () => {
       expect(secondDataSet).to.deep.equal(userRepo.data[1]);
     });
 
-    it ("should return 'undefined' if an invalid ID is supplied", () => {
+    it("should return 'null' if an invalid ID is supplied", () => {
       const invalidID = 3;
       const invalidData = userRepo.getUserData(invalidID);
 
-      expect(invalidData).to.be.undefined;
+      expect(invalidData).to.be.null;
     })
   });
 
@@ -73,7 +73,7 @@ describe("UserRepository", () => {
       userRepo = new UserRepository(data);
     });
 
-    it("should calculate and return the average step goal across all user data", () => {
+    it.only("should calculate and return the average step goal across all user data", () => {
       const avgStepGoal = userRepo.calcAvgStepGoal();
       expect(avgStepGoal).to.equal(6503);
     });

@@ -10,7 +10,19 @@ class UserRepository {
       }
 
       return userData;
-    }, {});
+    }), null;
+  }
+
+  calcAvgStepGoal() {
+    return this.data.reduce((avgStepGoal, dataSet, index) => {
+      avgStepGoal += dataSet.dailyStepGoal;
+
+      if (index === (this.data.length - 1)) {
+        return Math.round(avgStepGoal / this.data.length);
+      }
+
+      return avgStepGoal;
+    }, 0);
   }
 }
 
