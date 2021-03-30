@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-const mocha = require("mocha");
 const chai = require("chai");
 const expect = chai.expect;
 
@@ -12,7 +11,7 @@ describe("User", () => {
     userData = [
       {
         "id": 1, 
-        "name": "Hans Person-Being",
+        "name": "Hans Person",
         "address": "4255 Real St, Actual Town AW 01010-0101",
         "email": "hans@hotmail.com",
         "strideLength": 4.2,
@@ -22,11 +21,11 @@ describe("User", () => {
       {
         "id": 2,
         "name": "Tina Human",
-        "address": "2020 Another St, Townes Place AW 10101-1010",
+        "address": "1337 Another Ave, Townesplace AW 10101-1010",
         "email": "tina@yahoo.com",
         "strideLength": 4.0,
         "dailyStepGoal": 9001,
-        "friends": [ 1 , 3, 4 ]
+        "friends": [ 1, 3, 4 ]
       }
     ];
   })
@@ -36,7 +35,7 @@ describe("User", () => {
     expect(user).to.be.an.instanceOf(User);
   });
 
-  it("should store user data for a single user", () => {
+  it("should only store user data for a single user", () => {
     const user = new User(userData[0]);
     expect(user.data).to.deep.equal(userData[0]);
   });
@@ -49,15 +48,15 @@ describe("User", () => {
       user2 = new User(userData[1])
     })
     
-    it.only("should return a user's first name", () => {
-      const firstName = "Hans";
-      const secondName = "Tina";
+    it("should return a user's first name", () => {
+      const firstName1 = "Hans";
+      const firstName2 = "Tina";
 
-      const firstReturnedName = user1.getFirstName();
-      const secondReturnedName = user2.getFirstName();
+      const returnedName1 = user1.getFirstName();
+      const returnedName2 = user2.getFirstName();
 
-      expect(firstReturnedName).to.equal(firstName);
-      expect(secondReturnedName).to.equal(secondName);
+      expect(returnedName1).to.equal(firstName1);
+      expect(returnedName2).to.equal(firstName2);
     });
   });
 });
