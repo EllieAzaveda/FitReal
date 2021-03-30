@@ -68,69 +68,30 @@ describe("ActivityRepository", () => {
     })
   });
 
-  describe("calcAvgStairs()", () => {
-    let activityRepo;
+  describe("calcAvgStat()", () => {
+    let date, activityRepo;
+
+    before("setup date to find averages for", () => {
+      date = "2021/03/29";
+    });
 
     beforeEach("setup initial UserRepository", () => {
       activityRepo = new ActivityRepository(activityData);
     });
 
-    it.only("should calculate and return the average stairs climbed across all users for specific date", () => {
-      const date = "2021/03/29";
-      const avgStairs = activityRepo.calcAvgStairs(date);
-
+    it("should calculate and return the average stairs climbed across all users for specific date", () => {
+      const avgStairs = activityRepo.calcAvgStat(date, "flightsOfStairs");
       expect(avgStairs).to.equal(21);
     });
 
-    it("should return 'null' if referencing an invalid date", () => {
-      const invalidDate = "2021/01/01";
-      const avgStairs = activityRepo.calcAvgStairs(invalidDate);
-
-      expect(avgStairs).to.be.null;
-    })
-  });
-
-  describe("calcAvgSteps()", () => {
-    let activityRepo;
-
-    beforeEach("setup intial UserRepository", () => {
-      activityRepo = new ActivityRepository(activityData);
-    });
-
-    it("should calculate and return the average stairs climbed across all users for specific date", () => {
-      const date = "2021/03/29";
-      const avgSteps = activityRepo.calcAvgSteps(date);
-
+    it("should calculate and return the average step count across all users for specific date", () => {
+      const avgSteps = activityRepo.calcAvgStat(date, "numSteps");
       expect(avgSteps).to.equal(5700);
     });
 
-    it("should return 'null' if referencing an invalid date", () => {
-      const invalidDate = "2021/01/01";
-      const avgSteps = activityRepo.calcAvgSteps(invalidDate);
-
-      expect(avgSteps).to.be.null;
-    })
-  });
-
-  describe("calcAvgMin", () => {
-    let activityRepo;
-
-    beforeEach("setup intial UserRepository", () => {
-      activityRepo = new ActivityRepository(activityData);
+    it("should calculate and return the average minutes active across all users for specific date", () => {
+      const avgMin = activityRepo.calcAvgStat(date, "minutesActive");
+      expect(avgMin).to.equal(190);
     });
-
-    it("should calculate and return the average stairs climbed across all users for specific date", () => {
-      const date = "2021/03/29";
-      const avgMin = activityRepo.calcAvgMin(date);
-
-      expect(avgMin).to.equal(5700);
-    });
-
-    it("should return 'null' if referencing an invalid date", () => {
-      const invalidDate = "2021/01/01";
-      const avgMin = activityRepo.calcAvgMin(invalidDate);
-
-      expect(avgMin).to.be.null;
-    })
   });
 });

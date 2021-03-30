@@ -13,19 +13,19 @@ class ActivityRepository {
     }, null);
   }
 
-  calcAvgStairs(date) {
+  calcAvgStat(forDate, statType) {
     const dailyActivity = this.data.filter(currentData => {
-      return date === currentData.date;
+      return forDate === currentData.date;
     });
 
-    return dailyActivity.reduce((avgStairs, currentData, index) => {
-      avgStairs += currentData.flightsOfStairs;
+    return dailyActivity.reduce((average, currentData, index) => {
+      average += currentData[statType];
 
       if (index === (dailyActivity.length - 1)) {
-        return Math.round(avgStairs / dailyActivity.length);
+        return Math.round(average / dailyActivity.length);
       }
 
-      return avgStairs;
+      return average;
     }, 0);
   }
 }
