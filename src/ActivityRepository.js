@@ -25,7 +25,7 @@ class ActivityRepository {
         return Math.round(average / dailyActivity.length);
       }
 
-      return average;
+      return average ? average : null;
     }, 0);
   }
 }
