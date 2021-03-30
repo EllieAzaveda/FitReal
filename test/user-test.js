@@ -39,4 +39,19 @@ describe("User", () => {
     const user = new User(userData[0]);
     expect(user.data).to.deep.equal(userData[0]);
   });
+
+  describe("getFirstName", () => {
+    let user;
+
+    beforeEach("setup initial User", () => {
+      user = new User(userData[0]);
+    })
+    
+    it("should return a user's first name", () => {
+      const firstName = "Hans";
+      const returnedFirstName = user.getFirstName();
+
+      expect(returnedFirstName).to.equal(firstName);
+    });
+  });
 });
