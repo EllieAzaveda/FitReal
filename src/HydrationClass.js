@@ -5,28 +5,13 @@ class Hydration {
     this.numOunces = numOunces;
   }
 
-  // findUser(hydrationData, id) {
-  //   let userData = [];
-  //
-  //   if(id === this.id) {
-  //     hydrationData.filter()
-  //   }
-  // }
+  findDailyOunces(hydrationData, date) {
+    let foundUser = hydrationData.filter(user => {
+        return user.date === date;
+    });
+    return foundUser[0].numOunces;
+  }
 
-  // calcAvgDailyOunces() {
-  //
-  // }
-
-  // findDailyOunces(hydrationData, date) {
-  //   const checkedDate = hydrationData.filter()
-  //
-  //   if(this.date === date);
-  //   return ;
-  // }
-  //
-  // calcDailyOunces() {
-  //
-  // }
 
 }
 

@@ -6,7 +6,7 @@ const Hydration = require('../src/HydrationClass');
 const hydrationData = require('../data/hydration');
 
 describe('Hydration', function() {
-  let user1Hydration;
+  let userHydration;
   let hydrationData;
 
   beforeEach(() => {
@@ -18,46 +18,44 @@ describe('Hydration', function() {
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/16",
         "numOunces": 75
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/17",
         "numOunces": 47
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/18",
         "numOunces": 85
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/19",
         "numOunces": 42
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/20",
         "numOunces": 87
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/21",
         "numOunces": 94
       }];
 
-     user1Hydration = new Hydration(hydrationData);
+     userHydration = new Hydration(hydrationData);
   });
 
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     expect(Hydration).to.be.a('function');
   });
 
-  it.skip('should find a user\'s daily ounces', function() {
-    user1Hydration.findDailyOunces(hydrationData, "2021, 03, 29");
-
-    expect(user1Hydration.numOunces).to.equal(60);
+  it('should find a user\'s daily ounces', function() {
+    expect(userHydration.findDailyOunces(hydrationData, "2019/06/15")).to.equal(37);
   })
 
 })

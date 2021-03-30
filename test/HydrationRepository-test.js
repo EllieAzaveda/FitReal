@@ -40,9 +40,6 @@ describe('HydrationRepository', function() {
   });
 
   it('should store a user\'s hydration data', function() {
-    console.log(hydrationRepo.getUserData(2));
-    console.log([hydrationData[1]]);
-
     expect(hydrationRepo.getUserData(2)).to.deep.equal([hydrationData[1]]);
   });
 
