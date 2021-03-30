@@ -40,19 +40,19 @@ describe("UserRepository", () => {
     expect(userRepo.data).to.deep.equal(userData);
   })
 
-  describe("getUserData", () => {
+  describe("getUserData()", () => {
     let userRepo;
 
     beforeEach("setup initial UserRepository", () => {
       userRepo = new UserRepository(userData);
     });
 
-    it("should return user-specific data using a user's ID", () => {
-      const Id1 = userRepo.data[0].id;
-      const Id2 = userRepo.data[1].id;
+    it("should return user-specific user data using a user's ID", () => {
+      const userId1 = userRepo.data[0].id;
+      const userId2 = userRepo.data[1].id;
       
-      const userData1 = userRepo.getUserData(Id1);
-      const userData2 = userRepo.getUserData(Id2);
+      const userData1 = userRepo.getUserData(userId1);
+      const userData2 = userRepo.getUserData(userId2);
       
       expect(userData1).to.deep.equal(userRepo.data[0]);
       expect(userData2).to.deep.equal(userRepo.data[1]);
@@ -66,7 +66,7 @@ describe("UserRepository", () => {
     })
   });
 
-  describe("calcAvgStepGoal", () => {
+  describe("calcAvgStepGoal()", () => {
     let userRepo;
 
     beforeEach("setup initial UserRepository", () => {
