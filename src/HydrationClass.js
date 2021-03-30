@@ -1,28 +1,28 @@
 class Hydration {
-  constructor(hydrationData) {
-    this.id = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
+  constructor(id, date, numOunces) {
+    this.id = id;
+    this.date = date;
+    this.numOunces = numOunces;
   }
 
-  findUser(hydrationData, id) {
-    let userData = [];
-
-    if(id === this.id) {
-      hydrationData.filter()
-    }
-  }
+  // findUser(hydrationData, id) {
+  //   let userData = [];
+  //
+  //   if(id === this.id) {
+  //     hydrationData.filter()
+  //   }
+  // }
 
   // calcAvgDailyOunces() {
   //
   // }
 
-  findDailyOunces(hydrationData, date) {
-    const checkedDate = hydrationData.filter()
-
-    if(this.date === date);
-    return ;
-  }
+  // findDailyOunces(hydrationData, date) {
+  //   const checkedDate = hydrationData.filter()
+  //
+  //   if(this.date === date);
+  //   return ;
+  // }
   //
   // calcDailyOunces() {
   //
