@@ -41,4 +41,31 @@ describe("ActivityRepository", () => {
     const activityRepo = new ActivityRepository(activityData);
     expect(activityRepo).to.deep.equal(activityData);
   })
+
+  describe("getUserActivityData()", () => {
+    let activityRepo;
+
+    beforeEach("setup initial ActivityRepository", () => {
+      activityRepo = new ActivityRepository(activityData);
+    });
+
+    it("should return user-specific activity data using a user's ID", () => {
+      const user1Activity = activityRepo.getUserActivityData(1);
+      const user2Activity = activityRepo.getUserActivityData(2);
+      const user3Activity = activityRepo.getUserActivityData(3);
+
+      expect(user1Activity).to.deep.equal(activityData[0]);
+      expect(user2Activity).to.deep.equal(activityData[1]);
+      expect(user3Activity).to.deep.equal(activityData[2]);
+    });
+
+    it("should return 'null' if the provided ID is invalid", () => {
+      const invalidId = 4;
+      const invalidData = activityRepo.getUserActivityData(invalidId);
+
+      expect(invalidData).to.be.null;
+    })
+  });
+
+
 });
