@@ -3,14 +3,8 @@ class ActivityRepository {
     this.data = data;
   }
 
-  getUserActivityData(userId) {
-    return this.data.reduce((activityData, currentData) => {
-      if (userId === currentData.userID) {
-        activityData = currentData;
-      }
-
-      return activityData;
-    }, null);
+  getUserData(userId) {
+    return this.data.find(userData => userId === userData.userID);
   }
 
   calcAvgStat(forDate, statType) {
