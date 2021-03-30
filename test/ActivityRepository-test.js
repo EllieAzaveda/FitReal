@@ -10,21 +10,21 @@ describe("ActivityRepository", () => {
   before("setup intial activity data", () => {
     activityData = [
       {
-        "userId": 1,
+        "userID": 1,
         "date": "2021/03/29",
         "numSteps": 5750,
         "minutesActive": 200,
         "flightsOfStairs": 24
       },
       {
-        "userId": 2,
+        "userID": 2,
         "date": "2021/03/29",
         "numSteps": 3200,
         "minutesActive": 120,
         "flightsOfStairs": 10
       },
       {
-        "userId": 3,
+        "userID": 3,
         "date": "2021/03/29",
         "numSteps": 8150,
         "minutesActive": 250,
@@ -40,7 +40,7 @@ describe("ActivityRepository", () => {
 
   it("should store activity data for all users", () => {
     const activityRepo = new ActivityRepository(activityData);
-    expect(activityRepo).to.deep.equal(activityData);
+    expect(activityRepo.data).to.deep.equal(activityData);
   })
 
   describe("getUserActivityData()", () => {
@@ -61,8 +61,8 @@ describe("ActivityRepository", () => {
     });
 
     it("should return 'null' if the provided ID is invalid", () => {
-      const invalidId = 4;
-      const invalidData = activityRepo.getUserActivityData(invalidId);
+      const invalidID = 4;
+      const invalidData = activityRepo.getUserActivityData(invalidID);
 
       expect(invalidData).to.be.null;
     })
@@ -75,7 +75,7 @@ describe("ActivityRepository", () => {
       activityRepo = new ActivityRepository(activityData);
     });
 
-    it("should calculate and return the average stairs climbed across all users for specific date", () => {
+    it.only("should calculate and return the average stairs climbed across all users for specific date", () => {
       const date = "2021/03/29";
       const avgStairs = activityRepo.calcAvgStairs(date);
 
