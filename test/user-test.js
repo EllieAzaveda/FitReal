@@ -40,7 +40,7 @@ describe("User", () => {
     expect(user.data).to.deep.equal(userData[0]);
   });
 
-  describe("getFirstName", () => {
+  describe("getFirstName()", () => {
     let user1, user2;
 
     beforeEach("setup initial Users", () => {
