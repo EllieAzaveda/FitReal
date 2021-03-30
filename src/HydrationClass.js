@@ -5,11 +5,11 @@ class Hydration {
     this.numOunces = hydrationData.numOunces;
   }
 
-  findUser(id) {
+  findUser(hydrationData, id) {
     let userData = [];
-    
+
     if(id === this.id) {
-      return
+      hydrationData.filter()
     }
   }
 
