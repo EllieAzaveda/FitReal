@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const HydrationRepository = require('../src/HydrationRepository');
 const Hydration = require('../src/Hydration');
+const hydrationData = require('../hydration');
 
 describe('Hydration', function() {
   let user1Hydration;
@@ -53,7 +54,7 @@ describe('Hydration', function() {
     expect(Hydration).to.be.a('function');
   });
 
-  it('should find a user\'s daily ounces', function() {
+  it.skip('should find a user\'s daily ounces', function() {
     user1Hydration.findDailyOunces(hydrationData, "2021, 03, 29");
 
     expect(user1Hydration.numOunces).to.equal(60);
