@@ -33,25 +33,31 @@ describe("User", () => {
 
   it("should instantiate a User", () => {
     const user = new User();
+    expect(user).to.be.an.instanceOf(User);
   });
 
-  it("should store data for a single user", () => {
+  it("should store user data for a single user", () => {
     const user = new User(userData[0]);
     expect(user.data).to.deep.equal(userData[0]);
   });
 
   describe("getFirstName", () => {
-    let user;
+    let user1, user2;
 
-    beforeEach("setup initial User", () => {
-      user = new User(userData[0]);
+    beforeEach("setup initial Users", () => {
+      user1 = new User(userData[0]);
+      user2 = new User(userData[1])
     })
     
-    it("should return a user's first name", () => {
+    it.only("should return a user's first name", () => {
       const firstName = "Hans";
-      const returnedFirstName = user.getFirstName();
+      const secondName = "Tina";
 
-      expect(returnedFirstName).to.equal(firstName);
+      const firstReturnedName = user1.getFirstName();
+      const secondReturnedName = user2.getFirstName();
+
+      expect(firstReturnedName).to.equal(firstName);
+      expect(secondReturnedName).to.equal(secondName);
     });
   });
 });
