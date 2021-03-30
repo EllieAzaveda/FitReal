@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const chai = require("chai");
 const expect = chai.expect;
 
@@ -65,6 +66,36 @@ describe("ActivityRepository", () => {
 
       expect(invalidData).to.be.null;
     })
+  });
+
+  describe("calcAvgStairs()", () => {
+    let activityRepo;
+
+    beforeEach("setup initial UserRepository", () => {
+      activityRepo = new ActivityRepository(activityData);
+    });
+
+    it("should calculate and return the average stairs climbed across all users for specific date", () => {
+      const date = "2021/03/29";
+      const avgStairs = activityRepo.calcAvgStairs(date);
+
+      expect(avgStairs).to.equal(21);
+    });
+
+    it("should return 'null' if referencing an invalid date", () => {
+      const invalidDate = "2021/01/01";
+      const avgStairs = activityRepo.calcAvgStairs(invalidDate);
+
+      expect(avgStairs).to.be.null;
+    })
+  });
+
+  describe("calcAvgSteps()", () => {
+    let activityRepo;
+
+    beforeEach("setup intial UserRepository", () => {
+      
+    });
   });
 
 
