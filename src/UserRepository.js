@@ -4,18 +4,18 @@ class UserRepository {
   }
 
   getUserData(id) {
-    return this.data.reduce((userData, dataSet) => {
-      if (id === dataSet.id) {
-        userData = dataSet;
+    return this.data.reduce((userData, currentData) => {
+      if (id === currentData.id) {
+        userData = currentData;
       }
 
       return userData;
-    }), null;
+    }, null);
   }
 
   calcAvgStepGoal() {
-    return this.data.reduce((avgStepGoal, dataSet, index) => {
-      avgStepGoal += dataSet.dailyStepGoal;
+    return this.data.reduce((avgStepGoal, currentData, index) => {
+      avgStepGoal += currentData.dailyStepGoal;
 
       if (index === (this.data.length - 1)) {
         return Math.round(avgStepGoal / this.data.length);
