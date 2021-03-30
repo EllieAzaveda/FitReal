@@ -56,6 +56,9 @@ describe('Hydration', function() {
 
   it('should find a user\'s daily ounces', function() {
     expect(userHydration.findDailyOunces(hydrationData, "2019/06/15")).to.equal(37);
-  })
+  });
 
+  it('should find a user\'s daily ounces for the entire week', function() {
+    expect(userHydration.calcDailyOunces(hydrationData)).to.deep.equal([37, 75, 47, 85, 42, 87, 94]);
+  });
 })
