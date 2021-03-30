@@ -94,9 +94,43 @@ describe("ActivityRepository", () => {
     let activityRepo;
 
     beforeEach("setup intial UserRepository", () => {
-      
+      activityRepo = new ActivityRepository(activityData);
     });
+
+    it("should calculate and return the average stairs climbed across all users for specific date", () => {
+      const date = "2021/03/29";
+      const avgSteps = activityRepo.calcAvgSteps(date);
+
+      expect(avgSteps).to.equal(5700);
+    });
+
+    it("should return 'null' if referencing an invalid date", () => {
+      const invalidDate = "2021/01/01";
+      const avgSteps = activityRepo.calcAvgSteps(invalidDate);
+
+      expect(avgSteps).to.be.null;
+    })
   });
 
+  describe("calcAvgMin", () => {
+    let activityRepo;
 
+    beforeEach("setup intial UserRepository", () => {
+      activityRepo = new ActivityRepository(activityData);
+    });
+
+    it("should calculate and return the average stairs climbed across all users for specific date", () => {
+      const date = "2021/03/29";
+      const avgMin = activityRepo.calcAvgMin(date);
+
+      expect(avgMin).to.equal(5700);
+    });
+
+    it("should return 'null' if referencing an invalid date", () => {
+      const invalidDate = "2021/01/01";
+      const avgMin = activityRepo.calcAvgMin(invalidDate);
+
+      expect(avgMin).to.be.null;
+    })
+  });
 });
