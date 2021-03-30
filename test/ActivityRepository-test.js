@@ -43,7 +43,7 @@ describe("ActivityRepository", () => {
     expect(activityRepo.data).to.deep.equal(activityData);
   })
 
-  describe("getUserActivityData()", () => {
+  describe("getUserData()", () => {
     let activityRepo;
 
     beforeEach("setup initial ActivityRepository", () => {
@@ -51,20 +51,20 @@ describe("ActivityRepository", () => {
     });
 
     it("should return user-specific activity data using a user's ID", () => {
-      const user1Activity = activityRepo.getUserActivityData(1);
-      const user2Activity = activityRepo.getUserActivityData(2);
-      const user3Activity = activityRepo.getUserActivityData(3);
+      const user1Activity = activityRepo.getUserData(1);
+      const user2Activity = activityRepo.getUserData(2);
+      const user3Activity = activityRepo.getUserData(3);
 
       expect(user1Activity).to.deep.equal(activityData[0]);
       expect(user2Activity).to.deep.equal(activityData[1]);
       expect(user3Activity).to.deep.equal(activityData[2]);
     });
 
-    it("should return 'null' if the provided ID is invalid", () => {
+    it("should return 'undefined' if the provided ID is invalid", () => {
       const invalidID = 4;
-      const invalidData = activityRepo.getUserActivityData(invalidID);
+      const invalidData = activityRepo.getUserData(invalidID);
 
-      expect(invalidData).to.be.null;
+      expect(invalidData).to.be.undefined;
     })
   });
 
@@ -92,6 +92,13 @@ describe("ActivityRepository", () => {
     it("should calculate and return the average minutes active across all users for specific date", () => {
       const avgMin = activityRepo.calcAvgStat(date, "minutesActive");
       expect(avgMin).to.equal(190);
+    });
+
+    it("should return 0 if provided date does not have recorded activity", () => {
+      const invalidDate = "2020/01/01";
+      const avgStat = activityRepo.calcAvgStat(invalidDate);
+
+      expect(avgStat).to.equal(0);
     });
   });
 });

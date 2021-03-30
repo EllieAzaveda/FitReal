@@ -7,19 +7,23 @@ class ActivityRepository {
     return this.data.find(userData => userId === userData.userID);
   }
 
-  calcAvgStat(forDate, statType) {
-    const dailyActivity = this.data.filter(currentData => {
-      return forDate === currentData.date;
+  getDailyActivity(forDate) {
+    return this.data.filter(dailyActivity => {
+      return forDate === dailyActivity.date;
     });
+  }
 
-    return dailyActivity.reduce((average, currentData, index) => {
-      average += currentData[statType];
+  calcAvgStat(forDate, statType) {
+    const dailyActivity = this.getDailyActivity(forDate);
+
+    return this.getDailyActivity().reduce((average, activityRecord, index) => {
+      average += activityRecord[statType];
 
       if (index === (dailyActivity.length - 1)) {
         return Math.round(average / dailyActivity.length);
       }
 
-      return average ? average : null;
+      return average;
     }, 0);
   }
 }
