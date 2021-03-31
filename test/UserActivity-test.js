@@ -11,49 +11,49 @@ describe("Activity", () => {
     activityData = [
       {
         "userID": 1,
-        "date": "2021/03/23",
+        "date": "2021/03/21",
         "numSteps": 3577,
         "minutesActive": 140,
         "flightsOfStairs": 16
       },
       {
         "userID": 1,
-        "date": "2021/03/24",
+        "date": "2021/03/22",
         "numSteps": 4294,
         "minutesActive": 138,
         "flightsOfStairs": 10
       },
       {
         "userID": 1,
-        "date": "2021/03/25",
+        "date": "2021/03/23",
         "numSteps": 7402,
         "minutesActive": 116,
         "flightsOfStairs": 33
       },
       {
         "userID": 1,
-        "date": "2021/03/26",
+        "date": "2021/03/24",
         "numSteps": 3486,
         "minutesActive": 114,
         "flightsOfStairs": 32
       },
       {
         "userID": 1,
-        "date": "2021/03/27",
+        "date": "2021/03/25",
         "numSteps": 11374,
         "minutesActive": 213,
         "flightsOfStairs": 13
       },
       {
         "userID": 1,
-        "date": "2021/03/28",
+        "date": "2021/03/26",
         "numSteps": 14810,
         "minutesActive": 287,
         "flightsOfStairs": 18
       },
       {
         "userID": 1,
-        "date": "2021/03/29",
+        "date": "2021/03/27",
         "numSteps": 2634,
         "minutesActive": 107,
         "flightsOfStairs": 5
@@ -95,16 +95,19 @@ describe("Activity", () => {
       const stepsDay1 = userActivity.data[0].numSteps;
       const stepsDay2 = userActivity.data[1].numSteps;
       const strideLength = user.data.strideLength;
+
+      const calculatedMiles1 = (stepsDay1 / (5290 / strideLength)).toFixed(2);
+      const calculatedMiles2 = (stepsDay2 / (5290 / strideLength)).toFixed(2);
       
-      const milesDay1 = userActivity.calcMilesWalked(
-        "2021/03/23", strideLength
+      const returnedMiles1 = userActivity.calcMilesWalked(
+        "2021/03/21", strideLength
       );
-      const milesDay2 = userActivity.calcMilesWalked(
-        "2021/03/24", strideLength
+      const returnedMiles2 = userActivity.calcMilesWalked(
+        "2021/03/22", strideLength
       );
 
-      expect(milesDay1).to.equal(stepsDay1 / (5290 / strideLength));
-      expect(milesDay2).to.equal(stepsDay2 / (5290 / strideLength);
+      expect(returnedMiles1).to.equal(calculatedMiles1);
+      expect(returnedMiles2).to.equal(calculatedMiles2);
     });
   });
 
@@ -116,11 +119,24 @@ describe("Activity", () => {
     });
 
     it("should return the number of minutes a user was active on a given day", () => {
-      const minutesDay1 = userActivity.calcActiveMin("2021/03/23");
-      const minutesDay2 = userActivity.calcActiveMin("2021/03/23");
+      const minutesDay1 = userActivity.calcActiveMin("2021/03/21");
+      const minutesDay2 = userActivity.calcActiveMin("2021/03/22");
 
       expect(minutesDay1).to.equal(userActivity.data[0].minutesActive);
       expect(minutesDay2).to.equal(userActivity.data[1].minutesActive);
+    });
+  });
+
+  describe("calcWeeklyAvgMin()", () => {
+    let userActivity;
+
+    beforeEach("setup intial UserActivity", () => {
+      userActivity = new UserActivity();
+    });
+
+    it("should calculate and return a user's average minutes active for a given week", () => {
+      const weeklyActiveAvg = userActivity.calcWeeklyAvgMin("2021/03/24");
+      expect(weeklyActiveAvg).to.equal(159);
     });
   });
 });
