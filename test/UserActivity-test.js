@@ -71,11 +71,16 @@ describe("Activity", () => {
     expect(userActivity).to.equal(activityData);
   });
 
-  describe("calcMilesWalked()", () => {
-    let userActivity, user, userData;
+  let userActivity;
 
-    before("setup intial user data", () => {
-      userData = {
+  beforeEach("setup initial UserActivity", () => {
+    userActivity = new UserActivity(activityData);
+  });
+  
+  describe("calcMilesWalked()", () => {
+    
+    it("should calculate and return the number of miles the user has walked in a given day", () => { 
+      const userData = {
         "id": 1, 
         "name": "Hans Person",
         "address": "4255 Real St, Actual Town AW 01010-0101",
@@ -84,14 +89,8 @@ describe("Activity", () => {
         "dailyStepGoal": 4004,
         "friends": [ 2, 3, 4 ]
       };
-    });
+      const user = new User(userData);
 
-    beforeEach("setup intial UserActivity", () => {
-      userActivity = new UserActivity(activityData);
-      user = new User(userData)
-    });
-    
-    it("should calculate and return the number of miles the user has walked in a given day", () => { 
       const stepsDay1 = userActivity.data[0].numSteps;
       const stepsDay2 = userActivity.data[1].numSteps;
       const strideLength = user.data.strideLength;
@@ -112,11 +111,6 @@ describe("Activity", () => {
   });
 
   describe("calcActiveMin()", () => {
-    let userActivity;
-
-    beforeEach("setup intial UserActivity", () => {
-      userActivity = new UserActivity();
-    });
 
     it("should return the number of minutes a user was active on a given day", () => {
       const minutesDay1 = userActivity.calcActiveMin("2021/03/21");
@@ -128,15 +122,14 @@ describe("Activity", () => {
   });
 
   describe("calcWeeklyAvgMin()", () => {
-    let userActivity;
-
-    beforeEach("setup intial UserActivity", () => {
-      userActivity = new UserActivity();
-    });
 
     it("should calculate and return a user's average minutes active for a given week", () => {
       const weeklyActiveAvg = userActivity.calcWeeklyAvgMin("2021/03/24");
       expect(weeklyActiveAvg).to.equal(159);
     });
   });
+
+  describe("checkStepsReached", () => {
+    
+  })
 });
