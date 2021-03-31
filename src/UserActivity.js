@@ -1,6 +1,7 @@
 class UserActivity {
   constructor(data) {
     this.data = data;
+    this.weeklyData = this.organizeWeeklyData(this.data);
   }
 
   calcMilesWalked(forDate, strideLength) {
@@ -18,7 +19,24 @@ class UserActivity {
     return this.getDailyActivity(forDate).minutesActive;
   }
 
-  getWeeklyActivity(data) {
+  checkStepsReached(forDate, stepGoal) {
+    const dailyActivity = this.getDailyActivity(forDate);
+    return dailyActivity.numSteps > stepGoal;
+  }
+  
+  getDailyActivity(forDate) {
+    return this.data.find(dailyActivity => {
+      return forDate === dailyActivity.date;
+    });
+  }
+
+  getWeekActivity(currentDate) {
+    return this.weeklyData.find(week => {
+      return week.find
+    })
+  }
+
+  organizeWeeklyData(data) {
     let weeklyData = [];
     let weeklyDataCopy = [...data];
     
@@ -27,17 +45,6 @@ class UserActivity {
       weeklyData.push(weeklyDataCopy.splice(0, 7));
     }
     return weeklyData;
-  }
-  
-  getDailyActivity(forDate) {
-    return this.data.find(dailyActivity => {
-      return forDate === dailyActivity.date;
-    });
-  }
-  
-  checkStepsReached(forDate, stepGoal) {
-    const dailyActivity = this.getDailyActivity(forDate);
-    return dailyActivity.numSteps > stepGoal;
   }
 }
 
