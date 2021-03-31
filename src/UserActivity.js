@@ -10,7 +10,7 @@ class UserActivity {
     return (steps / (5280 / strideLength)).toFixed(2)
   }
 
-  calcAvgWeeklyMinutes(forWeek) {
+  calcAvgWeeklyMinutes(currentDate) {
 
   }
 
@@ -18,6 +18,17 @@ class UserActivity {
     return this.getDailyActivity(forDate).minutesActive;
   }
 
+  getWeeklyActivity(data) {
+    let weeklyData = [];
+    let weeklyDataCopy = [...data];
+    
+    weeklyData.push(weeklyDataCopy.splice(0, 1));
+    while (weeklyDataCopy.length > 0) {
+      weeklyData.push(weeklyDataCopy.splice(0, 7));
+    }
+    return weeklyData;
+  }
+  
   getDailyActivity(forDate) {
     return this.data.find(dailyActivity => {
       return forDate === dailyActivity.date;
