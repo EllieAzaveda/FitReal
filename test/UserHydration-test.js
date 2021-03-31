@@ -2,10 +2,10 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const HydrationRepository = require('../src/HydrationRepository');
-const Hydration = require('../src/HydrationClass');
-const hydrationData = require('../data/hydration');
+const UserHydration = require('../src/HydrationClass');
+//const hydrationData = require('../data/hydration');
 
-describe('Hydration', function() {
+describe('UserHydration', function() {
   let userHydration;
   let hydrationData;
 
@@ -47,18 +47,25 @@ describe('Hydration', function() {
         "numOunces": 94
       }];
 
-     userHydration = new Hydration(hydrationData);
+     userHydration = new UserHydration(hydrationData);
   });
 
   it('should be a function', function() {
-    expect(Hydration).to.be.a('function');
+    expect(UserHydration).to.be.a('function');
   });
 
   it('should find a user\'s daily ounces', function() {
-    expect(userHydration.findDailyOunces(hydrationData, "2019/06/15")).to.equal(37);
+    expect(userHydration.findDailyOunces("2019/06/15")).to.equal(37);
   });
 
-  it('should find a user\'s daily ounces for the entire week', function() {
-    expect(userHydration.calcDailyOunces(hydrationData)).to.deep.equal([37, 75, 47, 85, 42, 87, 94]);
+  it.only('should find a user\'s daily ounces for the entire week', function() {
+    console.log(userHydration.organizeWeeklyData(1));
+
+    expect().to.equal();
+    //expect(userHydration.calcOuncesForWeek()).to.deep.equal([37, 75, 47, 85, 42, 87, 94]);
+  });
+
+  it.skip('should find the average of all the daily ounces', function (){
+    expect(userHydration.calcAvgOunces(hydrationData).to.equal(67));
   });
 })
