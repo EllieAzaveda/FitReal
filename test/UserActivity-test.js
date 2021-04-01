@@ -11,6 +11,13 @@ describe("Activity", () => {
     activityData = [
       {
         "userID": 1,
+        "date": "2021/03/20",
+        "numSteps": 8400,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 1,
         "date": "2021/03/21",
         "numSteps": 3577,
         "minutesActive": 140,
@@ -117,11 +124,11 @@ describe("Activity", () => {
     })
   })
 
-  describe("getMinuteActive()", () => {
+  describe("getMinutesActive()", () => {
 
     it("should return the number of minutes a user was active on a given day", () => {
-      const minutesDay1 = userActivity.getMinuteActive("2021/03/21");
-      const minutesDay2 = userActivity.getMinuteActive("2021/03/22");
+      const minutesDay1 = userActivity.getMinutesActive("2021/03/21");
+      const minutesDay2 = userActivity.getMinutesActive("2021/03/22");
 
       expect(minutesDay1).to.equal(userActivity.data[0].minutesActive);
       expect(minutesDay2).to.equal(userActivity.data[1].minutesActive);
@@ -130,27 +137,35 @@ describe("Activity", () => {
 
   describe("calcAvgWeeklyMinutes()", () => {
 
-    it("should calculate and return a user's average minutes active for a given week", () => {
+    it.only("should calculate and return a user's average minutes active for a given week", () => {
+      const weeklyMinutes = [ 140, 138, 116, 114, 213, 287, 107 ];
+      const calculatedAvg = weeklyMinutes.reduce((acc, cur) => {
+        return (acc + cur)
+      }) / weeklyMinutes.length;
       const weeklyActiveAvg = userActivity.calcAvgWeeklyMinutes("2021/03/24");
-      expect(weeklyActiveAvg).to.equal(159);
+      
+      expect(weeklyActiveAvg).to.equal(calculatedAvg);
     });
   });
 
-  describe("findStepsExceeded()", () => {
+  describe("getStepsExceeded()", () => {
 
-    it("should find all days where a user has exceeded their step goal", () => {
+    it.only("should find all days where a user has exceeded their step goal", () => {
       const daysExceeded = [
-        activityData[1], activityData[2], activityData[3], activityData[4]
+        activityData[0], activityData[2], activityData[3], 
+        activityData[5], activityData[6]
       ];
-      expect(userActivity.findStepsExceeded).to.deep.equal(daysExceeded);
+      const stepGoal = user.data.dailyStepGoal;
+
+      expect(userActivity.getStepsExceeded(stepGoal)).to.deep.equal(daysExceeded);
     });
   });
 
-  describe("findStairRecord()", () => {
+  describe("getStairRecord()", () => {
 
-    it("should find a user's all-time stair climbing record", () => {
-      const stairRecord = activityData[2];
-      expect(userActivity.findStairRecord()).to.equal(stairRecord);
+    it.only("should find a user's all-time stair climbing record", () => {
+      const stairRecord = activityData[3].flightsOfStairs;
+      expect(userActivity.getStairRecord()).to.equal(stairRecord);
     });
   });
 });

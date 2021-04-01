@@ -8,15 +8,35 @@ class UserActivity {
     const dailyActivity = this.getDailyActivity(forDate);
     const steps = dailyActivity.numSteps;
 
-    return (steps / (5280 / strideLength)).toFixed(2)
+    return (steps / (5280 / strideLength)).toFixed(2);
   }
 
   calcAvgWeeklyMinutes(currentDate) {
-
+    const weeklyActivity = this.getWeeklyActivity(currentDate);
+    
+    return weeklyActivity.map(activity => {
+      return activity.minutesActive
+    }).reduce((totalMin, curMin) => totalMin + curMin) / weeklyActivity.length;
   }
 
-  getMinuteActive(forDate) {
+  getMinutesActive(forDate) {
     return this.getDailyActivity(forDate).minutesActive;
+  }
+
+  getStepsExceeded(stepGoal) {
+    return this.data.filter(curDatum => curDatum.numSteps > stepGoal);
+  }
+
+  getStairsRecord() {
+    return this.data.map(curDatum => {
+      return curDatum.flightsOfStairs
+    }).reduce((record, curFlights) => {
+      if (curFlights > record) {
+        record = curFlights;
+      }
+
+      return record;
+    });
   }
 
   checkStepsReached(forDate, stepGoal) {
@@ -25,15 +45,21 @@ class UserActivity {
   }
   
   getDailyActivity(forDate) {
-    return this.data.find(dailyActivity => {
-      return forDate === dailyActivity.date;
-    });
+    return this.data.find(dailyActivity => forDate === dailyActivity.date);
   }
 
-  getWeekActivity(currentDate) {
-    return this.weeklyData.find(week => {
-      return week.find
+  getWeeklyActivity(currentDate) {
+    const weeklyActivity = [];
+
+    this.weeklyData.forEach(week => {
+      week.forEach(day => {
+        if (day.date === currentDate) {
+          weeklyActivity.push(week);
+        }
+      })
     })
+
+    return weeklyActivity[0];
   }
 
   organizeWeeklyData(data) {
@@ -44,6 +70,7 @@ class UserActivity {
     while (weeklyDataCopy.length > 0) {
       weeklyData.push(weeklyDataCopy.splice(0, 7));
     }
+
     return weeklyData;
   }
 }
