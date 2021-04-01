@@ -18,30 +18,33 @@ class UserHydration {
     return weeklyData;
   }
 
+  getWeeklyHydration(currentDate) {
+    const weeklyHydration = [];
+    this.weeklyDataArray.forEach(week => {
+      week.forEach(day => {
+        if (day.date === currentDate) {
+          weeklyHydration.push(week);
+        }
+      })
+    })
+    return weeklyHydration[0];
+  }
+
   findDailyOunces(date) {
     let foundUser = this.data.filter(user => user.date === date).map(userOunces => userOunces.numOunces);
     return foundUser[0];
   }
 
-  // Add method to call in calcOuncesForWeek that breaks users
-  // total data into an array of objects for each week
-  // Onclick, grabs the date -> searches for that date in all
-  // of the arrays -> uses that array to display the weekly data
-
   calcOuncesForWeek(date) {
+    let currentWeekData = this.getWeeklyHydration(date);
 
-    if() {
-      this.weeklyDataArray.find(date)
-    }
-    // return this.data.map(userData => userData.numOunces);
+    return currentWeekData.map(userOunces => userOunces.numOunces);
   }
 
   calcAvgOunces() {
-    // iterate => Get sum of all numOunces
-    // Dive by total # objects/index+1
-    //reduce!
-    let avgOunces = this.data.filter(userOunces => userOunces.numOunces);
-    console.log(avgOunces);
+    return this.data.map(currentData => {
+      return currentData.numOunces
+    }).reduce((acc, numOunces) => acc + numOunces / this.data.length);
   }
 
 }

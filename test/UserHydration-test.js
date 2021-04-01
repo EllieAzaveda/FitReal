@@ -97,13 +97,11 @@ describe('UserHydration', function() {
     expect(userHydration.findDailyOunces("2019/06/15")).to.equal(37);
   });
 
-  it.only('should find a user\'s daily ounces for the entire week', function() {
-    console.log(userHydration.calcOuncesForWeek());
-
-    expect().to.equal();
+  it('should find a user\'s daily ounces for the entire week', function() {
+    expect(userHydration.calcOuncesForWeek("2019/06/16")).to.deep.equal([75, 47, 85, 42, 87, 94, 84]);
   });
 
-  it.skip('should find the average of all the daily ounces', function (){
-    expect(userHydration.calcAvgOunces(hydrationData).to.equal(67));
+  it('should find the average of all the daily ounces', function (){
+    expect(userHydration.calcAvgOunces()).to.equal(103.13333333333333);
   });
 })
