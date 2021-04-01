@@ -5,7 +5,7 @@ const expect = chai.expect;
 const ActivityRepository = require("../src/ActivityRepository.js");
 
 describe("ActivityRepository", () => {
-  let activityData;
+  let activityData, forDate, invalidForDate, activityRepo;
 
   before("setup intial activity data", () => {
     activityData = [
@@ -31,24 +31,24 @@ describe("ActivityRepository", () => {
         "flightsOfStairs": 30
       }
     ]
+    forDate = "2021/03/29";
+    invalidForDate = "2020/01/01";
+  });
+
+  beforeEach("setup initial ActivityRepository", () => {
+    activityRepo = new ActivityRepository(activityData);
   });
   
   it("should instantiate an ActivityRepository", () => {
-    const activityRepo = new ActivityRepository();
+    let activityRepo = new ActivityRepository();
     expect(activityRepo).to.be.an.instanceOf(ActivityRepository);
   });
 
   it("should store activity data for all users", () => {
-    const activityRepo = new ActivityRepository(activityData);
     expect(activityRepo.data).to.deep.equal(activityData);
   })
 
   describe("getUserData()", () => {
-    let activityRepo;
-
-    beforeEach("setup initial ActivityRepository", () => {
-      activityRepo = new ActivityRepository(activityData);
-    });
 
     it("should return user-specific activity data using a user's ID", () => {
       const user1Activity = activityRepo.getUserData(1);
@@ -69,36 +69,26 @@ describe("ActivityRepository", () => {
   });
 
   describe("calcAvgStat()", () => {
-    let date, activityRepo;
-
-    before("setup date to find averages for", () => {
-      date = "2021/03/29";
-    });
-
-    beforeEach("setup initial UserRepository", () => {
-      activityRepo = new ActivityRepository(activityData);
-    });
 
     it("should calculate and return the average stairs climbed across all users for specific date", () => {
-      const avgStairs = activityRepo.calcAvgStat(date, "flightsOfStairs");
-      expect(avgStairs).to.equal(21);
+      const avgStairs = (24 + 10 + 30) / 3;
+      const calculatedAvg = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
+
+      expect(calculatedAvg).to.equal(avgStairs);
     });
 
     it("should calculate and return the average step count across all users for specific date", () => {
-      const avgSteps = activityRepo.calcAvgStat(date, "numSteps");
-      expect(avgSteps).to.equal(5700);
+      const avgSteps = (5750 + 3200 + 8150) / 3;
+      const calculateAvg = activityRepo.calcAvgStat(forDate, "numSteps");
+
+      expect(calculateAvg).to.equal(avgSteps);
     });
 
     it("should calculate and return the average minutes active across all users for specific date", () => {
-      const avgMin = activityRepo.calcAvgStat(date, "minutesActive");
-      expect(avgMin).to.equal(190);
-    });
-
-    it("should return 0 if provided date does not have recorded activity", () => {
-      const invalidDate = "2020/01/01";
-      const avgStat = activityRepo.calcAvgStat(invalidDate);
-
-      expect(avgStat).to.equal(0);
+      const avgMin = (200 + 120 + 250) / 3;
+      const calculatedAvg = activityRepo.calcAvgStat(forDate, "minutesActive");
+      
+      expect(calculatedAvg).to.equal(avgMin);
     });
   });
 });
