@@ -1,6 +1,6 @@
 class UserActivity {
   constructor(data) {
-    this.data = data;
+    this.data = data || [];
     this.weeklyData = this.organizeWeeklyData(this.data);
   }
 
