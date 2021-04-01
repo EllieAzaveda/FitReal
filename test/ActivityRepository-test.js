@@ -5,34 +5,55 @@ const expect = chai.expect;
 const ActivityRepository = require("../src/ActivityRepository.js");
 
 describe("ActivityRepository", () => {
-  let activityData, forDate, invalidForDate, activityRepo;
+  let activityData, forDate1, forDate2, activityRepo;
 
   before("setup intial activity data", () => {
     activityData = [
       {
         "userID": 1,
-        "date": "2021/03/29",
-        "numSteps": 5750,
-        "minutesActive": 200,
-        "flightsOfStairs": 24
+        "date": "2021/03/27",
+        "numSteps": 3577,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
       },
       {
         "userID": 2,
-        "date": "2021/03/29",
-        "numSteps": 3200,
-        "minutesActive": 120,
+        "date": "2021/03/27",
+        "numSteps": 4294,
+        "minutesActive": 138,
         "flightsOfStairs": 10
       },
       {
         "userID": 3,
-        "date": "2021/03/29",
-        "numSteps": 8150,
-        "minutesActive": 250,
-        "flightsOfStairs": 30
+        "date": "2021/03/27",
+        "numSteps": 7402,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 1,
+        "date": "2021/03/28",
+        "numSteps": 3486,
+        "minutesActive": 114,
+        "flightsOfStairs": 32
+      },
+      {
+        "userID": 2,
+        "date": "2021/03/28",
+        "numSteps": 11374,
+        "minutesActive": 213,
+        "flightsOfStairs": 13
+      },
+      {
+        "userID": 3,
+        "date": "2021/03/28",
+        "numSteps": 14810,
+        "minutesActive": 287,
+        "flightsOfStairs": 18
       }
     ]
-    forDate = "2021/03/29";
-    invalidForDate = "2020/01/01";
+    forDate1 = "2021/03/27";
+    forDate2 = "2021/03/28"
   });
 
   beforeEach("setup initial ActivityRepository", () => {
@@ -59,36 +80,41 @@ describe("ActivityRepository", () => {
       expect(user2Activity).to.deep.equal(activityData[1]);
       expect(user3Activity).to.deep.equal(activityData[2]);
     });
-
-    it("should return 'undefined' if the provided ID is invalid", () => {
-      const invalidID = 4;
-      const invalidData = activityRepo.getUserData(invalidID);
-
-      expect(invalidData).to.be.undefined;
-    })
   });
 
   describe("calcAvgStat()", () => {
 
     it("should calculate and return the average stairs climbed across all users for specific date", () => {
-      const avgStairs = (24 + 10 + 30) / 3;
-      const calculatedAvg = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
+      const avgStairs1 = (16 + 10 + 33) / 3;
+      const avgStairs2 = (32 + 13 + 18) / 3;
 
-      expect(calculatedAvg).to.equal(avgStairs);
+      const calculatedAvg1 = activityRepo.calcAvgStat(forDate1, "flightsOfStairs");
+      const calculatedAvg2 = activityRepo.calcAvgStat(forDate2, "flightsOfStairs");
+
+      expect(calculatedAvg1).to.equal(avgStairs1);
+      expect(calculatedAvg2).to.equal(avgStairs2);
     });
 
     it("should calculate and return the average step count across all users for specific date", () => {
-      const avgSteps = (5750 + 3200 + 8150) / 3;
-      const calculateAvg = activityRepo.calcAvgStat(forDate, "numSteps");
+      const avgSteps1 = (3577 + 4294 + 7402) / 3;
+      const avgSteps2 = (3486 + 11374 + 14810) / 3;
 
-      expect(calculateAvg).to.equal(avgSteps);
+      const calculateAvg1 = activityRepo.calcAvgStat(forDate1, "numSteps");
+      const calculateAvg2 = activityRepo.calcAvgStat(forDate2, "numSteps");
+
+      expect(calculateAvg1).to.equal(avgSteps1);
+      expect(calculateAvg2).to.equal(avgSteps2);
     });
 
     it("should calculate and return the average minutes active across all users for specific date", () => {
-      const avgMin = (200 + 120 + 250) / 3;
-      const calculatedAvg = activityRepo.calcAvgStat(forDate, "minutesActive");
-      
-      expect(calculatedAvg).to.equal(avgMin);
+      const avgMin1 = (140 + 138 + 116) / 3;
+      const avgMin2 = (114 + 213 + 287) / 3;
+
+      const calculatedAvg1 = activityRepo.calcAvgStat(forDate1, "minutesActive");
+      const calculatedAvg2 = activityRepo.calcAvgStat(forDate2, "minutesActive");
+
+      expect(calculatedAvg1).to.equal(avgMin1);
+      expect(calculatedAvg2).to.equal(avgMin2);
     });
   });
 });
