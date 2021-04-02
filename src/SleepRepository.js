@@ -57,7 +57,6 @@ class SleepRepository {
     let topSleeper = [];
 
     let foundSleeper = currentWeekData.filter(sleeper => {
-      let hours = sleeper.hoursSlept;
       if(sleeper.hoursSlept > maxHours) {
         maxHours = sleeper.hoursSlept;
       }
