@@ -11,6 +11,12 @@ describe('SleepRepository', function() {
     sleepData = [
       {
         "userID": 1,
+        "date": "2019/06/14",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+      {
+        "userID": 1,
         "date": "2019/06/15",
         "hoursSlept": 6.1,
         "sleepQuality": 2.2
@@ -44,7 +50,7 @@ describe('SleepRepository', function() {
         "date": "2019/07/18",
         "hoursSlept": 9.8,
         "sleepQuality": 2.6
-      }
+      },
     ];
 
     sleepRepo = new SleepRepository(sleepData);
@@ -54,24 +60,24 @@ describe('SleepRepository', function() {
     expect(SleepRepository).to.be.a('function');
   });
 
-  it('should be a function', function() {
+  it('should be an instance of the SleepRepository class', function() {
     expect(sleepRepo).to.be.an.instanceOf(SleepRepository);
   });
 
   it('should calculate average sleep quality', function() {
-    expect(sleepRepo.calcAvgSleepQuality()).to.equal(5.25);
+    expect(sleepRepo.calcAvgSleepQuality()).to.equal(5.12857142857143);
   });
 
-  it('should be able to find top sleepers in a given week', function() {
-  console.log(sleepRepo.calcQualityLeaders("2019/06/15"));
+  it.skip('should be able to find top sleepers in a given week', function() {
+    console.log(sleepRepo.calcQualityLeaders("2019/06/15"));
 
-    expect().to.deep.equal();
+    expect(sleepRepo.calcQualityLeaders("2019/06/15")).to.deep.equal([2, 3]);
   });
 
   it.skip('should be able to find top sleepers in a different week', function() {
     console.log(sleepRepo.calcQualityLeaders("2019/07/18"));
 
-    expect().to.deep.equal();
+    expect(sleepRepo.calcQualityLeaders("2019/07/18")).to.deep.equal([1, 2]);
   });
 
 })

@@ -22,26 +22,30 @@ class SleepRepository {
     return weeklyData;
   }
 
-  getWeeklyHydration(currentDate) {
-    const weeklyHydration = [];
+  getWeeklyQuality(currentDate) {
+    const weeklyQuality = [];
     this.weeklyDataArray.forEach(week => {
       week.forEach(day => {
         if (day.date === currentDate) {
-          weeklyHydration.push(week);
+          weeklyQuality.push(week);
         }
       })
     })
-    return weeklyHydration[0];
+    return weeklyQuality[0];
   }
 
   calcQualityLeaders(date) {
-    let currentWeekData = this.getWeeklyHydration(date);
+    let currentWeekData = this.getWeeklyQuality(date);
 
     return currentWeekData.filter(user => user.sleepQuality > 3);
   }
   // Find all users who average a sleep quality greater
   // than 3 for a given week (7 days) - you should be able
   // to calculate this for any week, not just the latest week
+
+  // Grab each users sleepQuality per week => use User method w/ array
+  // Average that sleepQuality => reduce
+  // Loop => instantiates a userSleep object for each id
 
   // For a given day (identified by the date), find the users
   // who slept the most number of hours (one or more if
