@@ -65,7 +65,8 @@ describe('SleepRepository', function() {
   });
 
   it('should calculate average sleep quality', function() {
-    expect(sleepRepo.calcAvgSleepQuality()).to.equal(5.12857142857143);
+    console.log(sleepRepo.calcAvgSleepQuality());
+    expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.2428571428571433);
   });
 
   it.skip('should be able to find top sleepers in a given week', function() {

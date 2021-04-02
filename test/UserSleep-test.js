@@ -75,7 +75,6 @@ describe('UserSleep', function() {
   });
 
   it('should be able to calculate a users average sleep quality per day over all time', function() {
-    console.log(userSleep.calcAvgTotalQuality());
     expect(userSleep.calcAvgTotalQuality()).to.equal(3.2);
   });
 

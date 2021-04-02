@@ -5,9 +5,11 @@ class SleepRepository {
   }
 
   calcAvgSleepQuality() {
-    return this.sleepData.map(currentData => {
+    let sum = this.sleepData.map(currentData => {
       return currentData.sleepQuality
-    }).reduce((acc, sleepQuality) => acc + sleepQuality / this.sleepData.length);
+    }).reduce((acc, sleepQuality) => acc + sleepQuality);
+
+    return sum / this.sleepData.length;
   }
 
   organizeWeeklyData(data) {
