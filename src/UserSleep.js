@@ -37,6 +37,14 @@ class UserSleep {
     return sum / this.data.length;
   }
 
+  calcAvgTotalQuality() {
+    let sum = this.data.map(currentData => {
+      return currentData.sleepQuality
+    }).reduce((acc, sleepQuality) => acc + sleepQuality);
+
+    return sum / this.data.length;
+  }
+
   calcQualityForWeek(date) {
     let currentWeekData = this.getUserWeeklyQuality(date);
 

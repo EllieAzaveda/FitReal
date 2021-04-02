@@ -71,8 +71,12 @@ describe('UserSleep', function() {
   });
 
   it('should be able to calculate a users average number of hours slept per day', function() {
-    console.log(userSleep.calcAvgTotalHrs());
     expect(userSleep.calcAvgTotalHrs()).to.equal(8.5125);
+  });
+
+  it('should be able to calculate a users average sleep quality per day over all time', function() {
+    console.log(userSleep.calcAvgTotalQuality());
+    expect(userSleep.calcAvgTotalQuality()).to.equal(3.2);
   });
 
   it('should be able to calculate a users sleep quality for the week', function() {
