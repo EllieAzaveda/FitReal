@@ -41,10 +41,12 @@ class UserHydration {
     return currentWeekData.map(userOunces => userOunces.numOunces);
   }
 
-  calcAvgOunces() {
-    return this.data.map(currentData => {
+  calcAvgTotalOunces() {
+    let sum = this.data.map(currentData => {
       return currentData.numOunces
-    }).reduce((acc, numOunces) => acc + numOunces / this.data.length);
+    }).reduce((acc, numOunces) => acc + numOunces);
+
+    return sum / this.data.length;
   }
 
 }

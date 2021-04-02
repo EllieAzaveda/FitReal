@@ -102,6 +102,6 @@ describe('UserHydration', function() {
   });
 
   it('should find the average of all the daily ounces', function (){
-    expect(userHydration.calcAvgOunces()).to.equal(103.13333333333333);
+    expect(userHydration.calcAvgTotalOunces()).to.equal(68.6);
   });
 })
