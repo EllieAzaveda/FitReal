@@ -29,9 +29,9 @@ describe('SleepRepository', function() {
       },
       {
         "userID": 3,
-        "date": "2019/06/15",
+        "date": "2019/07/18",
         "hoursSlept": 10.8,
-        "sleepQuality": 4.7
+        "sleepQuality": 3.2
       },
       {
         "userID": 1,
@@ -65,20 +65,34 @@ describe('SleepRepository', function() {
   });
 
   it('should calculate average sleep quality', function() {
-    console.log(sleepRepo.calcAvgSleepQuality());
-    expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.2428571428571433);
+    expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.028571428571429);
   });
 
   it.skip('should be able to find top sleepers in a given week', function() {
-    console.log(sleepRepo.calcQualityLeaders("2019/06/15"));
+    // console.log(sleepRepo.calcQualityLeaders("2019/06/15"));
 
     expect(sleepRepo.calcQualityLeaders("2019/06/15")).to.deep.equal([2, 3]);
   });
 
   it.skip('should be able to find top sleepers in a different week', function() {
-    console.log(sleepRepo.calcQualityLeaders("2019/07/18"));
+    // console.log(sleepRepo.calcQualityLeaders("2019/07/18"));
 
     expect(sleepRepo.calcQualityLeaders("2019/07/18")).to.deep.equal([1, 2]);
+  });
+
+  it('should find the users who slept the most number of hours', function() {
+    expect(sleepRepo.findTopSleeper("2019/07/18")).to.deep.equal([{
+      "userID": 3,
+      "date": "2019/07/18",
+      "hoursSlept": 10.8,
+      "sleepQuality": 3.2
+    },
+    {
+      "userID": 2,
+      "date": "2019/07/18",
+      "hoursSlept": 10.8,
+      "sleepQuality": 3.2
+    }]);
   });
 
 })
