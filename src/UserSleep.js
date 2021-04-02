@@ -55,7 +55,13 @@ class UserSleep {
     return foundUser[0];
   }
 
-  calcQualityForWeek(date) {
+  findWeeklyHrs(date) {
+    let currentWeekData = this.getUserWeeklyQuality(date);
+
+    return currentWeekData.map(userHours => userHours.hoursSlept);
+  }
+
+  findWeeklyQuality(date) {
     let currentWeekData = this.getUserWeeklyQuality(date);
 
     return currentWeekData.map(userQuality => userQuality.sleepQuality);
@@ -64,9 +70,6 @@ class UserSleep {
 
 module.exports = UserSleep;
 
-
-// For a user, their sleep quality for a specific day
-// (identified by a date)
 
 // For a user, how many hours slept each day over the
 // course of a given week (7 days) - you should be able
