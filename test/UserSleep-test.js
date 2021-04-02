@@ -78,6 +78,14 @@ describe('UserSleep', function() {
     expect(userSleep.calcAvgTotalQuality()).to.equal(3.2);
   });
 
+  it('should be able to find how many hours they slept for a specific day', function() {
+    expect(userSleep.findDailyHrs("2019/06/14")).to.equal(6.1);
+  });
+
+  it('should be able to find their sleep quality for a specific day', function() {
+    expect(userSleep.findDailyQuality("2019/06/14")).to.equal(2.9);
+  });
+
   it('should be able to calculate a users sleep quality for the week', function() {
     expect(userSleep.calcQualityForWeek("2019/06/15")).to.deep.equal([2.2, 2.2, 4.7, 4.7, 3.1, 3.2, 2.6]);
   });

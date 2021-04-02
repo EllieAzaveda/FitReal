@@ -45,6 +45,16 @@ class UserSleep {
     return sum / this.data.length;
   }
 
+  findDailyHrs(date) {
+    let foundUser = this.data.filter(user => user.date === date).map(userHours => userHours.hoursSlept);
+    return foundUser[0];
+  }
+
+  findDailyQuality(date) {
+    let foundUser = this.data.filter(user => user.date === date).map(userSleep => userSleep.sleepQuality);
+    return foundUser[0];
+  }
+
   calcQualityForWeek(date) {
     let currentWeekData = this.getUserWeeklyQuality(date);
 
@@ -54,11 +64,6 @@ class UserSleep {
 
 module.exports = UserSleep;
 
-// For a user, their average sleep quality per day
-// over all time
-
-// For a user, how many hours they slept for a specific
-// day (identified by a date)
 
 // For a user, their sleep quality for a specific day
 // (identified by a date)
