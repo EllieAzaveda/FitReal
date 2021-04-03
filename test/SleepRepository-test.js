@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const SleepRepository = require('../src/SleepRepository');
+const UserSleep = require('../src/UserSleep');
 
 describe('SleepRepository', function() {
   let sleepRepo;
@@ -11,46 +12,58 @@ describe('SleepRepository', function() {
     sleepData = [
       {
         "userID": 1,
-        "date": "2019/06/14",
-        "hoursSlept": 6.1,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/15",
-        "hoursSlept": 6.1,
-        "sleepQuality": 2.2
+        "date": "2019/06/16",
+        "hoursSlept": 5.4,
+        "sleepQuality": 3
       },
       {
         "userID": 2,
-        "date": "2019/06/15",
-        "hoursSlept": 7,
-        "sleepQuality": 4.7
+        "date": "2019/06/16",
+        "hoursSlept": 4.1,
+        "sleepQuality": 3.6
       },
       {
         "userID": 3,
-        "date": "2019/07/18",
-        "hoursSlept": 10.8,
-        "sleepQuality": 3.2
+        "date": "2019/06/16",
+        "hoursSlept": 9.6,
+        "sleepQuality": 2.9
       },
       {
         "userID": 1,
-        "date": "2019/07/18",
-        "hoursSlept": 10.4,
-        "sleepQuality": 3.1
-      },
-      {
-        "userID": 2,
-        "date": "2019/07/18",
-        "hoursSlept": 10.8,
-        "sleepQuality": 3.2
-      },
-      {
-        "userID": 3,
-        "date": "2019/07/18",
-        "hoursSlept": 9.8,
+        "date": "2019/06/17",
+        "hoursSlept": 5.1,
         "sleepQuality": 2.6
       },
+      {
+        "userID": 2,
+        "date": "2019/06/17",
+        "hoursSlept": 8.1,
+        "sleepQuality": 3.5
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "hoursSlept": 8.9,
+        "sleepQuality": 3.2
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "hoursSlept": 4.4,
+        "sleepQuality": 1.6
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/18",
+        "hoursSlept": 4.9,
+        "sleepQuality": 3.9
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/18",
+        "hoursSlept": 8,
+        "sleepQuality": 3.4
+      }
     ];
 
     sleepRepo = new SleepRepository(sleepData);
@@ -65,34 +78,52 @@ describe('SleepRepository', function() {
   });
 
   it('should calculate average sleep quality', function() {
-    expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.028571428571429);
+    expect(sleepRepo.getUserData(1)).to.deep.equal([
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "hoursSlept": 5.4,
+        "sleepQuality": 3
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/17",
+        "hoursSlept": 5.1,
+        "sleepQuality": 2.6
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "hoursSlept": 4.4,
+        "sleepQuality": 1.6
+      }
+    ]);
   });
 
-  it.skip('should be able to find top sleepers in a given week', function() {
-    // console.log(sleepRepo.calcQualityLeaders("2019/06/15"));
-
-    expect(sleepRepo.calcQualityLeaders("2019/06/15")).to.deep.equal([2, 3]);
+  it('should calculate average sleep quality', function() {
+    expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.0777777777777775);
   });
 
-  it.skip('should be able to find top sleepers in a different week', function() {
-    // console.log(sleepRepo.calcQualityLeaders("2019/07/18"));
-
-    expect(sleepRepo.calcQualityLeaders("2019/07/18")).to.deep.equal([1, 2]);
+  it('should be able to find all users with sleep quality over 3 for a given week', function() {
+    expect(sleepRepo.calcQualityLeaders("2019/06/18")).to.deep.equal([
+      {
+        "avgQuality": 3.1666666666666665,
+        "id": 3
+      },
+      {
+        "avgQuality": 3.6666666666666665,
+        "id": 2
+      }
+    ]);
   });
 
   it('should find the users who slept the most number of hours', function() {
-    expect(sleepRepo.findTopSleeper("2019/07/18")).to.deep.equal([{
-      "userID": 3,
-      "date": "2019/07/18",
-      "hoursSlept": 10.8,
-      "sleepQuality": 3.2
-    },
-    {
-      "userID": 2,
-      "date": "2019/07/18",
-      "hoursSlept": 10.8,
-      "sleepQuality": 3.2
-    }]);
+    expect(sleepRepo.findTopSleeper("2019/06/18")).to.deep.equal([
+      { userID: 3,
+        date: '2019/06/16',
+        hoursSlept: 9.6,
+        sleepQuality: 2.9
+      }]);
   });
 
 })

@@ -1,12 +1,10 @@
-//const hydrationData = require('../data/hydration');
-
 class HydrationRepository {
-  constructor(hydrationData) {
-    this.hydrationData = hydrationData;
+  constructor(data) {
+    this.data = data;
   }
 
   getUserData(id) {
-    return this.hydrationData.filter(userData => userData.userID === id);
+    return this.data.filter(userData => userData.userID === id);
   }
 }
 

@@ -1,77 +1,97 @@
+const UserSleep = require('../src/UserSleep');
+const dayjs = require("dayjs");
+
 class SleepRepository {
-  constructor(sleepData) {
-    this.sleepData = sleepData;
-    this.weeklyDataArray = this.organizeWeeklyData(sleepData);
+  constructor(data) {
+    this.data = data;
+    this.weeklyDataArray = this.organizeWeeklyData(data);
+  }
+
+  getUserData(id) {
+    return this.data.filter(userData => userData.userID === id);
   }
 
   calcAvgSleepQuality() {
-    let sum = this.sleepData.map(currentData => {
+    let sum = this.data.map(currentData => {
       return currentData.sleepQuality
     }).reduce((acc, sleepQuality) => acc + sleepQuality);
 
-    return sum / this.sleepData.length;
+    return sum / this.data.length;
   }
 
   organizeWeeklyData(data) {
-    let weeklyData = [];
-    let weeklyDataCopy = [...data];
+    let currentWeekData = [];
 
-    weeklyData.push(weeklyDataCopy.splice(0, 1));
+    return data.reduce((acc, cur, index) => {
+      const day = dayjs(cur.date).day();
 
-    while (weeklyDataCopy.length > 0) {
-      weeklyData.push(weeklyDataCopy.splice(0, 7));
-    }
-    return weeklyData;
+      if (day === 6) {
+        currentWeekData.push(cur);
+        acc.push([...currentWeekData]);
+      } else if (day === 0) {
+        currentWeekData = [];
+        currentWeekData.push(cur);
+      } else {
+        currentWeekData.push(cur);
+      }
+
+      if ((index === this.data.length - 1) && currentWeekData.length) {
+        acc.push([...currentWeekData]);
+      }
+      return acc;
+    }, []);
   }
 
-  getWeeklyQuality(currentDate) {
-    const weeklyQuality = [];
+  getWeeklySleep(date) {
+    const weeklySleep = [];
     this.weeklyDataArray.forEach(week => {
       week.forEach(day => {
-        if (day.date === currentDate) {
-          weeklyQuality.push(week);
+        if (day.date === date) {
+          weeklySleep.push(week);
         }
       })
     })
-    return weeklyQuality[0];
+    return weeklySleep[0];
   }
 
   calcQualityLeaders(date) {
-    let currentWeekData = this.getWeeklyQuality(date);
-    console.log(currentWeekData);
+    const currentWeekData = this.getWeeklySleep(date);
+    const qualityLeaders = [];
 
-    return currentWeekData.filter(user => user.sleepQuality > 3);
+    const userIDs = currentWeekData.reduce((ids, datum) => {
+      if (!ids.includes(datum.userID)) {
+        ids.push(datum.userID);
+      }
+      return ids;
+    }, []);
 
-    // Find all users who average a sleep quality greater
-    // than 3 for a given week (7 days) - you should be able
-    // to calculate this for any week, not just the latest week
+    userIDs.forEach(id => {
+      let userSleep = new UserSleep(this.getUserData(id));
+      let weeklyQuality = userSleep.findWeeklyQuality(date);
+      let avgQuality = userSleep.calcAvgTotalQuality();
 
-    // Grab each users sleepQuality per week => use User method w/ array
-    // Average that sleepQuality => reduce
-    // Loop => instantiates a userSleep object for each id
+      if (avgQuality > 3) {
+        qualityLeaders.push({ id, avgQuality });
+      }
+    });
+    return qualityLeaders;
   }
 
   findTopSleeper(date) {
-    let currentWeekData = this.getWeeklyQuality(date);
+    let currentWeekData = this.getWeeklySleep(date);
     let maxHours = 0;
-    let topSleeper = [];
 
-    let foundSleeper = currentWeekData.filter(sleeper => {
+    return currentWeekData.reduce((topSleeper, sleeper) => {
       if(sleeper.hoursSlept > maxHours) {
         maxHours = sleeper.hoursSlept;
       }
-      return maxHours;
-    });
 
-    for (let i = 0; i < currentWeekData.length; i++) {
-      if(currentWeekData[i].hoursSlept === maxHours) {
-        topSleeper.push(currentWeekData[i]);
+      if(sleeper.hoursSlept === maxHours) {
+        topSleeper.push(sleeper);
       };
-    }
-    return topSleeper;
+      return topSleeper;
+    }, []);
   }
-
-
 }
 
 module.exports = SleepRepository;
