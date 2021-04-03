@@ -1,3 +1,5 @@
+const dayjs = require("dayjs");
+
 class UserActivity {
   constructor(data) {
     this.data = data || [];
@@ -63,15 +65,27 @@ class UserActivity {
   }
 
   organizeWeeklyData(data) {
-    let weeklyData = [];
-    let weeklyDataCopy = [...data];
-    
-    weeklyData.push(weeklyDataCopy.splice(0, 1));
-    while (weeklyDataCopy.length > 0) {
-      weeklyData.push(weeklyDataCopy.splice(0, 7));
-    }
+    let currentWeekData = [];
 
-    return weeklyData;
+    return data.reduce((acc, cur, index) => {
+      const day = dayjs(cur.date).day();
+
+      if (day === 6) {
+        currentWeekData.push(cur);
+        acc.push([...currentWeekData]);
+      } else if (day === 0) {
+        currentWeekData = [];
+        currentWeekData.push(cur);
+      } else {
+        currentWeekData.push(cur);
+      }
+
+      if ((index === this.data.length - 1) && currentWeekData.length) {
+        acc.push([...currentWeekData]);
+      }
+
+      return acc;
+    }, []);
   }
 }
 
