@@ -1,4 +1,5 @@
 const HydrationRepository = require('../src/HydrationRepository');
+const dayjs = require("dayjs");
 
 class UserHydration {
   constructor(data) {
@@ -7,15 +8,27 @@ class UserHydration {
   }
 
   organizeWeeklyData(data) {
-    let weeklyData = [];
-    let weeklyDataCopy = [...data];
+    let currentWeekData = [];
 
-    weeklyData.push(weeklyDataCopy.splice(0, 1));
+    return data.reduce((acc, cur, index) => {
+      const day = dayjs(cur.date).day();
 
-    while (weeklyDataCopy.length > 0) {
-      weeklyData.push(weeklyDataCopy.splice(0, 7));
-    }
-    return weeklyData;
+      if (day === 6) {
+        currentWeekData.push(cur);
+        acc.push([...currentWeekData]);
+      } else if (day === 0) {
+        currentWeekData = [];
+        currentWeekData.push(cur);
+      } else {
+        currentWeekData.push(cur);
+      }
+
+      if ((index === this.data.length - 1) && currentWeekData.length) {
+        acc.push([...currentWeekData]);
+      }
+
+      return acc;
+    }, []);
   }
 
   getWeeklyHydration(currentDate) {

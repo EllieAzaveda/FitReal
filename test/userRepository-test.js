@@ -10,7 +10,7 @@ describe("UserRepository", () => {
   before("setup initial user data", () => {
     userData = [
       {
-        "id": 1, 
+        "id": 1,
         "name": "Hans Person-Being",
         "address": "4255 Real St, Actual Town AW 01010-0101",
         "email": "hans@hotmail.com",
@@ -47,13 +47,13 @@ describe("UserRepository", () => {
       userRepo = new UserRepository(userData);
     });
 
-    it.only("should return user-specific user data using a user's ID", () => {
+    it("should return user-specific user data using a user's ID", () => {
       const userId1 = userRepo.data[0].id;
       const userId2 = userRepo.data[1].id;
-      
+
       const userData1 = userRepo.getUserData(userId1);
       const userData2 = userRepo.getUserData(userId2);
-      
+
       expect(userData1).to.deep.equal(userRepo.data[0]);
       expect(userData2).to.deep.equal(userRepo.data[1]);
     });
@@ -73,7 +73,7 @@ describe("UserRepository", () => {
       userRepo = new UserRepository(userData);
     });
 
-    it.only("should calculate and return the average step goal across all user data", () => {
+    it("should calculate and return the average step goal across all user data", () => {
       const avgStepGoal = userRepo.calcAvgStepGoal();
       expect(avgStepGoal).to.equal(6502.5);
     });

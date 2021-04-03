@@ -2,8 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const HydrationRepository = require('../src/HydrationRepository');
-// const hydrationData = require('../data/hydration');
-// const hydrationData = data.hydrationData;
 
 describe('HydrationRepository', function() {
   let hydrationRepo;
@@ -35,12 +33,7 @@ describe('HydrationRepository', function() {
     expect(HydrationRepository).to.be.a('function');
   });
 
-  it('should store a user\'s hydration data', function() {
-
-    expect(hydrationRepo).to.deep.equal({hydrationData});
-  });
-
-  it('should store a user\'s hydration data', function() {
+  it('should be ablt to find a specific user\'s hydration data', function() {
     expect(hydrationRepo.getUserData(2)).to.deep.equal([hydrationData[1]]);
   });
 

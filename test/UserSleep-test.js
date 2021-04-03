@@ -11,49 +11,49 @@ describe('UserSleep', function() {
     sleepData = [
       {
         "userID": 1,
-        "date": "2019/06/14",
+        "date": "2019/06/13",
         "hoursSlept": 6.1,
         "sleepQuality": 2.9
       },
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/14",
         "hoursSlept": 6.1,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
-        "date": "2019/06/16",
+        "date": "2019/06/15",
         "hoursSlept": 7.1,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
-        "date": "2019/06/17",
+        "date": "2019/06/16",
         "hoursSlept": 7,
         "sleepQuality": 4.7
       },
       {
         "userID": 1,
-        "date": "2019/06/18",
+        "date": "2019/06/17",
         "hoursSlept": 10.8,
         "sleepQuality": 4.7
       },
       {
         "userID": 1,
-        "date": "2019/07/19",
+        "date": "2019/06/18",
         "hoursSlept": 10.4,
         "sleepQuality": 3.1
       },
       {
         "userID": 1,
-        "date": "2019/07/20",
+        "date": "2019/06/19",
         "hoursSlept": 10.8,
         "sleepQuality": 3.2
       },
       {
         "userID": 1,
-        "date": "2019/07/21",
+        "date": "2019/06/20",
         "hoursSlept": 9.8,
         "sleepQuality": 2.6
       },
@@ -79,19 +79,19 @@ describe('UserSleep', function() {
   });
 
   it('should be able to find how many hours they slept for a specific day', function() {
-    expect(userSleep.findDailyHrs("2019/06/14")).to.equal(6.1);
+    expect(userSleep.findDailyHrs("2019/06/15")).to.equal(7.1);
   });
 
   it('should be able to find their sleep quality for a specific day', function() {
-    expect(userSleep.findDailyQuality("2019/06/14")).to.equal(2.9);
+    expect(userSleep.findDailyQuality("2019/06/15")).to.equal(2.2);
   });
 
   it('should be able to find a users sleep hours for the week', function() {
-    expect(userSleep.findWeeklyHrs("2019/06/15")).to.deep.equal([6.1, 7.1, 7, 10.8, 10.4, 10.8, 9.8]);
+    expect(userSleep.findWeeklyHrs("2019/06/16")).to.deep.equal([7, 10.8, 10.4, 10.8, 9.8]);
   });
 
   it('should be able to find a users sleep quality for the week', function() {
-    expect(userSleep.findWeeklyQuality("2019/06/15")).to.deep.equal([2.2, 2.2, 4.7, 4.7, 3.1, 3.2, 2.6]);
+    expect(userSleep.findWeeklyQuality("2019/06/16")).to.deep.equal([4.7, 4.7, 3.1, 3.2, 2.6]);
   });
 
 })
