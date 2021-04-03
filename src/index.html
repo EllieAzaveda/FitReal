@@ -2,11 +2,185 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <title>FitReal</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <header>
+      <nav>
+        <button>Sun</button>
+        <button>Mon</button>
+        <button>Tue</button>
+        <button>Wed</button>
+        <button>Thu</button>
+        <button>Fri</button>
+        <button>Sat</button>
+      </nav>
+      <button>👑</button>
+    </header>
+    <aside>
+      <h3>Greetings, [name]!</h3>
+      <section>
+        <img src="../assets/human.png"/>
+        <h4>Your Info</h4>
+        <ul>
+          <li>Stride Length</li>
+          <li>Step Goal vs. Average Step Goal</li>
+        </ul>
+        <h4>Friends</h4>
+        <ul>
+          <li>Friend 1</li>
+          <li>Friend 2</li>
+          <li>Friend 3</li>
+        </ul>
+      </section>
+      <section>
+        <h4>All-time Activity</h4>
+        <ul>
+          <li>Average Steps/day</li>
+          <li>Average Minutes/day</li>
+          <li>Average Stairs/day</li>
+        </ul>
+      </section>
+      <section>
+        <h4>All-time Hydration</h4>
+        <ul>
+          <li>Average Ounces/day</li>
+        </ul>
+      </section>
+      <section>
+        <h4>All-time Sleep</h4>
+        <ul>
+          <li>Average Sleep Quality/day</li>
+          <li>Average Hours Slept/day</li>
+        </ul>
+      </section>
+    </aside>
+    <main>
+      <h2>Daily Stats</h2>
+      <section>
+        <h3>Activity</h3>
+        <table>
+          <tr>
+            <td>Step Count</td>
+            <td>Minutes Active for Today</td>
+            <td>Miles Walked for Today</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Step Count vs User Average</td>
+            <td>Minutes Active vs User Average</td>
+            <td>Stairs Climbed vs User Average</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h3>Hydration</h3>
+        <table>
+          <tr>
+            <td>Ounces for Today</td>
+          </tr>
+          <tr>
+            <td>0</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h3>Sleep</h3>
+        <table>
+          <tr>
+            <td>Hours Slept Today</td>
+            <td>Sleep Quality for Today</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
+      </section>
+      <section>
+        <h2>Weekly Progress</h2>
+        <article>
+          <h3>Activity</h3>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </table>
+        </article>
+        <article>
+          <h3>Hydration</h3>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </table>
+        </article>
+        <article>
+          <h3>Sleep</h3>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </table>
+        </article>
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
