@@ -114,6 +114,13 @@ describe("Activity", () => {
         "minutesActive": 80,
         "flightsOfStairs": 10
       },
+      {
+        "userID": 1,
+        "date": "2021/03/28",
+        "numSteps": 6188,
+        "minutesActive": 292,
+        "flightsOfStairs": 32
+      }
     ]
 
     userData = {
@@ -186,13 +193,17 @@ describe("Activity", () => {
   describe("calcAvgWeeklyMinutes()", () => {
 
     it("should calculate and return a user's average minutes active for a given week", () => {
-      const weeklyMinutes = [ 138, 116, 114, 213, 287, 107, 114 ];
-      const calculatedAvg = weeklyMinutes.reduce((acc, cur) => {
-        return (acc + cur)
-      }) / weeklyMinutes.length;
-      const weeklyActiveAvg = userActivity.calcAvgWeeklyMinutes("2021/03/17");
+      const weeklyMinutes1 = [ 138, 116, 114, 213, 287, 107, 114 ];
+      const weeklyMinutes2 = [ 41, 106, 20, 108, 27, 216, 80 ];
+
+      const avgMin1 = weeklyMinutes1.reduce((acc, cur) => acc + cur) / weeklyMinutes1.length;
+      const avgMin2 = weeklyMinutes2.reduce((acc, cur) => acc + cur) / weeklyMinutes2.length;
+
+      const calculatedAvg1 = userActivity.calcAvgWeeklyMinutes("2021/03/17");
+      const calculatedAvg2 = userActivity.calcAvgWeeklyMinutes("2021/03/24");
       
-      expect(weeklyActiveAvg).to.equal(calculatedAvg);
+      expect(calculatedAvg1).to.equal(avgMin1);
+      expect(calculatedAvg2).to.equal(avgMin2);
     });
   });
 
@@ -215,6 +226,19 @@ describe("Activity", () => {
     it("should find a user's all-time stair climbing record", () => {
       const stairsRecord = activityData[9].flightsOfStairs;
       expect(userActivity.getStairsRecord()).to.equal(stairsRecord);
+    });
+  });
+
+  describe("organizeWeeklyData()", () => {
+
+    it("should organize all data by week", () => {
+      const organizedData = [
+        [ activityData[0] ], 
+        activityData.slice(1, 8), activityData.slice(8, 15),
+        [ activityData[15] ]
+      ];
+
+      expect(userActivity.organizeWeeklyData(activityData)).to.deep.equal(organizedData);
     });
   });
 });

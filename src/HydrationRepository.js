@@ -8,7 +8,6 @@ class HydrationRepository {
   getUserData(id) {
     return this.hydrationData.filter(userData => userData.userID === id);
   }
-
 }
 
 module.exports = HydrationRepository;
