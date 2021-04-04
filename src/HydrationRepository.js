@@ -1,4 +1,4 @@
-class HydrationRepository {
+export default class HydrationRepository {
   constructor(data) {
     this.data = data;
   }
@@ -8,4 +8,3 @@ class HydrationRepository {
   }
 }
 
-module.exports = HydrationRepository;

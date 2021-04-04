@@ -1,7 +1,6 @@
-const HydrationRepository = require('../src/HydrationRepository');
-const dayjs = require("dayjs");
+import HydrationRepository from "./HydrationRepository.js";
 
-class UserHydration {
+export default class UserHydration {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -63,5 +62,3 @@ class UserHydration {
   }
 
 }
-
-module.exports = UserHydration;

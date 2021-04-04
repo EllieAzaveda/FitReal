@@ -1,5 +1,5 @@
-class UserRepository {
-  constructor(data) {
+export default class UserRepository {
+  constructor(data = []) {
     this.data = data;
   }
 
@@ -13,5 +13,3 @@ class UserRepository {
     }).reduce((acc, stepGoal) => acc + stepGoal) / this.data.length;
   }
 }
-
-module.exports = UserRepository;

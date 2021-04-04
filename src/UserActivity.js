@@ -1,8 +1,6 @@
-const dayjs = require("dayjs");
-
-class UserActivity {
-  constructor(data) {
-    this.data = data || [];
+export default class UserActivity {
+  constructor(data = []) {
+    this.data = data;
     this.weeklyData = this.organizeWeeklyData(this.data);
   }
 
@@ -88,5 +86,3 @@ class UserActivity {
     }, []);
   }
 }
-
-module.exports = UserActivity;
