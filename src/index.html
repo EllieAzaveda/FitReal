@@ -18,14 +18,20 @@
       <button>👑</button>
     </header>
     <aside>
-      <h3>Greetings, [name]!</h3>
+      <h3 id="greeting">Greetings, [name]!</h3>
       <section>
         <img src="../assets/human.png"/>
         <h4>Your Info</h4>
-        <ul>
-          <li>Stride Length</li>
-          <li>Step Goal vs. Average Step Goal</li>
-        </ul>
+        <table>
+          <tr>
+            <td>Stride Length</td>
+            <td>Step Goal vs. Average Step Goal</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
         <h4>Friends</h4>
         <ul>
           <li>Friend 1</li>
@@ -35,24 +41,43 @@
       </section>
       <section>
         <h4>All-time Activity</h4>
-        <ul>
-          <li>Average Steps/day</li>
-          <li>Average Minutes/day</li>
-          <li>Average Stairs/day</li>
+        <table>
+          <tr>
+            <td>Average Steps/day</td>
+            <td>Average Minutes/day</td>
+            <td>Average Stairs/day</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
         </ul>
       </section>
       <section>
         <h4>All-time Hydration</h4>
-        <ul>
-          <li>Average Ounces/day</li>
-        </ul>
+        <table>
+          <tr>
+            <td>Average Ounces/day</td>
+          </tr>
+          <tr>
+            <td>0</td>
+          </tr>
+        </table>
       </section>
       <section>
         <h4>All-time Sleep</h4>
-        <ul>
-          <li>Average Sleep Quality/day</li>
-          <li>Average Hours Slept/day</li>
-        </ul>
+        <table>
+          <tr>
+            <td>Average Sleep Quality/day</td>
+            <td>Average Hours Slept/day</td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </table>
       </section>
     </aside>
     <main>
@@ -181,14 +206,6 @@
         </article>
       </section>
     </main>
-    <!-- <script type="text/javascript" src="./UserRepository.js"></script>
-    <script type="text/javascript" src="./ActivityRepository.js"></script>
-    <script type="text/javascript" src="./HydrationRepository.js"></script>
-    <script type="text/javascript" src="./SleepRepository.js"></script>
-    <script type="text/javascript" src="./User.js"></script>
-    <script type="text/javascript" src="./UserActivity.js"></script>
-    <script type="text/javascript" src="./UserHydration.js"></script>
-    <script type="text/javascript" src="./UserSleep.js"></script> -->
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
