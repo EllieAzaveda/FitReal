@@ -11,7 +11,7 @@ html {
 body {
   background-color: rgba(0,213,251, 0.5);
   border-color: 2px solid #00cc99;
-  border-radius: 1em;
+  border-radius: .5em;
   color: #FFFFFF;
   height: 80%;
   width: 80%;
@@ -23,12 +23,12 @@ body {
 /* ASIDE WITH USER INFO */
 
 .user-icon {
-  height: 4em;
-  width: 4em;
+  height: 5vh;
+  width: 5vh;
 }
 
 .user-info-aside {
-  border-color: #ff3300 solid;
+  background-color: #ff3300 solid;
   display: flex;
   flex-direction: column;
   grid-row-start: 1;
@@ -38,38 +38,44 @@ body {
 /* TOP NAV BAR */
 
 .nav-dates {
-  font-size: 2em;
+  background-color: #FB1402;
+  height: 8vh;
+  width: 90vh;
+  border-radius: .4em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   grid-column-start: 2;
   grid-column-end: 5;
 }
 
 .day-btn,
 .leaderboard-btn {
-  height: 6vh;
-  width: 6vh;
+  border-radius: .4em;
+  border-width: 0;
+  font-size: 2em;
 }
 
 .day-btn {
+  height: 4vh;
+  width: 8vh;
   font-size: 2vh;
 }
 
 .leaderboard-btn {
-  margin: 0;
+  background-color: #FB1402;
+  height: 8vh;
+  width: 8vh;
+  margin-right: 2vw;
+  font-size: 3vh;
   padding: 0;
   grid-column-start: 6;
-  font-size: 3vh;
-}
-
-.nav-dates {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: space-around;
+  align-self: center;
 }
 
 .currentweek-nav-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   grid-column-start: 2;
   grid-column-end: 6;
@@ -78,6 +84,10 @@ body {
 /* DAILY STATS CONTAINER */
 
 .daily-stats-container {
+  background-color: #B12139;
+  border-radius: .4em;
+  margin-bottom: 3vh;
+  margin-right: 3vh;
   grid-row: 2 / span 4;
   grid-column: 2 / span 4;
 }
