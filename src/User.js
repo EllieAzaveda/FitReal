@@ -1,10 +1,16 @@
 class User {
-  constructor(data) {
-    this.data = data;
+  constructor(data = []) {
+    this.id = data.id;
+    this.name = data.name;
+    this.address = data.address;
+    this.email = data.email;
+    this.strideLength = data.strideLength;
+    this.dailyStepGoal = data.dailyStepGoal;
+    this.friends = data.friends;
   }
 
   getFirstName() {
-    return this.data.name.split(" ")[0];
+    return this.name.split(" ")[0];
   }
 }
 
