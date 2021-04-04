@@ -10,7 +10,7 @@ class UserActivity {
     const dailyActivity = this.getDailyActivity(forDate);
     const steps = dailyActivity.numSteps;
 
-    return (steps / (5280 / strideLength)).toFixed(2);
+    return (steps / (5280 / strideLength));
   }
 
   calcAvgWeeklyMinutes(currentDate) {
