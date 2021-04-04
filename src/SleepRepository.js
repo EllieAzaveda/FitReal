@@ -1,7 +1,6 @@
-const UserSleep = require('../src/UserSleep');
-const dayjs = require("dayjs");
+import UserSleep from "./UserSleep.js";
 
-class SleepRepository {
+export default class SleepRepository {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -82,16 +81,15 @@ class SleepRepository {
     let maxHours = 0;
 
     return currentWeekData.reduce((topSleeper, sleeper) => {
-      if(sleeper.hoursSlept > maxHours) {
+      if (sleeper.hoursSlept > maxHours) {
         maxHours = sleeper.hoursSlept;
       }
 
-      if(sleeper.hoursSlept === maxHours) {
+      if (sleeper.hoursSlept === maxHours) {
         topSleeper.push(sleeper);
-      };
+      }
+
       return topSleeper;
     }, []);
   }
 }
-
-module.exports = SleepRepository;

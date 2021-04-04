@@ -1,4 +1,4 @@
-class User {
+export default class User {
   constructor(data = []) {
     this.id = data.id;
     this.name = data.name;
@@ -13,5 +13,3 @@ class User {
     return this.name.split(" ")[0];
   }
 }
-
-module.exports = User;

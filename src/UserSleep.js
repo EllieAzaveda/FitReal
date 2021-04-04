@@ -1,6 +1,4 @@
-const dayjs = require("dayjs");
-
-class UserSleep {
+export default class UserSleep {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -81,5 +79,3 @@ class UserSleep {
     return currentWeekData.map(userQuality => userQuality.sleepQuality);
   }
 }
-
-module.exports = UserSleep;

@@ -1,10 +1,10 @@
-class ActivityRepository {
-  constructor(data) {
+export default class ActivityRepository {
+  constructor(data = []) {
     this.data = data;
   }
 
   getUserData(userId) {
-    return this.data.find(userData => userId === userData.userID);
+    return this.data.filter(userData => userId === userData.userID);
   }
 
   getDailyActivity(forDate) {
@@ -21,5 +21,3 @@ class ActivityRepository {
     }).reduce((avg, stat) => avg + stat) / dailyActivity.length;
   }
 }
-
-module.exports = ActivityRepository;
