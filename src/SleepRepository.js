@@ -7,6 +7,7 @@ export default class SleepRepository {
   }
 
   getUserData(id) {
+<<<<<<< Updated upstream
     return this.data.filter(userData => userData.userID === id);
   }
 
@@ -17,6 +18,14 @@ export default class SleepRepository {
 
     return sum / this.data.length;
   }
+=======
+    return this.sleepData.filter(userData => userData.userID === id);
+  }
+
+  organizeWeeklyData(data) {
+    let weeklyData = [];
+    let weeklyDataCopy = [...data];
+>>>>>>> Stashed changes
 
   organizeWeeklyData(data) {
     let currentWeekData = [];
@@ -53,6 +62,7 @@ export default class SleepRepository {
     return weeklySleep[0];
   }
 
+<<<<<<< Updated upstream
   calcQualityLeaders(date) {
     const currentWeekData = this.getWeeklySleep(date);
     const qualityLeaders = [];
@@ -75,6 +85,48 @@ export default class SleepRepository {
     });
     return qualityLeaders;
   }
+=======
+  // calcQualityLeaders(date) {
+  //   const currentWeekData = this.getWeeklyQuality(date);
+  //   const topSleepers = [];
+  //   // const averages = [];
+  //
+  //   const currentUsers = currentWeekData.map(sleeper => this.getUserData(sleeper.userID));
+  //
+  //   const userzzz = currentUsers.forEach((sleeperArray) => {
+  //     sleeperArray.reduce((acc, sleeper) => {
+  //       let sum = acc + sleeper.sleepQuality;
+  //       return sum / 3;
+  //     }, [])
+  //   });
+  //   return userzzz;
+  // }
+
+  calcQualityLeaders(date) {
+      const currentWeekData = this.getWeeklyQuality(date);
+      const userIDs = currentWeekData.reduce((ids, datum) => {
+        if (!ids.includes(datum.userID)) {
+          ids.push(datum.userID);
+        }
+
+        return ids;
+      }, []);
+      const qualityLeaders = [];
+      userIDs.forEach(id => {
+        let userSleep = new UserSleep(this.getUserData(id));
+        let weeklyQuality = userSleep.findWeeklyQuality(date);
+        let avgQuality = weeklyQuality.reduce((totalQual, curQual) => {
+          return totalQual + curQual;
+        }) / weeklyQuality.length;
+
+        if (avgQuality > 3) {
+          qualityLeaders.push({ id, avgQuality });
+        }
+      });
+      console.log(qualityLeaders);
+      return qualityLeaders;
+    }
+>>>>>>> Stashed changes
 
   findTopSleeper(date) {
     let currentWeekData = this.getWeeklySleep(date);

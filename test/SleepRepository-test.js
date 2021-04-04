@@ -2,7 +2,11 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const SleepRepository = require('../src/SleepRepository');
+<<<<<<< Updated upstream
 const UserSleep = require('../src/UserSleep');
+=======
+const sleepData = require('../data/sleep.js');
+>>>>>>> Stashed changes
 
 describe('SleepRepository', function() {
   let sleepRepo;
@@ -100,6 +104,7 @@ describe('SleepRepository', function() {
     ]);
   });
 
+<<<<<<< Updated upstream
   it('should calculate average sleep quality', function() {
     expect(sleepRepo.calcAvgSleepQuality()).to.equal(3.0777777777777775);
   });
@@ -115,6 +120,12 @@ describe('SleepRepository', function() {
         "id": 2
       }
     ]);
+=======
+  it.only('should be able to find top sleepers in a given week', function() {
+    console.log(sleepRepo.calcQualityLeaders("2019/06/15", sleepData));
+
+    expect(sleepRepo.calcQualityLeaders("2019/06/15", sleepData)).to.deep.equal([2, 3]);
+>>>>>>> Stashed changes
   });
 
   it('should find the users who slept the most number of hours', function() {

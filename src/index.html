@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>FitReal</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <header>
-      <nav>
+    <header class="currentweek-nav-bar">
+      <nav class="nav-dates">
         <button>Sun</button>
         <button>Mon</button>
         <button>Tue</button>
@@ -15,12 +16,12 @@
         <button>Fri</button>
         <button>Sat</button>
       </nav>
-      <button>👑</button>
+      <button class="leaderboard-btn">👑</button>
     </header>
-    <aside>
+    <aside class="user-info-aside">
       <h3 id="greeting">Greetings, [name]!</h3>
       <section>
-        <img src="../assets/human.png"/>
+        <img class="user-icon" src="../assets/human.png"/>
         <h4>Your Info</h4>
         <table>
           <tr>
@@ -80,7 +81,7 @@
         </table>
       </section>
     </aside>
-    <main>
+    <main class="daily-stats-container">
       <h2>Daily Stats</h2>
       <section>
         <h3>Activity</h3>

@@ -45,7 +45,6 @@ export default class UserSleep {
     let sum = this.data.map(currentData => {
       return currentData.hoursSlept
     }).reduce((acc, hoursSlept) => acc + hoursSlept);
-
     return sum / this.data.length;
   }
 
@@ -53,7 +52,6 @@ export default class UserSleep {
     let sum = this.data.map(currentData => {
       return currentData.sleepQuality
     }).reduce((acc, sleepQuality) => acc + sleepQuality);
-
     return sum / this.data.length;
   }
 
@@ -69,13 +67,21 @@ export default class UserSleep {
 
   findWeeklyHrs(date) {
     let currentWeekData = this.getUserWeeklyQuality(date);
-
     return currentWeekData.map(userHours => userHours.hoursSlept);
   }
 
   findWeeklyQuality(date) {
     let currentWeekData = this.getUserWeeklyQuality(date);
-
     return currentWeekData.map(userQuality => userQuality.sleepQuality);
   }
+<<<<<<< Updated upstream
+=======
+
+  // Added this method to help sleep repo
+  findWeeklyAvg(date) {
+    let currentWeek = this.findWeeklyQuality(date);
+    let sum = currentWeek.reduce((acc, sleepQuality) => acc + sleepQuality);
+    return sum / currentWeek.length;
+  }
+>>>>>>> Stashed changes
 }
