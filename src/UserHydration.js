@@ -1,6 +1,10 @@
-import HydrationRepository from "./HydrationRepository.js";
+let dayjs;
 
-export default class UserHydration {
+if (typeof require !== "undefined") {
+  dayjs = require("dayjs");
+}
+
+class UserHydration {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -61,4 +65,8 @@ export default class UserHydration {
     return sum / this.data.length;
   }
 
+}
+
+if (typeof module !== "undefined") {
+  module.exports = UserHydration;
 }

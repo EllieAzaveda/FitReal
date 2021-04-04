@@ -1,6 +1,13 @@
-import UserSleep from "./UserSleep.js";
+// const UserSleep = require("./UserSleep.js");
 
-export default class SleepRepository {
+let dayjs, UserSleep;
+
+if (typeof require !== "undefined") {
+  dayjs = require("../node_modules/dayjs/dayjs.min.js");
+  UserSleep = require("./UserSleep.js");
+}
+
+class SleepRepository {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -66,8 +73,7 @@ export default class SleepRepository {
 
     userIDs.forEach(id => {
       let userSleep = new UserSleep(this.getUserData(id));
-      let weeklyQuality = userSleep.findWeeklyQuality(date);
-      let avgQuality = userSleep.calcAvgTotalQuality();
+      let avgQuality = userSleep.findWeeklyAvg(date);
 
       if (avgQuality > 3) {
         qualityLeaders.push({ id, avgQuality });
@@ -92,4 +98,8 @@ export default class SleepRepository {
       return topSleeper;
     }, []);
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = SleepRepository;
 }

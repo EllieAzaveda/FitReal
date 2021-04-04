@@ -1,4 +1,10 @@
-export default class UserSleep {
+let dayjs;
+
+if (typeof require !== "undefined") {
+  dayjs = require("dayjs");
+}
+
+class UserSleep {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -78,4 +84,14 @@ export default class UserSleep {
 
     return currentWeekData.map(userQuality => userQuality.sleepQuality);
   }
+
+  findWeeklyAvg(date) {
+    let currentWeek = this.findWeeklyQuality(date);
+    let sum = currentWeek.reduce((acc, sleepQuality) => acc + sleepQuality);
+    return sum / currentWeek.length;
+  }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = UserSleep;
 }

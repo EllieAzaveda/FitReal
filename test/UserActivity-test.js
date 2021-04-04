@@ -155,8 +155,8 @@ describe("Activity", () => {
       const stepsDay2 = userActivity.data[1].numSteps;
       const strideLength = user.strideLength;
 
-      const calculatedMiles1 = (stepsDay1 / (5280 / strideLength)).toFixed(2);
-      const calculatedMiles2 = (stepsDay2 / (5280 / strideLength)).toFixed(2);
+      const calculatedMiles1 = (stepsDay1 / (5280 / strideLength));
+      const calculatedMiles2 = (stepsDay2 / (5280 / strideLength));
       
       const returnedMiles1 = userActivity.calcMilesWalked("2021/03/13", strideLength);
       const returnedMiles2 = userActivity.calcMilesWalked("2021/03/14", strideLength);
