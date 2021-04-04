@@ -153,7 +153,7 @@ describe("Activity", () => {
     it("should calculate and return the number of miles the user has walked in a given day", () => { 
       const stepsDay1 = userActivity.data[0].numSteps;
       const stepsDay2 = userActivity.data[1].numSteps;
-      const strideLength = user.data.strideLength;
+      const strideLength = user.strideLength;
 
       const calculatedMiles1 = (stepsDay1 / (5280 / strideLength)).toFixed(2);
       const calculatedMiles2 = (stepsDay2 / (5280 / strideLength)).toFixed(2);
@@ -169,7 +169,7 @@ describe("Activity", () => {
   describe("checkStepsReached", () => {
     
     it("should calculate and return whether a user has reached their daily step goal", () => {
-      const stepGoal = user.data.dailyStepGoal;
+      const stepGoal = user.dailyStepGoal;
 
       const hasReached1 = userActivity.checkStepsReached("2021/03/13", stepGoal);
       const hasReached2 = userActivity.checkStepsReached("2021/03/17", stepGoal);
@@ -215,7 +215,7 @@ describe("Activity", () => {
         activityData[9], activityData[10], activityData[11],
         activityData[12], activityData[13], activityData[14]
       ];
-      const stepGoal = user.data.dailyStepGoal;
+      const stepGoal = user.dailyStepGoal;
 
       expect(userActivity.getStepsExceeded(stepGoal)).to.deep.equal(daysExceeded);
     });
