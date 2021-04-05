@@ -19,6 +19,12 @@ class UserActivity {
     }).reduce((totalMin, curMin) => totalMin + curMin) / weeklyActivity.length;
   }
 
+  calcTotalStat(statType) {
+    return this.data.map(curDatum => {
+      return curDatum[statType];
+    }).reduce((avg, stat) => avg + stat) / this.data.length;
+  }
+
   getMinutesActive(forDate) {
     return this.getDailyActivity(forDate).minutesActive;
   }

@@ -39,6 +39,13 @@ const strideLength = document.getElementById("strideLength");
 const stepComparison = document.getElementById("stepComparison");
 const friends = document.getElementById("friends");
 
+const averageSteps = document.getElementById("averageSteps");
+const averageMinutes = document.getElementById("averageMinutes");
+const averageStairs = document.getElementById("averageStairs");
+const averageOunces = document.getElementById("averageOunces");
+const averageQuality = document.getElementById("averageQuality");
+const averageHours = document.getElementById("averageHours");
+
 // Event Listeners
 window.addEventListener("load", renderInitialPage);
 
@@ -46,6 +53,7 @@ window.addEventListener("load", renderInitialPage);
 function renderInitialPage() {
   renderUserInfo();
   renderFriends();
+  renderStats();
 }
 
 function renderUserInfo() {
@@ -66,4 +74,24 @@ function renderFriends() {
     friendEl.innerText = friendName;
     friends.appendChild(friendEl);
   });
+}
+
+function renderStats() {
+  renderAllTime();
+  renderDaily();
+}
+
+function renderAllTime() {
+  averageSteps.innerText = userActivity.calcTotalStat("numSteps");
+  averageMinutes.innerText = userActivity.calcTotalStat("minutesActive");
+  averageStairs.innerText = userActivity.calcTotalStat("flightsOfStairs");
+
+  averageOunces.innerText = userHydration.calcAvgTotalOunces();
+
+  averageQuality.innerText = userSleep.calcAvgTotalQuality();
+  averageHours.innerText = userSleep.calcAvgTotalHrs();
+}
+
+function renderDaily() {
+
 }
