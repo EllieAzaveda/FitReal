@@ -22,22 +22,22 @@
       <h3 class="greeting" id="greeting">Hey,</h3>
       <img class="user-icon" src="../assets/human.png"/>
       <section class="user-info">
-        <h4>Your Info</h4>
+        <h4 class="user-info-title">Your Info</h4>
         <table>
-          <tr>
+          <tr class="user-info-data">
             <td>Stride Length</td>
             <td>Step Goal vs. Average Step Goal</td>
           </tr>
-          <tr>
+          <tr class="user-info-data">
             <td id="strideLength">0</td>
             <td id="stepComparison">0</td>
           </tr>
         </table>
-        <h4>Friends</h4>
-        <ul id=friends>
-          <li>Friend 1</li>
-          <li>Friend 2</li>
-          <li>Friend 3</li>
+        <h4 class="user-info-title">Friends</h4>
+        <ul class="friends-list" id=friends>
+          <li class="friend">Friend 1</li>
+          <li class="friend">Friend 2</li>
+          <li class="friend">Friend 3</li>
         </ul>
       </section>
       <section>
@@ -83,7 +83,7 @@
     </aside>
     <main class="daily-stats-container">
       <h2 class="daily-stats-header">Daily Stats</h2>
-      <section class="activity-widget">
+      <section class="activity-widget widget">
         <h3>Activity</h3>
         <table>
           <tr>
@@ -100,7 +100,7 @@
           </tr>
         </table>
       </section>
-      <section class="hydration-widget">
+      <section class="hydration-widget widget">
         <h3>Hydration</h3>
         <table>
           <tr>
@@ -111,7 +111,7 @@
           </tr>
         </table>
       </section>
-      <section class="sleep-widget">
+      <section class="sleep-widget widget">
         <h3>Sleep</h3>
         <table>
           <tr>
@@ -124,7 +124,7 @@
           </tr>
         </table>
       </section>
-      <section class="weekly-widget">
+      <section class="weekly-widget widget">
         <h2 class="weekly-header">Weekly Progress</h2>
         <article>
           <h3 class="weekly-activity">Activity</h3>
