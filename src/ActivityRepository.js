@@ -22,7 +22,6 @@ class ActivityRepository {
     return dailyActivity.reduce((totalMiles, currentDatum) => {
       const user = new User(userRepo.getUserData(currentDatum.userID));
       const milesWalked = (currentDatum.numSteps / (5280 / user.strideLength));
-      console.log(milesWalked);
 
       return totalMiles + milesWalked;
     }, 0) / dailyActivity.length;

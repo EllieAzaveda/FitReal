@@ -8,8 +8,8 @@ class UserActivity {
     return (this.getDailyStat(forDate, "numSteps") / (5280 / strideLength));
   }
 
-  calcAvgWeeklyMinutes(currentDate) {
-    const weeklyActivity = this.getWeeklyActivity(currentDate);
+  calcAvgWeeklyMinutes(forDate) {
+    const weeklyActivity = this.getWeeklyActivity(forDate);
     
     return weeklyActivity.map(activity => {
       return activity.minutesActive
@@ -22,6 +22,11 @@ class UserActivity {
     }).reduce((avg, stat) => avg + stat) / this.data.length;
   }
 
+  getWeeklyStat(forDate, statType) {
+    const weeklyActivity = this.getWeeklyActivity(forDate);
+    return weeklyActivity.map(activity => activity[statType]);
+  }
+  
   getDailyStat(forDate, statType) {
     return this.getDailyActivity(forDate)[statType];
   }
@@ -51,12 +56,12 @@ class UserActivity {
     return this.data.find(dailyActivity => forDate === dailyActivity.date);
   }
 
-  getWeeklyActivity(currentDate) {
+  getWeeklyActivity(forDate) {
     const weeklyActivity = [];
 
     this.weeklyData.forEach(week => {
       week.forEach(day => {
-        if (day.date === currentDate) {
+        if (day.date === forDate) {
           weeklyActivity.push(week);
         }
       })

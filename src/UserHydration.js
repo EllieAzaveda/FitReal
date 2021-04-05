@@ -42,6 +42,7 @@ class UserHydration {
 
   findDailyOunces(date) {
     let foundUser = this.data.filter(user => user.date === date).map(userOunces => userOunces.numOunces);
+    console.log(foundUser);
     return foundUser[0];
   }
 

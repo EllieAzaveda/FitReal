@@ -2,7 +2,7 @@
 
 // Dependents
 const userID = 20;
-const currentDate = "2019/09/22"
+const currentDate = "2019/09/15"
 
 const userRepo = new UserRepository(userData);
 const activityRepo = new ActivityRepository(activityData);
@@ -15,6 +15,8 @@ const userHydration = new UserHydration(hydrationRepo.getUserData(userID));
 const userSleep = new UserSleep(sleepRepo.getUserData(userID));
 
 // Query Selectors
+const datePicker = document.getElementById("datePicker");
+
 const greeting = document.getElementById("greeting");
 const strideLength = document.getElementById("strideLength");
 const stepComparison = document.getElementById("stepComparison");
@@ -35,8 +37,15 @@ const ouncesWater = document.getElementById("ouncesWater");
 const hoursSlept = document.getElementById("hoursSlept");
 const sleepQuality = document.getElementById("sleepQuality");
 
+const activityProgress = document.getElementById("activityProgress");
+const hydrationProgress = document.getElementById("hydrationProgress");
+const sleepProgress = document.getElementById("sleepProgress");
+
 // Event Listeners
-window.addEventListener("load", renderInitialPage);
+window.addEventListener("load", () => {
+  initializeDatePicker();
+  renderInitialPage();
+})
 
 // Handlers/Helpers
 function renderInitialPage() {
@@ -44,6 +53,7 @@ function renderInitialPage() {
   renderFriends();
   renderTotalStats();
   renderDailyStats(currentDate);
+  renderWeeklyProgress(currentDate);
 }
 
 function renderUserInfo() {
@@ -117,4 +127,47 @@ function renderDailyHydration(forDate) {
 function renderDailySleep(forDate) {
   hoursSlept.innerText = userSleep.findDailyHrs(forDate);
   sleepQuality.innerText = userSleep.findDailyQuality(forDate);
+}
+
+function renderWeeklyProgress(forDate) {
+  renderWeeklyActivity(forDate);
+  renderWeeklyHydration(forDate);
+  renderWeeklySleep(forDate);
+}
+
+function renderWeeklyActivity(forDate) {
+  const statDisplays = activityProgress.querySelectorAll("td");
+  const weeklySteps = userActivity.getWeeklyStat(forDate, "numSteps");
+  const weeklyMinutes = userActivity.getWeeklyStat(forDate, "minutesActive");
+  const weeklyFlights = userActivity.getWeeklyStat(forDate, "flightsOfStairs");
+
+  statDisplays.forEach((display, index) => {
+    if (weeklySteps[index]) {
+      display.innerText = weeklySteps[index];
+    }
+  });
+}
+
+function renderWeeklyHydration(forDate) {
+  const statDisplays = hydrationProgress.querySelectorAll("td");
+  const weeklyHydration = userHydration.calcOuncesForWeek(forDate);
+  console.log(weeklyHydration);
+
+  statDisplays.forEach((display, index) => {
+    if (weeklyHydration[index]) {
+      display.innerText = weeklyHydration[index];
+    }
+  });
+}
+
+function renderWeeklySleep(forDate) {
+  const statDisplays = sleepProgress.querySelectorAll("td");
+  const weeklyHours = userSleep.findWeeklyHrs(forDate);
+  const weeklyQuality = userSleep.findWeeklyQuality(forDate);
+
+  statDisplays.forEach((display, index) => {
+    if (weeklyHours[index]) {
+      display.innerText = weeklyHours[index];
+    }
+  });
 }
