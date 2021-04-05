@@ -39,11 +39,31 @@ const strideLength = document.getElementById("strideLength");
 const stepComparison = document.getElementById("stepComparison");
 const friends = document.getElementById("friends");
 
-
 // Event Listeners
-window.addEventListener("load", renderPage);
+window.addEventListener("load", renderInitialPage);
 
 // Handlers/Helpers
-function renderPage() {
+function renderInitialPage() {
+  renderUserInfo();
+  renderFriends();
+}
 
+function renderUserInfo() {
+  const firstName = user.getFirstName();
+  const avgStepGoal = userRepo.calcAvgStepGoal();
+
+  greeting.innerText = `Hey, ${firstName}!`;
+  strideLength.innerText = user.strideLength;
+  stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
+}
+
+function renderFriends() {
+  user.friends.forEach(friendID => {
+    const friend = new User(userRepo.getUserData(friendID));
+    const friendName = friend.getFirstName();
+    const friendEl = document.createElement("li");
+
+    friendEl.innerText = friendName;
+    friends.appendChild(friendEl);
+  });
 }
