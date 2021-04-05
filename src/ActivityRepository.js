@@ -9,7 +9,6 @@ class ActivityRepository {
 
   calcAvgStat(forDate, statType) {
     const dailyActivity = this.getDailyActivity(forDate);
-    console.log(dailyActivity);
 
     return dailyActivity.map(curDatum => {
       return curDatum[statType];
@@ -21,8 +20,9 @@ class ActivityRepository {
     const userRepo = new UserRepository(userData);
 
     return dailyActivity.reduce((totalMiles, currentDatum) => {
-      const user = new User(userRepo.getUserData(currentDatum.id));
+      const user = new User(userRepo.getUserData(currentDatum.userID));
       const milesWalked = (currentDatum.numSteps / (5280 / user.strideLength));
+      console.log(milesWalked);
 
       return totalMiles + milesWalked;
     }, 0) / dailyActivity.length;

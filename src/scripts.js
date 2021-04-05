@@ -50,6 +50,7 @@ const averageHours = document.getElementById("averageHours");
 const stepCount = document.getElementById("stepCount");
 const minutesActive = document.getElementById("minutesActive");
 const milesWalked = document.getElementById("milesWalked");
+const stairsClimbed = document.getElementById("stairsClimbed");
 const ouncesWater = document.getElementById("ouncesWater")
 
 // Event Listeners
@@ -95,34 +96,32 @@ function renderTotalStats() {
 }
 
 function renderDailyStats(forDate) {
-  renderDailyActivity();
-  renderDailyHydration();
-  renderDailySleep();
+  renderDailyActivity(forDate);
+  renderDailyHydration(forDate);
+  renderDailySleep(forDate);
 }
 
 function renderDailyActivity(forDate) {
-  const strideLength = user.strideLength;
+  const steps = userActivity.getDailyStat(forDate, "numSteps");
+  const minutes = userActivity.getDailyStat(forDate, "minutesActive");
+  const miles = userActivity.calcMilesWalked(forDate, user.strideLength);
+  const flights = userActivity.getDailyStat(forDate, "flightsOfStairs");
 
-  const stepCount = userActivity.getDailyStat(forDate, "numSteps");
-  const minutesActive = userActivity.getDailyStat(forDate, "minutesActive");
-  const milesWalked = userActivity.calcMilesWalked(forDate, strideLength);
-  const flightsClimbed = userActivity.getDailyStat(forDate, "flightsOfStairs");
-
-  const avgUserCount = userRepo.calcAvgStepGoal();
-  const avgUserMinutes = activityRepo.calcAvgStat("minutesActive");
+  const avgUserSteps = userRepo.calcAvgStepGoal();
+  const avgUserMinutes = activityRepo.calcAvgStat(forDate, "minutesActive");
   const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData);
-  const avgUserFlights = activityRepo.calcAvgStat("flightsOfStairs");
-  
+  const avgUserFlights = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
 
-  stepCount.innerText = userActivity.getStepCount(forDate);
-  minutesActive.innerText = userActivity.getMinutesActive(forDate);
-  milesWalked.innerText = userActivity.calcMilesWalked(forDate, strideLength);
+  stepCount.innerText = `${steps} / ${avgUserSteps}`;
+  minutesActive.innerText = `${minutes} / ${avgUserMinutes}`;
+  milesWalked.innerText = `${miles} / ${avgUserMiles}`;
+  stairsClimbed.innerText = `${flights} / ${avgUserFlights}`;
 }
 
-function renderDailyHydration() {
+function renderDailyHydration(forDate) {
   ouncesWater.innerText = userHydration.findDailyOunces(forDate);
 }
 
 function renderDailySleep() {
-  
+
 }

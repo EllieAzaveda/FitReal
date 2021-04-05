@@ -48,7 +48,7 @@ class UserActivity {
   }
   
   getDailyActivity(forDate) {
-    return this.data.filter(dailyActivity => forDate === dailyActivity.date);
+    return this.data.find(dailyActivity => forDate === dailyActivity.date);
   }
 
   getWeeklyActivity(currentDate) {
