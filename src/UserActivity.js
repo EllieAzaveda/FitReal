@@ -1,9 +1,3 @@
-let dayjs;
-
-if (typeof require !== "undefined") {
-  dayjs = require("dayjs");
-}
-
 class UserActivity {
   constructor(data = []) {
     this.data = data;

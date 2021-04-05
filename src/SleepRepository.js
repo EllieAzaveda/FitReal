@@ -1,12 +1,3 @@
-// const UserSleep = require("./UserSleep.js");
-
-let dayjs, UserSleep;
-
-if (typeof require !== "undefined") {
-  dayjs = require("../node_modules/dayjs/dayjs.min.js");
-  UserSleep = require("./UserSleep.js");
-}
-
 class SleepRepository {
   constructor(data) {
     this.data = data;
