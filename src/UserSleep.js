@@ -74,14 +74,10 @@ export default class UserSleep {
     let currentWeekData = this.getUserWeeklyQuality(date);
     return currentWeekData.map(userQuality => userQuality.sleepQuality);
   }
-<<<<<<< Updated upstream
-=======
 
-  // Added this method to help sleep repo
   findWeeklyAvg(date) {
     let currentWeek = this.findWeeklyQuality(date);
     let sum = currentWeek.reduce((acc, sleepQuality) => acc + sleepQuality);
     return sum / currentWeek.length;
   }
->>>>>>> Stashed changes
 }

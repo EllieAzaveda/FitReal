@@ -23,9 +23,29 @@ body {
 /* ASIDE WITH USER INFO */
 
 .user-icon {
-  height: 5vh;
-  width: 5vh;
+  height: 6vh;
+  width: 6vh;
+  align-self: center;
 }
+
+.greeting {
+  font-size: 2.5vh;
+  align-self: center;
+}
+
+.user-info {
+  align-self: center;
+}
+
+.aside-data {
+  background-color: #63124F;
+  height: 6vh;
+  width: 22vh;
+}
+
+/* .dropdown {
+
+} */
 
 .user-info-aside {
   background-color: #ff3300 solid;
@@ -90,4 +110,8 @@ body {
   margin-right: 3vh;
   grid-row: 2 / span 4;
   grid-column: 2 / span 4;
+}
+
+.hidden {
+  display: none;
 }
