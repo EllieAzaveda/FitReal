@@ -1,6 +1,4 @@
-import HydrationRepository from "./HydrationRepository.js";
-
-export default class UserHydration {
+class UserHydration {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -61,4 +59,8 @@ export default class UserHydration {
     return sum / this.data.length;
   }
 
+}
+
+if (typeof module !== "undefined") {
+  module.exports = UserHydration;
 }

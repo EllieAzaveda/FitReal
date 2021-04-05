@@ -1,4 +1,4 @@
-export default class ActivityRepository {
+class ActivityRepository {
   constructor(data = []) {
     this.data = data;
   }
@@ -20,4 +20,8 @@ export default class ActivityRepository {
       return curDatum[statType];
     }).reduce((avg, stat) => avg + stat) / dailyActivity.length;
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = ActivityRepository;
 }

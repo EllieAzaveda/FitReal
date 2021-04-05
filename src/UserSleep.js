@@ -1,4 +1,4 @@
-export default class UserSleep {
+class UserSleep {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
