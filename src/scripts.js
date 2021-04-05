@@ -1,27 +1,7 @@
 /* eslint-disable no-undef */
 
-// Imports
-// const UserRepository = require("./UserRepository.js");
-// const ActivityRepository = require("./ActivityRepository.js");
-// const HydrationRepository = require("./HydrationRepository.js");
-// const SleepRepository = require("./SleepRepository.js");
-
-// const User = require("./User.js");
-// const UserActivity = require("./UserActivity.js");
-// const UserHydration = require("./UserHydration.js");
-// const UserSleep = require("./UserSleep.js");
-// import UserRepository from "./UserRepository.js";
-// import ActivityRepository from "./ActivityRepository.js";
-// import HydrationRepository from "./HydrationRepository.js";
-// import SleepRepository from "./SleepRepository.js";
-
-// import User from "./User.js";
-// import UserActivity from "./UserActivity.js";
-// import UserHydration from "./UserHydration.js";
-// import UserSleep from "./UserSleep.js";
-
 // Dependents
-const userID = 1;
+const userID = 20;
 const currentDate = "2019/09/22"
 
 const userRepo = new UserRepository(userData);
@@ -51,7 +31,9 @@ const stepCount = document.getElementById("stepCount");
 const minutesActive = document.getElementById("minutesActive");
 const milesWalked = document.getElementById("milesWalked");
 const stairsClimbed = document.getElementById("stairsClimbed");
-const ouncesWater = document.getElementById("ouncesWater")
+const ouncesWater = document.getElementById("ouncesWater");
+const hoursSlept = document.getElementById("hoursSlept");
+const sleepQuality = document.getElementById("sleepQuality");
 
 // Event Listeners
 window.addEventListener("load", renderInitialPage);
@@ -85,12 +67,22 @@ function renderFriends() {
 }
 
 function renderTotalStats() {
+  renderTotalActivity();
+  renderTotalHydration();
+  renderTotalSleep();
+}
+
+function renderTotalActivity() {
   averageSteps.innerText = userActivity.calcTotalStat("numSteps");
   averageMinutes.innerText = userActivity.calcTotalStat("minutesActive");
   averageStairs.innerText = userActivity.calcTotalStat("flightsOfStairs");
+}
 
+function renderTotalHydration() {
   averageOunces.innerText = userHydration.calcAvgTotalOunces();
+}
 
+function renderTotalSleep() {
   averageQuality.innerText = userSleep.calcAvgTotalQuality();
   averageHours.innerText = userSleep.calcAvgTotalHrs();
 }
@@ -122,6 +114,7 @@ function renderDailyHydration(forDate) {
   ouncesWater.innerText = userHydration.findDailyOunces(forDate);
 }
 
-function renderDailySleep() {
-
+function renderDailySleep(forDate) {
+  hoursSlept.innerText = userSleep.findDailyHrs(forDate);
+  sleepQuality.innerText = userSleep.findDailyQuality(forDate);
 }
