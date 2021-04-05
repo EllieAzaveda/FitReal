@@ -19,7 +19,7 @@
       <button class="leaderboard-btn">👑</button>
     </header>
     <aside class="user-info-aside">
-      <h3 class="greeting" id="greeting">Greetings, [name]!</h3>
+      <h3 class="greeting" id="greeting">Hey,</h3>
       <img class="user-icon" src="../assets/human.png"/>
       <section class="user-info">
         <h4>Your Info</h4>
@@ -29,12 +29,12 @@
             <td>Step Goal vs. Average Step Goal</td>
           </tr>
           <tr>
-            <td>0</td>
-            <td>0</td>
+            <td id="strideLength">0</td>
+            <td id="stepComparison">0</td>
           </tr>
         </table>
         <h4>Friends</h4>
-        <ul>
+        <ul id=friends>
           <li>Friend 1</li>
           <li>Friend 2</li>
           <li>Friend 3</li>
@@ -85,18 +85,6 @@
       <h2>Daily Stats</h2>
       <section>
         <h3>Activity</h3>
-        <table>
-          <tr>
-            <td>Step Count</td>
-            <td>Minutes Active for Today</td>
-            <td>Miles Walked for Today</td>
-          </tr>
-          <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-        </table>
         <table>
           <tr>
             <td>Step Count vs User Average</td>

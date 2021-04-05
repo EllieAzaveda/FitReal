@@ -33,14 +33,27 @@ body {
   align-self: center;
 }
 
+.your-info-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .user-info {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .aside-data {
   background-color: #63124F;
   height: 6vh;
-  width: 22vh;
+  width: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .dropdown {

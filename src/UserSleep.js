@@ -81,3 +81,7 @@ export default class UserSleep {
     return sum / currentWeek.length;
   }
 }
+
+if (typeof module !== "undefined") {
+  module.exports = UserSleep;
+}
