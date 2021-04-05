@@ -3,82 +3,87 @@
   <head>
     <meta charset="UTF-8">
     <title>FitReal</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <header>
-      <nav id="datePicker">
-        <button>Sun</button>
-        <button>Mon</button>
-        <button>Tue</button>
-        <button>Wed</button>
-        <button>Thu</button>
-        <button>Fri</button>
-        <button>Sat</button>
+    <header class="currentweek-nav-bar" id=“datePicker”>
+      <nav class="nav-dates">
+        <button class="day-btn">Sun</button>
+        <button class="day-btn">Mon</button>
+        <button class="day-btn">Tue</button>
+        <button class="day-btn">Wed</button>
+        <button class="day-btn">Thu</button>
+        <button class="day-btn">Fri</button>
+        <button class="day-btn">Sat</button>
       </nav>
-      <button>👑</button>
+      <button class="leaderboard-btn">👑</button>
     </header>
-    <aside>
-      <h3 id="greeting"></h3>
-      <section>
-        <img src="../assets/human.png"/>
-        <h4>Your Info</h4>
+    <aside class="user-info-aside">
+      <h3 class="greeting" id="greeting">Hey,</h3>
+      <img class="user-icon" src="../assets/human.png"/>
+      <section class="user-info">
+        <h4 class="user-info-title">Your Info</h4>
         <table>
-          <tr>
+          <tr class="user-info-data">
             <td>Stride Length</td>
             <td>Step Goal vs. Average Step Goal</td>
           </tr>
-          <tr>
-            <td id="strideLength">0</td>
-            <td id="stepComparison">0</td>
+          <tr class="user-info-data">
+            <td id="strideLength">-</td>
+            <td id="stepComparison">-</td>
           </tr>
         </table>
-        <h4>Friends</h4>
-        <ul id=friends></ul>
+        <h4 class="user-info-title">Friends</h4>
+        <ul class="friends-list" id=friends>
+          <li class="friend">Friend 1</li>
+          <li class="friend">Friend 2</li>
+          <li class="friend">Friend 3</li>
+        </ul>
       </section>
       <section>
-        <h4>All-time Activity</h4>
-        <table>
+        <h4 class="dropdown aside-data">All-time Activity</h4>
+        <table class="hidden">
           <tr>
             <td>Average Steps/day</td>
             <td>Average Minutes/day</td>
             <td>Average Stairs/day</td>
           </tr>
           <tr>
-            <td id="averageSteps">0</td>
-            <td id="averageMinutes">0</td>
-            <td id="averageStairs">0</td>
+            <td id=“averageSteps”>-</td>
+            <td id=“averageMinutes”>-</td>
+            <td id=“averageStairs”>-</td>
           </tr>
         </table>
         </ul>
       </section>
       <section>
-        <h4>All-time Hydration</h4>
-        <table>
+        <h4 class="dropdown aside-data">All-time Hydration</h4>
+        <table class="hidden">
           <tr>
             <td>Average Ounces/day</td>
           </tr>
           <tr>
-            <td id="averageOunces">0</td>
+            <td id="averageOunces">-</td>
           </tr>
         </table>
       </section>
       <section>
-        <h4>All-time Sleep</h4>
-        <table>
+        <h4 class="dropdown aside-data">All-time Sleep</h4>
+        <table class="hidden">
           <tr>
             <td>Average Sleep Quality/day</td>
             <td>Average Hours Slept/day</td>
           </tr>
           <tr>
-            <td id="averageQuality">0</td>
-            <td id="averageHours">0</td>
+            <td id=“averageQuality”>-</td>
+            <td id=“averageHours”>-</td>
           </tr>
         </table>
       </section>
     </aside>
-    <main>
-      <h2>Daily Stats</h2>
-      <section>
+    <main class="daily-stats-container">
+      <h2 class="daily-stats-header">Daily Stats</h2>
+      <section class="activity-widget widget">
         <h3>Activity</h3>
         <table>
           <tr>
@@ -88,25 +93,25 @@
             <td>Stairs Climbed vs User Average</td>
           </tr>
           <tr>
-            <td id="stepCount">0</td>
-            <td id="minutesActive">0</td>
-            <td id="milesWalked">0</td>
-            <td id="stairsClimbed">0</td>
+            <td id=“stepCount”>-</td>
+            <td id=“minutesActive”>-</td>
+            <td id=“milesWalked”>-</td>
+            <td id="stairsClimbed">-</td>
           </tr>
         </table>
       </section>
-      <section>
+      <section class="hydration-widget widget">
         <h3>Hydration</h3>
         <table>
           <tr>
             <td>Ounces for Today</td>
           </tr>
           <tr>
-            <td id="ouncesWater">0</td>
+            <td id="ouncesWater">-</td>
           </tr>
         </table>
       </section>
-      <section>
+      <section class="sleep-widget widget">
         <h3>Sleep</h3>
         <table>
           <tr>
@@ -114,15 +119,15 @@
             <td>Sleep Quality for Today</td>
           </tr>
           <tr>
-            <td id="hoursSlept">0</td>
-            <td id="sleepQuality">0</td>
+            <td id=“hoursSlept”>-</td>
+            <td id=“sleepQuality”>-</td>
           </tr>
         </table>
       </section>
-      <section>
-        <h2>Weekly Progress</h2>
+      <section class="weekly-widget widget">
+        <h2 class="weekly-header">Weekly Progress</h2>
         <article>
-          <h3>Activity</h3>
+          <h3 class="weekly-activity">Activity</h3>
           <table>
             <tr>
               <td>Sun</td>
@@ -133,18 +138,58 @@
               <td>Fri</td>
               <td>Sat</td>
             </tr>
-            <tr id="activityProgress">
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
+            <tr id=“activityProgress”>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
             </tr>
           </table>
         </article>
-        <article>
+        <article class="weekly-hydration">
           <h3>Hydration</h3>
           <table>
             <tr>
@@ -156,18 +201,18 @@
               <td>Fri</td>
               <td>Sat</td>
             </tr>
-            <tr id="hydrationProgress">
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
+            <tr id=“hydrationProgress”>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
             </tr>
           </table>
         </article>
-        <article>
+        <article class="weekly-sleep">
           <h3>Sleep</h3>
           <table>
             <tr>
@@ -179,14 +224,34 @@
               <td>Fri</td>
               <td>Sat</td>
             </tr>
-            <tr id="sleepProgress">
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
+            <tr id=“sleepProgress”> 
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
             </tr>
           </table>
         </article>
