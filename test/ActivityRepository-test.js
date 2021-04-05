@@ -76,9 +76,9 @@ describe("ActivityRepository", () => {
       const user2Activity = activityRepo.getUserData(2);
       const user3Activity = activityRepo.getUserData(3);
 
-      expect(user1Activity).to.deep.equal(activityData[0]);
-      expect(user2Activity).to.deep.equal(activityData[1]);
-      expect(user3Activity).to.deep.equal(activityData[2]);
+      expect(user1Activity).to.deep.equal([activityData[0], activityData[3]]);
+      expect(user2Activity).to.deep.equal([activityData[1], activityData[4]]);
+      expect(user3Activity).to.deep.equal([activityData[2], activityData[5]]);
     });
   });
 

@@ -1,4 +1,4 @@
-export default class User {
+class User {
   constructor(data = []) {
     this.id = data.id;
     this.name = data.name;
@@ -12,4 +12,8 @@ export default class User {
   getFirstName() {
     return this.name.split(" ")[0];
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = User
 }

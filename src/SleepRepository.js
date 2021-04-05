@@ -1,6 +1,4 @@
-import UserSleep from "./UserSleep.js";
-
-export default class SleepRepository {
+class SleepRepository {
   constructor(data) {
     this.data = data;
     this.weeklyDataArray = this.organizeWeeklyData(data);
@@ -66,8 +64,7 @@ export default class SleepRepository {
 
     userIDs.forEach(id => {
       let userSleep = new UserSleep(this.getUserData(id));
-      let weeklyQuality = userSleep.findWeeklyQuality(date);
-      let avgQuality = userSleep.calcAvgTotalQuality();
+      let avgQuality = userSleep.findWeeklyAvg(date);
 
       if (avgQuality > 3) {
         qualityLeaders.push({ id, avgQuality });
@@ -92,4 +89,8 @@ export default class SleepRepository {
       return topSleeper;
     }, []);
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = SleepRepository;
 }

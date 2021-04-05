@@ -1,4 +1,4 @@
-export default class UserActivity {
+class UserActivity {
   constructor(data = []) {
     this.data = data;
     this.weeklyData = this.organizeWeeklyData(this.data);
@@ -85,4 +85,8 @@ export default class UserActivity {
       return acc;
     }, []);
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = UserActivity;
 }

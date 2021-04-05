@@ -1,4 +1,4 @@
-export default class UserRepository {
+class UserRepository {
   constructor(data = []) {
     this.data = data;
   }
@@ -12,4 +12,8 @@ export default class UserRepository {
       return currentDatum.dailyStepGoal
     }).reduce((acc, stepGoal) => acc + stepGoal) / this.data.length;
   }
+}
+
+if (typeof module !== "undefined") {
+  module.exports = UserRepository;
 }
