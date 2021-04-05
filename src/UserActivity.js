@@ -5,10 +5,7 @@ class UserActivity {
   }
 
   calcMilesWalked(forDate, strideLength) {
-    const dailyActivity = this.getDailyActivity(forDate);
-    const steps = dailyActivity.numSteps;
-
-    return (steps / (5280 / strideLength));
+    return (this.getDailyStat(forDate, "numSteps") / (5280 / strideLength));
   }
 
   calcAvgWeeklyMinutes(currentDate) {
@@ -25,8 +22,8 @@ class UserActivity {
     }).reduce((avg, stat) => avg + stat) / this.data.length;
   }
 
-  getMinutesActive(forDate) {
-    return this.getDailyActivity(forDate).minutesActive;
+  getDailyStat(forDate, statType) {
+    return this.getDailyActivity(forDate)[statType];
   }
 
   getStepsExceeded(stepGoal) {
@@ -51,7 +48,7 @@ class UserActivity {
   }
   
   getDailyActivity(forDate) {
-    return this.data.find(dailyActivity => forDate === dailyActivity.date);
+    return this.data.filter(dailyActivity => forDate === dailyActivity.date);
   }
 
   getWeeklyActivity(currentDate) {

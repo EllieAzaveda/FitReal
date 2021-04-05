@@ -22,6 +22,7 @@
 
 // Dependents
 const userID = 1;
+const currentDate = "2019/09/22"
 
 const userRepo = new UserRepository(userData);
 const activityRepo = new ActivityRepository(activityData);
@@ -46,6 +47,11 @@ const averageOunces = document.getElementById("averageOunces");
 const averageQuality = document.getElementById("averageQuality");
 const averageHours = document.getElementById("averageHours");
 
+const stepCount = document.getElementById("stepCount");
+const minutesActive = document.getElementById("minutesActive");
+const milesWalked = document.getElementById("milesWalked");
+const ouncesWater = document.getElementById("ouncesWater")
+
 // Event Listeners
 window.addEventListener("load", renderInitialPage);
 
@@ -53,7 +59,8 @@ window.addEventListener("load", renderInitialPage);
 function renderInitialPage() {
   renderUserInfo();
   renderFriends();
-  renderStats();
+  renderTotalStats();
+  renderDailyStats(currentDate);
 }
 
 function renderUserInfo() {
@@ -76,12 +83,7 @@ function renderFriends() {
   });
 }
 
-function renderStats() {
-  renderAllTime();
-  renderDaily();
-}
-
-function renderAllTime() {
+function renderTotalStats() {
   averageSteps.innerText = userActivity.calcTotalStat("numSteps");
   averageMinutes.innerText = userActivity.calcTotalStat("minutesActive");
   averageStairs.innerText = userActivity.calcTotalStat("flightsOfStairs");
@@ -92,6 +94,35 @@ function renderAllTime() {
   averageHours.innerText = userSleep.calcAvgTotalHrs();
 }
 
-function renderDaily() {
+function renderDailyStats(forDate) {
+  renderDailyActivity();
+  renderDailyHydration();
+  renderDailySleep();
+}
 
+function renderDailyActivity(forDate) {
+  const strideLength = user.strideLength;
+
+  const stepCount = userActivity.getDailyStat(forDate, "numSteps");
+  const minutesActive = userActivity.getDailyStat(forDate, "minutesActive");
+  const milesWalked = userActivity.calcMilesWalked(forDate, strideLength);
+  const flightsClimbed = userActivity.getDailyStat(forDate, "flightsOfStairs");
+
+  const avgUserCount = userRepo.calcAvgStepGoal();
+  const avgUserMinutes = activityRepo.calcAvgStat("minutesActive");
+  const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData);
+  const avgUserFlights = activityRepo.calcAvgStat("flightsOfStairs");
+  
+
+  stepCount.innerText = userActivity.getStepCount(forDate);
+  minutesActive.innerText = userActivity.getMinutesActive(forDate);
+  milesWalked.innerText = userActivity.calcMilesWalked(forDate, strideLength);
+}
+
+function renderDailyHydration() {
+  ouncesWater.innerText = userHydration.findDailyOunces(forDate);
+}
+
+function renderDailySleep() {
+  
 }
