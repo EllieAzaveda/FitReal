@@ -49,9 +49,9 @@
             <td>Average Stairs/day</td>
           </tr>
           <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td id=“averageSteps”>0</td>
+            <td id=“averageMinutes”>0</td>
+            <td id=“averageStairs”>0</td>
           </tr>
         </table>
         </ul>
@@ -60,7 +60,7 @@
         <h4 class="dropdown aside-data">All-time Hydration</h4>
         <table class="hidden">
           <tr>
-            <td>Average Ounces/day</td>
+            <td id=“averageOunces”>Average Ounces/day</td>
           </tr>
           <tr>
             <td>0</td>
@@ -75,41 +75,43 @@
             <td>Average Hours Slept/day</td>
           </tr>
           <tr>
-            <td>0</td>
-            <td>0</td>
+            <td id=“averageQuality”>0</td>
+            <td id=“averageHours”>0</td>
           </tr>
         </table>
       </section>
     </aside>
     <main class="daily-stats-container">
-      <h2>Daily Stats</h2>
-      <section>
+      <h2 class="daily-stats-header">Daily Stats</h2>
+      <section class="activity-widget">
         <h3>Activity</h3>
         <table>
           <tr>
             <td>Step Count vs User Average</td>
             <td>Minutes Active vs User Average</td>
+            <td>Miles Walked vs User Average</td>
             <td>Stairs Climbed vs User Average</td>
           </tr>
           <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
+            <td id=“stepCount”>0</td>
+            <td id=“minutesActive”>0</td>
+            <td id=“milesWalked”>0</td>
+            <td id="stairsClimbed">0</td>
           </tr>
         </table>
       </section>
-      <section>
+      <section class="hydration-widget">
         <h3>Hydration</h3>
         <table>
           <tr>
-            <td>Ounces for Today</td>
+            <td id=“ouncesWater”>Ounces for Today</td>
           </tr>
           <tr>
             <td>0</td>
           </tr>
         </table>
       </section>
-      <section>
+      <section class="sleep-widget">
         <h3>Sleep</h3>
         <table>
           <tr>
@@ -122,10 +124,10 @@
           </tr>
         </table>
       </section>
-      <section>
-        <h2>Weekly Progress</h2>
+      <section class="weekly-widget">
+        <h2 class="weekly-header">Weekly Progress</h2>
         <article>
-          <h3>Activity</h3>
+          <h3 class="weekly-activity">Activity</h3>
           <table>
             <tr>
               <td>Sun</td>
@@ -147,7 +149,7 @@
             </tr>
           </table>
         </article>
-        <article>
+        <article class="weekly-hydration">
           <h3>Hydration</h3>
           <table>
             <tr>
@@ -170,7 +172,7 @@
             </tr>
           </table>
         </article>
-        <article>
+        <article class="weekly-sleep">
           <h3>Sleep</h3>
           <table>
             <tr>
