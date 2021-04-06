@@ -47,6 +47,14 @@ body {
   align-items: stretch;
 }
 
+.user-info-top {
+  border-radius: 1em 1em 0 0;
+}
+
+.user-info-bottom {
+  border-radius: 0 0 1em 1em;
+}
+
 .user-info {
   display: flex;
   flex-direction: column;
