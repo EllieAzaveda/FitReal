@@ -1,9 +1,6 @@
 /* GENERAL */
 html {
-<<<<<<< HEAD
   background-color: #DDCECD;
-=======
->>>>>>> main
   /* background-image: url("../assets/colorful_smoke.jpeg"); */
   background-repeat: no-repeat;
   height: 100%;
@@ -232,4 +229,24 @@ label {
 
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+  }
+}
+
+@media screen and (max-width: 1200) {
+  body {
+  }
 }
