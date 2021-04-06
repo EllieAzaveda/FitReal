@@ -2,7 +2,7 @@
 
 // Dependents
 let userID = 20;
-let currentDate = "2019/09/01"
+let currentDate = "2019/09/15"
 
 const userRepo = new UserRepository(userData);
 const activityRepo = new ActivityRepository(activityData);
@@ -15,7 +15,9 @@ const userHydration = new UserHydration(hydrationRepo.getUserData(userID));
 const userSleep = new UserSleep(sleepRepo.getUserData(userID));
 
 // Query Selectors
-const datePicker = document.getElementById("datePicker")
+const datePicker = document.getElementById("datePicker");
+// const backButton = document.getElementById("backButton");
+// const forwardButton = document.getElementById("forwardButton");
 
 const greeting = document.getElementById("greeting");
 const strideLength = document.getElementById("strideLength");
@@ -45,23 +47,44 @@ const weeklyQuality = document.getElementById("weeklyQuality");
 
 // Event Listeners
 window.addEventListener("load", setInitialPage)
+
 datePicker.addEventListener("click", setDailyStats);
+// backButton.addEventListener("click", moveBackwards);
+// forwardButton.addEventListener("click", moveForwards);
 
 // Handlers/Helpers
 function setInitialPage() {
-  initializeDatePicker();
+  setDatePicker();
   renderPage();
 }
 
 function setDailyStats(event) {
-  if (event.target.className === "day-btn") {
+  const isButton = event.target.className === "day-btn";
+  const isCurrent = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
+
+  if (isButton && isCurrent) {
     const selectedDay = event.target.value;
     currentDate = selectedDay;
 
     renderPage();
   }
 }
-function initializeDatePicker() {
+
+function moveBackwards() {
+  currentDate = dayjs(currentDate).subtract(7, "days").format("YYYY/MM/DD");
+
+  setDatePicker();
+  renderPage();
+}
+
+function moveForwards() {
+  currentDate = dayjs(currentDate).add(7, "days").format("YYYY/MM/DD");
+
+  setDatePicker();
+  renderPage();
+}
+
+function setDatePicker() {
   const dates = datePicker.querySelectorAll("button");
   let startOfWeek = dayjs(currentDate).startOf("week");
 
@@ -162,12 +185,12 @@ function renderWeeklyProgress(forDate) {
 }
 
 function renderWeeklyActivity(forDate) {
-  renderDisplays(weeklySteps, forDate, "numSteps")
-  renderDisplays(weeklyMinutes, forDate, "minutesActive");
-  renderDisplays(weeklyFlights, forDate, "flightsOfStairs");
+  renderTable(weeklySteps, forDate, "numSteps")
+  renderTable(weeklyMinutes, forDate, "minutesActive");
+  renderTable(weeklyFlights, forDate, "flightsOfStairs");
 }
 
-function renderDisplays(statTable, forDate, stat) {
+function renderTable(statTable, forDate, stat) {
   const statDisplays = statTable.querySelectorAll("td");
   const weeklyStats = userActivity.getWeeklyStat(forDate, stat);
 
