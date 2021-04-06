@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 
 // Dependents
-const userID = 20;
-const currentDate = "2019/09/15"
+let userID = 20;
+let currentDate = "2019/09/01"
 
 const userRepo = new UserRepository(userData);
 const activityRepo = new ActivityRepository(activityData);
@@ -15,7 +15,7 @@ const userHydration = new UserHydration(hydrationRepo.getUserData(userID));
 const userSleep = new UserSleep(sleepRepo.getUserData(userID));
 
 // Query Selectors
-const datePicker = document.getElementById("datePicker");
+const datePicker = document.getElementById("datePicker")
 
 const greeting = document.getElementById("greeting");
 const strideLength = document.getElementById("strideLength");
@@ -42,13 +42,35 @@ const hydrationProgress = document.getElementById("hydrationProgress");
 const sleepProgress = document.getElementById("sleepProgress");
 
 // Event Listeners
-window.addEventListener("load", () => {
-  initializeDatePicker();
-  renderInitialPage();
-})
+window.addEventListener("load", setInitialPage)
+datePicker.addEventListener("click", setDailyStats);
 
 // Handlers/Helpers
-function renderInitialPage() {
+function setInitialPage() {
+  initializeDatePicker();
+  renderPage();
+}
+
+function setDailyStats(event) {
+  if (event.target.className === "day-btn") {
+    const selectedDay = event.target.value;
+    currentDate = selectedDay;
+
+    renderPage();
+  }
+}
+function initializeDatePicker() {
+  const dates = datePicker.querySelectorAll("button");
+  let startOfWeek = dayjs(currentDate).startOf("week");
+
+  dates.forEach(day => {
+    day.value = startOfWeek.format("YYYY/MM/DD");
+    day.innerText = startOfWeek.format("MM/DD");
+    startOfWeek = startOfWeek.add(1, "day");
+  });
+}
+
+function renderPage() {
   renderUserInfo();
   renderFriends();
   renderTotalStats();
@@ -66,6 +88,8 @@ function renderUserInfo() {
 }
 
 function renderFriends() {
+  friends.innerText = "";
+  
   user.friends.forEach(friendID => {
     const friend = new User(userRepo.getUserData(friendID));
     const friendName = friend.getFirstName();
@@ -151,7 +175,6 @@ function renderWeeklyActivity(forDate) {
 function renderWeeklyHydration(forDate) {
   const statDisplays = hydrationProgress.querySelectorAll("td");
   const weeklyHydration = userHydration.calcOuncesForWeek(forDate);
-  console.log(weeklyHydration);
 
   statDisplays.forEach((display, index) => {
     if (weeklyHydration[index]) {
