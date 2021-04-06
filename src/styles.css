@@ -40,13 +40,14 @@ body {
 }
 
 .friend {
-  background-color: #003366;
+  background-color: #ffffcc;
   height: 2em;
   width: 1em;
   border-radius: 1em/3em;
   padding: .2em;
   list-style-type: none;
   display: inline;
+  white-space: nowrap;
 }
 
 .friends-list {
@@ -82,29 +83,24 @@ body {
 
 /* DROPDOWN BUTTONS */
 
-.aside-data {
+.your-avgs-button {
   background-color: #99ffcc;
   height: 6vh;
-  width: 20vh;
+  width: 22.5vh;
+  margin-bottom: 0;
   border-radius: 0 .3em .3em 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dropdown {
-  margin-bottom: 0;
-  position: relative;
-  display: block;
-  justify-content: center;
-}
-
 .dropdown-table {
   background-color: #FFFFFF;
   margin-top: 0;
-  width: 20vh;
-  font-size: 1em;
-  position: absolute;
+  width: 22.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ASIDE CONTAINER */
@@ -128,8 +124,10 @@ body {
 }
 
 .nav-btn {
-  /* background-color: transparent; */
+  color: #FFFFFF;
+  background-color: transparent;
   border: none;
+  padding-top: .5EM;
 }
 
 .day-btn {
@@ -139,8 +137,20 @@ body {
   font-size: 2vh;
 }
 
+.leaderboard-btn {
+  background-color: transparent;
+  height: 8vh;
+  width: 8vh;
+  margin-right: 2vw;
+  padding 0;
+  font-size: 6vh;
+  padding: 0;
+  grid-column-start: 6;
+  align-self: center;
+}
+
 .nav-dates {
-  background-color: #000000;
+  background-color: #808080;
   height: 8vh;
   width: 90vh;
   border-radius: .4em;
@@ -149,16 +159,6 @@ body {
   align-items: center;
   grid-column-start: 2;
   grid-column-end: 5;
-}
-
-.leaderboard-btn {
-  height: 8vh;
-  width: 8vh;
-  margin-right: 2vw;
-  font-size: 3vh;
-  padding: 0;
-  grid-column-start: 6;
-  align-self: center;
 }
 
 .currentweek-nav-bar {
