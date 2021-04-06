@@ -2,7 +2,7 @@
 
 // Dependents
 let userID = 20;
-let currentDate = "2019/09/15"
+let currentDate = "2019/09/22"
 
 const userRepo = new UserRepository(userData);
 const activityRepo = new ActivityRepository(activityData);
@@ -16,8 +16,8 @@ const userSleep = new UserSleep(sleepRepo.getUserData(userID));
 
 // Query Selectors
 const datePicker = document.getElementById("datePicker");
-// const backButton = document.getElementById("backButton");
-// const forwardButton = document.getElementById("forwardButton");
+const backButton = document.getElementById("backButton");
+const forwardButton = document.getElementById("forwardButton");
 
 const greeting = document.getElementById("greeting");
 const strideLength = document.getElementById("strideLength");
@@ -49,8 +49,8 @@ const weeklyQuality = document.getElementById("weeklyQuality");
 window.addEventListener("load", setInitialPage)
 
 datePicker.addEventListener("click", setDailyStats);
-// backButton.addEventListener("click", moveBackwards);
-// forwardButton.addEventListener("click", moveForwards);
+backButton.addEventListener("click", moveBackwards);
+forwardButton.addEventListener("click", moveForwards);
 
 // Handlers/Helpers
 function setInitialPage() {
@@ -71,21 +71,33 @@ function setDailyStats(event) {
 }
 
 function moveBackwards() {
-  currentDate = dayjs(currentDate).subtract(7, "days").format("YYYY/MM/DD");
+  let startOfWeek = dayjs(currentDate).startOf("week").format("YYYY/MM/DD");
+
+  if (startOfWeek === "2019/06/16") {
+    currentDate = "2019/06/15";
+  } else {
+    currentDate = dayjs(currentDate).subtract(7, "days").format("YYYY/MM/DD");
+  }
 
   setDatePicker();
   renderPage();
 }
 
 function moveForwards() {
-  currentDate = dayjs(currentDate).add(7, "days").format("YYYY/MM/DD");
+  let startOfWeek = dayjs(currentDate).startOf("week").format("YYYY/MM/DD");
+
+  if (startOfWeek === "2019/09/15") {
+    currentDate = "2019/09/22";
+  } else {
+    currentDate = dayjs(currentDate).add(7, "days").format("YYYY/MM/DD");
+  }
 
   setDatePicker();
   renderPage();
 }
 
 function setDatePicker() {
-  const dates = datePicker.querySelectorAll("button");
+  const dates = datePicker.querySelectorAll(".day-btn");
   let startOfWeek = dayjs(currentDate).startOf("week");
 
   dates.forEach(day => {
@@ -93,6 +105,25 @@ function setDatePicker() {
     day.innerText = startOfWeek.format("MM/DD");
     startOfWeek = startOfWeek.add(1, "day");
   });
+
+  setNavButtons();
+}
+
+function setNavButtons() {
+  const endOfWeek = dayjs(currentDate).endOf("week");
+  const startOfWeek = dayjs(currentDate).startOf("week");
+
+  if (endOfWeek.diff(dayjs("2019/06/16")) <= 0) {
+    backButton.className = "nav-btn visible";
+  } else {
+    backButton.className = "nav-btn";
+  }
+
+  if (startOfWeek.diff(dayjs("2019/09/22")) >= 0) {
+    forwardButton.className = "nav-btn visible";
+  } else {
+    forwardButton.className = "nav-btn";
+  }
 }
 
 function renderPage() {
@@ -105,7 +136,7 @@ function renderPage() {
 
 function renderUserInfo() {
   const firstName = user.getFirstName();
-  const avgStepGoal = userRepo.calcAvgStepGoal();
+  const avgStepGoal = Math.round(userRepo.calcAvgStepGoal());
 
   greeting.innerText = `Hey, ${firstName}!`;
   strideLength.innerText = user.strideLength;
