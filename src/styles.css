@@ -56,7 +56,7 @@ body {
 
 .friend {
   background-color: #003366;
-  height: 1.5em;
+  height: 2em;
   width: 1em;
   border-radius: 1em/3em;
   padding: .2em;
@@ -97,7 +97,7 @@ body {
 
 /* TOP NAV BAR */
 
-.date-btn,
+.nav-btn,
 .day-btn,
 .leaderboard-btn {
   border-radius: .4em;
@@ -105,17 +105,17 @@ body {
   font-size: 2em;
 }
 
+.nav-btn {
+  font: #FFFFFF;
+  /* background-color: transparent; */
+  border: none;
+}
+
 .day-btn {
   background-color: #666699;
   height: 4vh;
   width: 8vh;
   font-size: 2vh;
-}
-
-.date-btn {
-  font: #ff66ff;
-  /* background-color: transparent; */
-  border: none;
 }
 
 label {
