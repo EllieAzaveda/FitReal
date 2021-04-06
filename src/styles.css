@@ -47,6 +47,14 @@ body {
   align-items: stretch;
 }
 
+.user-info-top {
+  border-radius: 1em 1em 0 0;
+}
+
+.user-info-bottom {
+  border-radius: 0 0 1em 1em;
+}
+
 .user-info {
   display: flex;
   flex-direction: column;
@@ -56,7 +64,7 @@ body {
 
 .friend {
   background-color: #003366;
-  height: 1.5em;
+  height: 2em;
   width: 1em;
   border-radius: 1em/3em;
   padding: .2em;
@@ -97,6 +105,31 @@ body {
 
 /* TOP NAV BAR */
 
+.nav-btn,
+.day-btn,
+.leaderboard-btn {
+  border-radius: .4em;
+  border-width: 0;
+  font-size: 2em;
+}
+
+.nav-btn {
+  font: #FFFFFF;
+  /* background-color: transparent; */
+  border: none;
+}
+
+.day-btn {
+  background-color: #666699;
+  height: 4vh;
+  width: 8vh;
+  font-size: 2vh;
+}
+
+label {
+  text-align: center;
+}
+
 .nav-dates {
   background-color: #000000;
   height: 8vh;
@@ -109,21 +142,7 @@ body {
   grid-column-end: 5;
 }
 
-.day-btn,
 .leaderboard-btn {
-  border-radius: .4em;
-  border-width: 0;
-  font-size: 2em;
-}
-
-.day-btn {
-  height: 4vh;
-  width: 8vh;
-  font-size: 2vh;
-}
-
-.leaderboard-btn {
-  background-color: #FB1402;
   height: 8vh;
   width: 8vh;
   margin-right: 2vw;
@@ -188,7 +207,6 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-
 }
 
 .hidden {
