@@ -6,15 +6,31 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <header class="currentweek-nav-bar" id=“datePicker”>
+    <header class="currentweek-nav-bar" id="datePicker">
       <nav class="nav-dates">
-        <button class="day-btn">Sun</button>
-        <button class="day-btn">Mon</button>
-        <button class="day-btn">Tue</button>
-        <button class="day-btn">Wed</button>
-        <button class="day-btn">Thu</button>
-        <button class="day-btn">Fri</button>
-        <button class="day-btn">Sat</button>
+        <button class="date-btn"><</button>
+        <label for="sun">Sun<br />
+        <button class="day-btn" id="sun"></button>
+        </label>
+        <label for="sun">Mon<br />
+        <button class="day-btn" id="mon"></button>
+        </label>
+        <label for="sun">Tue<br />
+        <button class="day-btn" id="tue"></button>
+        </label>
+        <label for="sun">Wed<br />
+        <button class="day-btn" id="wed"></button>
+        </label>
+        <label for="sun">Thu<br />
+        <button class="day-btn" id="thu"></button>
+        </label>
+        <label for="sun">Fri<br />
+        <button class="day-btn" id="fri"></button>
+        </label>
+        <label for="sun">Sat<br />
+        <button class="day-btn" id="sat"></button>
+        </label>
+        <button class="date-btn">></button>
       </nav>
       <button class="leaderboard-btn">👑</button>
     </header>
@@ -34,7 +50,7 @@
           </tr>
         </table>
         <h4 class="user-info-title">Friends</h4>
-        <ul class="friends-list" id=friends>
+        <ul class="friends-list" id="friends">
           <li class="friend">Friend 1</li>
           <li class="friend">Friend 2</li>
           <li class="friend">Friend 3</li>
@@ -49,9 +65,9 @@
             <td>Average Stairs/day</td>
           </tr>
           <tr>
-            <td id=“averageSteps”>-</td>
-            <td id=“averageMinutes”>-</td>
-            <td id=“averageStairs”>-</td>
+            <td id="averageSteps">-</td>
+            <td id="averageMinutes">-</td>
+            <td id="averageStairs">-</td>
           </tr>
         </table>
         </ul>
@@ -60,7 +76,7 @@
         <h4 class="dropdown aside-data">All-time Hydration</h4>
         <table class="hidden">
           <tr>
-            <td id=“averageOunces”>Average Ounces/day</td>
+            <td id="averageOunces">Average Ounces/day</td>
           </tr>
           <tr>
             <td>-</td>
@@ -75,8 +91,8 @@
             <td>Average Hours Slept/day</td>
           </tr>
           <tr>
-            <td id=“averageQuality”>-</td>
-            <td id=“averageHours”>-</td>
+            <td id="averageQuality">-</td>
+            <td id="averageHours">-</td>
           </tr>
         </table>
       </section>
@@ -93,9 +109,9 @@
             <td>Stairs Climbed vs User Average</td>
           </tr>
           <tr>
-            <td id=“stepCount”>-</td>
-            <td id=“minutesActive”>-</td>
-            <td id=“milesWalked”>-</td>
+            <td id="stepCount">-</td>
+            <td id="minutesActive">-</td>
+            <td id="milesWalked">-</td>
             <td id="stairsClimbed">-</td>
           </tr>
         </table>
@@ -104,7 +120,7 @@
         <h3>Hydration</h3>
         <table>
           <tr>
-            <td id=“ouncesWater”>Ounces for Today</td>
+            <td id="ouncesWater">Ounces for Today</td>
           </tr>
           <tr>
             <td>-</td>
@@ -119,8 +135,8 @@
             <td>Sleep Quality for Today</td>
           </tr>
           <tr>
-            <td id=“hoursSlept”>-</td>
-            <td id=“sleepQuality”>-</td>
+            <td id="hoursSlept">-</td>
+            <td id="sleepQuality">-</td>
           </tr>
         </table>
       </section>
@@ -138,7 +154,7 @@
               <td>Fri</td>
               <td>Sat</td>
             </tr>
-            <tr id=“activityProgress”>
+            <tr id="activityProgress">
               <td>-</td>
               <td>-</td>
               <td>-</td>
@@ -201,7 +217,7 @@
               <td>Fri</td>
               <td>Sat</td>
             </tr>
-            <tr id=“hydrationProgress”>
+            <tr id="hydrationProgress">
               <td>-</td>
               <td>-</td>
               <td>-</td>
@@ -215,7 +231,7 @@
         <article class="weekly-sleep">
           <h3>Sleep</h3>
           <table>
-            <tr id=“sleepProgress”>
+            <tr id="sleepProgress">
               <td>Sun</td>
               <td>Mon</td>
               <td>Tue</td>

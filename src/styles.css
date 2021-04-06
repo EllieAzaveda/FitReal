@@ -97,6 +97,31 @@ body {
 
 /* TOP NAV BAR */
 
+.date-btn,
+.day-btn,
+.leaderboard-btn {
+  border-radius: .4em;
+  border-width: 0;
+  font-size: 2em;
+}
+
+.day-btn {
+  background-color: #666699;
+  height: 4vh;
+  width: 8vh;
+  font-size: 2vh;
+}
+
+.date-btn {
+  font: #ff66ff;
+  /* background-color: transparent; */
+  border: none;
+}
+
+label {
+  text-align: center;
+}
+
 .nav-dates {
   background-color: #000000;
   height: 8vh;
@@ -109,21 +134,7 @@ body {
   grid-column-end: 5;
 }
 
-.day-btn,
 .leaderboard-btn {
-  border-radius: .4em;
-  border-width: 0;
-  font-size: 2em;
-}
-
-.day-btn {
-  height: 4vh;
-  width: 8vh;
-  font-size: 2vh;
-}
-
-.leaderboard-btn {
-  background-color: #FB1402;
   height: 8vh;
   width: 8vh;
   margin-right: 2vw;
@@ -188,7 +199,6 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-
 }
 
 .hidden {
