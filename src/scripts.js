@@ -37,9 +37,11 @@ const ouncesWater = document.getElementById("ouncesWater");
 const hoursSlept = document.getElementById("hoursSlept");
 const sleepQuality = document.getElementById("sleepQuality");
 
-const activityProgress = document.getElementById("activityProgress");
-const hydrationProgress = document.getElementById("hydrationProgress");
-const sleepProgress = document.getElementById("sleepProgress");
+const weeklySteps = document.getElementById("weeklySteps");
+const weeklyMinutes = document.getElementById("weeklyMinutes");
+const weeklyFlights = document.getElementById("weeklyFlights");
+const weeklyHours = document.getElementById("weeklyHours");
+const weeklyQuality = document.getElementById("weeklyQuality");
 
 // Event Listeners
 window.addEventListener("load", setInitialPage)
@@ -89,7 +91,7 @@ function renderUserInfo() {
 
 function renderFriends() {
   friends.innerText = "";
-  
+
   user.friends.forEach(friendID => {
     const friend = new User(userRepo.getUserData(friendID));
     const friendName = friend.getFirstName();
@@ -160,14 +162,18 @@ function renderWeeklyProgress(forDate) {
 }
 
 function renderWeeklyActivity(forDate) {
-  const statDisplays = activityProgress.querySelectorAll("td");
-  const weeklySteps = userActivity.getWeeklyStat(forDate, "numSteps");
-  const weeklyMinutes = userActivity.getWeeklyStat(forDate, "minutesActive");
-  const weeklyFlights = userActivity.getWeeklyStat(forDate, "flightsOfStairs");
+  renderDisplays(weeklySteps, forDate, "numSteps")
+  renderDisplays(weeklyMinutes, forDate, "minutesActive");
+  renderDisplays(weeklyFlights, forDate, "flightsOfStairs");
+}
+
+function renderDisplays(statTable, forDate, stat) {
+  const statDisplays = statTable.querySelectorAll("td");
+  const weeklyStats = userActivity.getWeeklyStat(forDate, stat);
 
   statDisplays.forEach((display, index) => {
-    if (weeklySteps[index]) {
-      display.innerText = weeklySteps[index];
+    if (weeklyStats[index]) {
+      display.innerText = weeklyStats[index];
     }
   });
 }
@@ -184,13 +190,21 @@ function renderWeeklyHydration(forDate) {
 }
 
 function renderWeeklySleep(forDate) {
-  const statDisplays = sleepProgress.querySelectorAll("td");
-  const weeklyHours = userSleep.findWeeklyHrs(forDate);
-  const weeklyQuality = userSleep.findWeeklyQuality(forDate);
+  const hourDisplays = weeklyHours.querySelectorAll("td");
+  const qualityDisplays = weeklyQuality.querySelectorAll("td");
 
-  statDisplays.forEach((display, index) => {
-    if (weeklyHours[index]) {
-      display.innerText = weeklyHours[index];
+  const foundHours = userSleep.findWeeklyHrs(forDate);
+  const foundQuality = userSleep.findWeeklyQuality(forDate);
+
+  hourDisplays.forEach((display, index) => {
+    if (foundHours[index]) {
+      display.innerText = foundHours[index];
+    }
+  });
+
+  qualityDisplays.forEach((display, index) => {
+    if (foundQuality[index]) {
+      display.innerText = foundQuality[index];
     }
   });
 }
