@@ -5,22 +5,30 @@ class UserActivity {
   }
 
   calcMilesWalked(forDate, strideLength) {
-    const dailyActivity = this.getDailyActivity(forDate);
-    const steps = dailyActivity.numSteps;
-
-    return (steps / (5280 / strideLength));
+    return (this.getDailyStat(forDate, "numSteps") / (5280 / strideLength));
   }
 
-  calcAvgWeeklyMinutes(currentDate) {
-    const weeklyActivity = this.getWeeklyActivity(currentDate);
+  calcAvgWeeklyMinutes(forDate) {
+    const weeklyActivity = this.getWeeklyActivity(forDate);
     
     return weeklyActivity.map(activity => {
       return activity.minutesActive
     }).reduce((totalMin, curMin) => totalMin + curMin) / weeklyActivity.length;
   }
 
-  getMinutesActive(forDate) {
-    return this.getDailyActivity(forDate).minutesActive;
+  calcTotalStat(statType) {
+    return this.data.map(curDatum => {
+      return curDatum[statType];
+    }).reduce((avg, stat) => avg + stat) / this.data.length;
+  }
+
+  getWeeklyStat(forDate, statType) {
+    const weeklyActivity = this.getWeeklyActivity(forDate);
+    return weeklyActivity.map(activity => activity[statType]);
+  }
+  
+  getDailyStat(forDate, statType) {
+    return this.getDailyActivity(forDate)[statType];
   }
 
   getStepsExceeded(stepGoal) {
@@ -48,12 +56,12 @@ class UserActivity {
     return this.data.find(dailyActivity => forDate === dailyActivity.date);
   }
 
-  getWeeklyActivity(currentDate) {
+  getWeeklyActivity(forDate) {
     const weeklyActivity = [];
 
     this.weeklyData.forEach(week => {
       week.forEach(day => {
-        if (day.date === currentDate) {
+        if (day.date === forDate) {
           weeklyActivity.push(week);
         }
       })
