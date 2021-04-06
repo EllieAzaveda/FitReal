@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>FitReal</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header class="currentweek-nav-bar" id="datePicker">
@@ -30,7 +31,7 @@
         <label for="sun">Sat<br />
         <button class="day-btn" id="sat"></button>
         </label>
-        <button class="nav-btn">></button>
+        <button class="nav-btn visible">></button>
       </nav>
       <button class="leaderboard-btn">👑</button>
     </header>
@@ -57,12 +58,12 @@
         </ul>
       </section>
       <section>
-        <h4 class="dropdown aside-data">All-time Activity</h4>
-        <table class="hidden">
+        <h4 class="dropdown your-avgs-button">Your Activity Averages</h4>
+        <table class="dropdown-table">
           <tr>
-            <td>Average Steps/day</td>
-            <td>Average Minutes/day</td>
-            <td>Average Stairs/day</td>
+            <td>Steps/day</td>
+            <td>Minutes/day</td>
+            <td>Stairs/day</td>
           </tr>
           <tr>
             <td id="averageSteps">-</td>
@@ -73,8 +74,8 @@
         </ul>
       </section>
       <section>
-        <h4 class="dropdown aside-data">All-time Hydration</h4>
-        <table class="hidden">
+        <h4 class="dropdown your-avgs-button">Your Hydration Averages</h4>
+        <table class="dropdown-table">
           <tr>
             <td id="averageOunces">Average Ounces/day</td>
           </tr>
@@ -84,8 +85,8 @@
         </table>
       </section>
       <section>
-        <h4 class="dropdown aside-data">All-time Sleep</h4>
-        <table class="hidden">
+        <h4 class="dropdown your-avgs-button">Your Sleep Averages</h4>
+        <table class="dropdown-table">
           <tr>
             <td>Average Sleep Quality/day</td>
             <td>Average Hours Slept/day</td>

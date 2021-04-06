@@ -1,6 +1,7 @@
 /* GENERAL */
 html {
-  background-image: url("../assets/colorful_smoke.jpeg");
+  background-color: #DDCECD;
+  /* background-image: url("../assets/colorful_smoke.jpeg"); */
   background-repeat: no-repeat;
   height: 100%;
   display: flex;
@@ -10,9 +11,7 @@ html {
 
 body {
   background-color: rgba(0,213,251, 0.5);
-  border-color: 2px solid #00cc99;
   border-radius: .5em;
-  color: #FFFFFF;
   height: 80%;
   width: 80%;
   display: grid;
@@ -40,28 +39,6 @@ body {
   align-items: center;
 }
 
-.user-info-data {
-  background-color: #009999;
-  display: flex;
-  justify-content: space-around;
-  align-items: stretch;
-}
-
-.user-info-top {
-  border-radius: 1em 1em 0 0;
-}
-
-.user-info-bottom {
-  border-radius: 0 0 1em 1em;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .friend {
   background-color: #003366;
   height: 2em;
@@ -77,23 +54,60 @@ body {
   padding: 0;
 }
 
+.user-info-top {
+  border-radius: 3em 3em 0 0;
+}
+
+.user-info-bottom {
+  border-radius: 0 0 3em 3em;
+}
+
+.user-info-data {
+  background-color: #009999;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .user-info-title {
   margin-bottom: .3em;
 }
 
+/* DROPDOWN BUTTONS */
+
 .aside-data {
-  background-color: #63124F;
+  background-color: #99ffcc;
   height: 6vh;
-  width: 18vh;
+  width: 20vh;
   border-radius: 0 .3em .3em 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .dropdown {
+.dropdown {
+  margin-bottom: 0;
+  position: relative;
+  display: block;
+  justify-content: center;
+}
 
-} */
+.dropdown-table {
+  background-color: #FFFFFF;
+  margin-top: 0;
+  width: 20vh;
+  font-size: 1em;
+  position: absolute;
+}
+
+/* ASIDE CONTAINER */
 
 .user-info-aside {
   background-color: #ff3300 solid;
@@ -114,7 +128,6 @@ body {
 }
 
 .nav-btn {
-  font: #FFFFFF;
   /* background-color: transparent; */
   border: none;
 }
@@ -124,10 +137,6 @@ body {
   height: 4vh;
   width: 8vh;
   font-size: 2vh;
-}
-
-label {
-  text-align: center;
 }
 
 .nav-dates {
@@ -153,11 +162,16 @@ label {
 }
 
 .currentweek-nav-bar {
+  color: #FFFFFF;
   display: flex;
   justify-content: space-between;
   align-items: center;
   grid-column-start: 2;
   grid-column-end: 6;
+}
+
+label {
+  text-align: center;
 }
 
 /* DAILY STATS CONTAINER */
@@ -207,6 +221,10 @@ label {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
+}
+
+.visible {
+  visibility: hidden;
 }
 
 .hidden {
