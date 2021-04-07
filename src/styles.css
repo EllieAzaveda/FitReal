@@ -12,7 +12,7 @@ html {
 body {
   background-color: rgba(0,213,251, 0.5);
   border-radius: .5em;
-  height: 80%;
+  height: 90%;
   width: 80%;
   display: grid;
   grid-template-columns: repeat(5, 20%);
@@ -20,6 +20,11 @@ body {
 }
 
 /* ASIDE WITH USER INFO */
+
+.user-icon-container {
+  background-color: transparent;
+  border: none;
+}
 
 .user-icon {
   height: 6vh;
@@ -39,22 +44,6 @@ body {
   align-items: center;
 }
 
-.friend {
-  background-color: #ffffcc;
-  height: 2em;
-  width: 1em;
-  border-radius: 1em/3em;
-  padding: .2em;
-  list-style-type: none;
-  display: inline;
-  white-space: nowrap;
-}
-
-.friends-list {
-  margin-left: .5em;
-  padding: 0;
-}
-
 .user-info-top {
   border-radius: 3em 3em 0 0;
 }
@@ -68,6 +57,23 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+}
+
+.friend {
+  background-color: #ffffcc;
+  height: 2em;
+  width: 1em;
+  border-radius: 1em/3em;
+  padding: .2em;
+  display: inline;
+  white-space: nowrap;
+}
+
+.friends-list {
+  margin-left: .5em;
+  padding: 0;
+  list-style-type: none;
+  display: inline;
 }
 
 .user-info {
@@ -86,7 +92,7 @@ body {
 .your-avgs-button {
   background-color: #99ffcc;
   height: 6vh;
-  width: 22.5vh;
+  width: 95%;
   margin-bottom: 0;
   border-radius: 0 .3em .3em 0;
   display: flex;
@@ -97,7 +103,7 @@ body {
 .dropdown-table {
   background-color: #FFFFFF;
   margin-top: 0;
-  width: 22.5vh;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,8 +138,8 @@ body {
 
 .day-btn {
   background-color: #666699;
-  height: 4vh;
-  width: 8vh;
+  height: 50%;
+  width: 100%;
   font-size: 2vh;
 }
 
@@ -141,18 +147,17 @@ body {
   background-color: transparent;
   height: 8vh;
   width: 8vh;
+  font-size: 6vh;
   margin-right: 2vw;
   padding 0;
-  font-size: 6vh;
-  padding: 0;
   grid-column-start: 6;
   align-self: center;
 }
 
 .nav-dates {
   background-color: #808080;
-  height: 8vh;
-  width: 90vh;
+  height: 40%;
+  width: 80%;
   border-radius: .4em;
   display: flex;
   justify-content: space-around;
@@ -232,21 +237,58 @@ label {
 }
 
 @media screen and (max-width: 480px) {
-  body {
+  .user-icon {
+    height: 6vh;
+    width: 6vh;
+    align-self: center;
+  }
+  .leaderboard-btn {
+    background-color: transparent;
+    height: 6vh;
+    width: 6vh;
+    font-size: 5vh;
+    margin-right: 10%;
+    padding 0;
+    grid-column-start: 6;
+    align-self: flex-start;
+  }
+  .greeting {
+    font-size: 2.5vh;
+    align-self: center;
+    grid-column: 3;
+  }
+  .nav-dates {
+    background-color: #808080;
+    height: 40%;
+    width: 80%;
+    border-radius: .4em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
+  .currentweek-nav-bar {
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* grid-column-start: 1;
+    grid-column-end: 6; */
   }
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   body {
   }
-}
+} */
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   body {
   }
-}
+} */
 
-@media screen and (max-width: 1200) {
+/* @media screen and (max-width: 1200) {
   body {
   }
-}
+} */
