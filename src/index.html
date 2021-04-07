@@ -104,162 +104,175 @@
       </section>
     </aside>
     <main class="daily-stats-container">
-      <h2 class="daily-stats-header">Daily Stats</h2>
       <section class="activity-widget widget">
         <h3 class="activity-title">Activity</h3>
-        <h4 class="your-stats-title">Your Stats</h4>
-        <table class="your-stats-table">
-          <tr>
-            <td>Step Count</td>
-            <td>Minutes Active</td>
-          </tr>
-          <tr>
-            <td id="stepCount">-</td>
-            <td id="minutesActive">-</td>
-          </tr>
-          <tr>
-            <td>Miles Walked</td>
-            <td>Stairs Climbed</td>
-          </tr>
-          <tr>
-            <td id="milesWalked">-</td>
-            <td id="stairsClimbed">-</td>
-          </tr>
-        </table>
-        <h4 class="compare-table-title">How do you compare?</h4>
-        <table class="comparison-table">
-          <tr>
-            <td>Step Count</td>
-            <td>Minutes Active</td>
-          </tr>
-          <tr>
-            <td id="">-</td>
-            <td id="">-</td>
-          </tr>
-          <tr>
-            <td>Miles Walked</td>
-            <td>Stairs Climbed</td>
-          </tr>
-          <tr>
-            <td id="">-</td>
-            <td id="">-</td>
-          </tr>
-        </table>
+        <section class="daily-stats">
+          <table class="your-stats-table">
+            <tr>
+              <td>Step Count</td>
+              <td>Minutes Active</td>
+            </tr>
+            <tr>
+              <td id="stepCount">-</td>
+              <td id="minutesActive">-</td>
+            </tr>
+            <tr>
+              <td>Miles Walked</td>
+              <td>Stairs Climbed</td>
+            </tr>
+            <tr>
+              <td id="milesWalked">-</td>
+              <td id="stairsClimbed">-</td>
+            </tr>
+          </table>
+        </section>
+        <section class="weekly-progress">
+          <h4 class="stat-sub-title">Weekly Progress</h4>
+          <article class="progress-display">
+            <h5 class="progress-title">Steps</h5>
+            <table class="progress-table">
+              <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+              </tr>
+              <tr id="weeklySteps">
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+          </article>
+          <article class="progress-display">
+            <h5 class="progress-title">Minutes</h5>
+            <table class="progress-table">
+              <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+              </tr>
+              <tr id="weeklyMinutes">
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+          </article>
+          <article class="progress-display">
+            <h5 class="progress-title">Stairs</h5>  
+            <table class="progress-table">
+              <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+              </tr>
+              <tr id="weeklyFlights">
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+          </article>
+        </section>
+        <section class="comparison-table">
+          <h4 class="stat-sub-title">How do I compare?</h4>
+          <table>
+            <tr>
+              <td>Step Count</td>
+              <td>Minutes Active</td>
+            </tr>
+            <tr>
+              <td id="">-</td>
+              <td id="">-</td>
+            </tr>
+            <tr>
+              <td>Miles Walked</td>
+              <td>Stairs Climbed</td>
+            </tr>
+            <tr>
+              <td id="">-</td>
+              <td id="">-</td>
+            </tr>
+          </table>
+        </section>
       </section>
       <section class="hydration-widget widget">
         <h3 class="hydration-title">Hydration</h3>
-        <table>
-          <tr>
-            <td>Ounces for Today</td>
-          </tr>
-          <tr>
-            <td id="ouncesWater">-</td>
-          </tr>
-        </table>
+        <section class="daily-stats">
+          <table>
+            <tr>
+              <td>Ounces</td>
+            </tr>
+            <tr>
+              <td id="ouncesWater">-</td>
+            </tr>
+          </table>
+        </section>
+        <section class="weekly-progress"></section>
+          <h4 class="stat-sub-title">Weekly Ounces</h4>
+          <section class="progress-display">
+            <table>
+              <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+              </tr>
+              <tr id="hydrationProgress">
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+          </section>
       </section>
       <section class="sleep-widget widget">
-        <h3>Sleep</h3>
-        <table>
-          <tr>
-            <td>Hours Slept Today</td>
-            <td>Sleep Quality for Today</td>
-          </tr>
-          <tr>
-            <td id="hoursSlept">-</td>
-            <td id="sleepQuality">-</td>
-          </tr>
-        </table>
-      </section>
-      <section class="weekly-widget widget">
-        <h2 class="weekly-header">Weekly Progress</h2>
-        <article>
-          <h3 class="weekly-activity">Activity</h3>
+        <h3 class="sleep-title">Sleep</h3>
+        <section class="daily-stats">
           <table>
             <tr>
-              <td>Sun</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thu</td>
-              <td>Fri</td>
-              <td>Sat</td>
+              <td>Hours Slept</td>
+              <td>Sleep Quality</td>
             </tr>
-            <tr id="weeklySteps">
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-          </table>
-          <table>
             <tr>
-              <td>Sun</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thu</td>
-              <td>Fri</td>
-              <td>Sat</td>
-            </tr>
-            <tr id="weeklyMinutes">
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
+              <td id="hoursSlept">-</td>
+              <td id="sleepQuality">-</td>
             </tr>
           </table>
-          <table>
-            <tr>
-              <td>Sun</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thu</td>
-              <td>Fri</td>
-              <td>Sat</td>
-            </tr>
-            <tr id="weeklyFlights">
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-          </table>
-        </article>
-        <article class="weekly-hydration">
-          <h3>Hydration</h3>
-          <table>
-            <tr>
-              <td>Sun</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thu</td>
-              <td>Fri</td>
-              <td>Sat</td>
-            </tr>
-            <tr id="hydrationProgress">
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-          </table>
-        </article>
-        <article class="weekly-sleep">
-          <h3>Sleep</h3>
+        </section>
+        <section class="weekly-progress">
+          <h4 class="stat-sub-title">Weekly Progress</h4>
           <table>
             <tr>
               <td>Sun</td>
@@ -300,7 +313,7 @@
               <td>-</td>
             </tr>
           </table>
-        </article>
+        </section>
       </section>
     </main>
     <script src="https://unpkg.com/dayjs"></script>
