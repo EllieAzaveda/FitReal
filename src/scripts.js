@@ -47,7 +47,7 @@ const weeklyQuality = document.getElementById("weeklyQuality");
 
 const userInfoBtn = document.getElementById("userInfoBtn");
 const userInfoDropdown = document.getElementById("userInfoDropdown");
-// const activityWidget = document.getElementById("activityWidget");
+const  dropdownTables = document.querySelectorAll(".dropdown-table");
 // const hydrationWidget = document.getElementById("hydrationWidget");
 // const sleepWidget = document.getElementById("sleepWidget");
 
@@ -58,6 +58,11 @@ datePicker.addEventListener("click", setDailyStats);
 backButton.addEventListener("click", moveBackwards);
 forwardButton.addEventListener("click", moveForwards);
 userInfoBtn.addEventListener("click", showUserInfo);
+
+for(const dropdownTable of dropdownTables) {
+dropdownTable.addEventListener("click", showDropdownInfo)
+};
+
 
 // Handlers/Helpers
 function setInitialPage() {
@@ -293,5 +298,13 @@ function showUserInfo() {
       <li class="friend">Friend 2</li>
       <li class="friend">Friend 3</li>
     </ul>`
+  }
+}
+
+function showDropdownInfo() {
+  if(dropdownTable.style.display === none) {
+    dropdownTable.style.display = block
+  } else {
+    dropdownTable.style.display = none;
   }
 }

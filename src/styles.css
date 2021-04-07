@@ -88,8 +88,10 @@ body {
   background-color: #8E8EA4;
   height: 6vh;
   width: 95%;
-  margin-bottom: 0;
+  margin-bottom: 1em;
   font-size: 1.1em;
+  border-color: #FFFFFF;
+  border-left: 0;
   border-radius: 0 .3em .3em 0;
   display: flex;
   justify-content: center;
@@ -339,13 +341,22 @@ label {
     position: relative;
   }
 
+  .currentweek-nav-bar {
+    color: #FFFFFF;
+    width: 100%;
+    margin-top: 1em;
+    margin-left: 0;
+    padding-top: 3em;
+    grid-column-start: 1 / span 6;
+    grid-row-start: 2;
+  }
+
   .nav-dates {
     background-color: #808080;
     height: 4.5em;
     width: 100%;
     margin: 1em;
     border-radius: 0;
-    display: flex;
     align-self: stretch;
   }
 
@@ -366,13 +377,7 @@ label {
     width: 95%;
     grid-row-start: 3;
     align-self: center;
-  }
-
-  .currentweek-nav-bar {
-    color: #FFFFFF;
-    margin-top: 1em;
-    grid-column-start: 1 / span 6;
-    grid-row-start: 2;
+    margin-left: 1em;
   }
 
   .hidden {
