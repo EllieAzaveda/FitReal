@@ -45,12 +45,27 @@ const weeklyFlights = document.getElementById("weeklyFlights");
 const weeklyHours = document.getElementById("weeklyHours");
 const weeklyQuality = document.getElementById("weeklyQuality");
 
+const userInfoBtn = document.getElementById("userInfoBtn");
+const userInfoDropdown = document.getElementById("userInfoDropdown");
+const activityDropdown = document.getElementById("activityDropdown");
+const activityDropdownBtn = document.getElementById("activityDropdownBtn");
+const hydrationDropdown = document.getElementById("hydrationDropdown");
+const hydrationDropdownBtn = document.getElementById("hydrationDropdownBtn");
+const sleepDropdown = document.getElementById("sleepDropdown");
+const sleepDropdownBtn = document.getElementById("sleepDropdownBtn");
+
+
 // Event Listeners
 window.addEventListener("load", setInitialPage)
 
 datePicker.addEventListener("click", setDailyStats);
 backButton.addEventListener("click", moveBackwards);
 forwardButton.addEventListener("click", moveForwards);
+userInfoBtn.addEventListener("click", showUserInfo);
+
+activityDropdownBtn.addEventListener("click", showActivityDropdown);
+hydrationDropdownBtn.addEventListener("click", showHydrationDropdown);
+sleepDropdownBtn.addEventListener("click", showSleepDropdown);
 
 // Handlers/Helpers
 function setInitialPage() {
@@ -139,8 +154,8 @@ function renderUserInfo() {
   const avgStepGoal = Math.round(userRepo.calcAvgStepGoal());
 
   greeting.innerText = `Hey, ${firstName}!`;
-  strideLength.innerText = user.strideLength;
-  stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
+  // strideLength.innerText = user.strideLength;
+  // stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
 }
 
 function renderFriends() {
@@ -261,4 +276,42 @@ function renderWeeklySleep(forDate) {
       display.innerText = foundQuality[index];
     }
   });
+}
+
+function showUserInfo() {
+  if (!userInfoDropdown.classList.contains("hidden")) {
+    userInfoDropdown.classList.toggle("hidden");
+  } else {
+    userInfoDropdown.classList.toggle("hidden");
+    userInfoDropdown.innerHTML =
+    `<h4 class="user-info-title">Your Info</h4>
+      <table>
+        <tr class="user-info-data">
+          <td class="user-info-top">Stride Length</td>
+          <td class="user-info-top">Step Goal CHANGE</td>
+        </tr>
+          <tr class="user-info-data">
+          <td class="user-info-bottom">-</td>
+          <td class="user-info-bottom">-</td>
+        </tr>
+    </table>
+    <h4 class="user-info-title">Friends</h4>
+    <ul class="friends-list" id="friends">
+      <li class="friend">Friend 1</li>
+      <li class="friend">Friend 2</li>
+      <li class="friend">Friend 3</li>
+    </ul>`
+  }
+}
+
+function showActivityDropdown() {
+  activityDropdown.classList.toggle("hidden");
+}
+
+function showHydrationDropdown() {
+  hydrationDropdown.classList.toggle("hidden");
+}
+
+function showSleepDropdown() {
+  sleepDropdown.classList.toggle("hidden");
 }

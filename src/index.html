@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>FitReal</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');</style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="mobile-header">
+    <div class="mobile-header" id="userInfoBtn">
       <button class="user-icon-container hidden">
-        <img class="user-icon-mobile" src="../assets/human.png"/>
+        <img class="user-icon-mobile" src="../assets/human.png"/ alt="person avatar in circle">
+          <section class="user-info userInfoDropdown hidden" id="userInfoDropdown"></section>
       </button>
       <h3 class="greeting-mobile hidden" id="greeting">Hey,</h3>
-      <img class="leaderboard-btn-mobile hidden" id="leaderboardBtn" src="../assets/crown.png"/>
+      <img class="leaderboard-btn-mobile hidden" id="leaderboardBtn" src="../assets/crown.png"/ alt="leaderboard crown">
     </div>
     <header class="currentweek-nav-bar">
       <nav class="nav-dates" id="datePicker">
@@ -40,11 +42,11 @@
         </label>
         <button class="nav-btn invisible" id="forwardButton">></button>
       </nav>
-      <img class="leaderboard-btn" id="leaderboardBtn" src="../assets/crown.png"/>
+      <img class="leaderboard-btn" id="leaderboardBtn" src="../assets/crown.png"/ alt="leaderboard crown">
     </header>
     <aside class="user-info-aside">
       <h3 class="greeting" id="greeting">Hey,</h3>
-      <img class="user-icon" src="../assets/human.png"/>
+      <img class="user-icon" src="../assets/human.png"/ alt="person avatar in circle">
       <section class="user-info">
         <h4 class="user-info-title">Your Info</h4>
         <table>
@@ -53,8 +55,8 @@
             <td class="user-info-top">Step Goal CHANGE</td>
           </tr>
           <tr class="user-info-data">
-            <td class="user-info-bottom" id="strideLength">-</td>
-            <td class="user-info-bottom" id="stepComparison">-</td>
+            <td class="user-info-bottom">-</td>
+            <td class="user-info-bottom">-</td>
           </tr>
         </table>
         <h4 class="user-info-title">Friends</h4>
@@ -65,8 +67,8 @@
         </ul>
       </section>
       <section>
-        <h4 class="your-avgs-button">Daily Activity Averages</h4>
-        <table class="dropdown-table">
+        <button class="your-avgs-button" id="activityDropdownBtn">Daily Activity Averages</button>
+        <table class="dropdown-table hidden" id="activityDropdown">
           <tr>
             <td>Steps</td>
             <td>Minutes</td>
@@ -81,8 +83,8 @@
         </ul>
       </section>
       <section>
-        <h4 class="your-avgs-button">Daily Hydration Averages</h4>
-        <table class="dropdown-table">
+        <button class="your-avgs-button" id="hydrationDropdownBtn">Daily Hydration Averages</button>
+        <table class="dropdown-table hidden" id="hydrationDropdown">
           <tr>
             <td id="averageOunces">Average Ounces</td>
           </tr>
@@ -92,8 +94,8 @@
         </table>
       </section>
       <section>
-        <h4 class="your-avgs-button">Daily Sleep Averages</h4>
-        <table class="dropdown-table">
+        <button class="your-avgs-button" id="sleepDropdownBtn">Daily Sleep Averages</button>
+        <table class="dropdown-table hidden" id="sleepDropdown">
           <tr>
             <td>Sleep Quality</td>
             <td>Hours Slept</td>
@@ -106,7 +108,7 @@
       </section>
     </aside>
     <main class="daily-stats-container">
-      <section class="activity-widget widget">
+      <section class="activity-widget widget" id="widget">
         <h3 class="activity-title">Activity</h3>
         <section class="daily-stats">
           <table class="your-stats-table">
@@ -128,7 +130,7 @@
             </tr>
           </table>
         </section>
-        <section class="weekly-progress">
+        <section class="weekly-progress" id="activityWidget">
           <h4 class="stat-sub-title">Weekly Progress</h4>
           <article class="progress-display">
             <h5 class="progress-title">Steps</h5>
@@ -222,7 +224,7 @@
           </table>
         </section>
       </section>
-      <section class="hydration-widget widget">
+      <section class="hydration-widget widget" id="hydrationWidget">
         <h3 class="hydration-title">Hydration</h3>
         <section class="daily-stats">
           <table>
@@ -259,7 +261,7 @@
             </table>
           </section>
       </section>
-      <section class="sleep-widget widget">
+      <section class="sleep-widget widget" id="activityWidget">
         <h3 class="sleep-title">Sleep</h3>
         <section class="daily-stats">
           <table>
