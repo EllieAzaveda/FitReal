@@ -20,6 +20,7 @@ const backButton = document.getElementById("backButton");
 const forwardButton = document.getElementById("forwardButton");
 
 const greeting = document.getElementById("greeting");
+const mobileGreeting = document.getElementById("mobileGreeting");
 const strideLength = document.getElementById("strideLength");
 const stepComparison = document.getElementById("stepComparison");
 const friends = document.getElementById("friends");
@@ -64,15 +65,16 @@ function setInitialPage() {
 }
 
 function setDailyStats(event) {
-  const isButton = event.target.className === "day-btn";
+  const isButton = event.target.className === "day-btn-label";
   const notAfter = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
   const notBefore = dayjs(event.target.value).diff(dayjs("2019/06/15")) >= 0;
 
-  if (isButton && notAfter && notBefore) {
-    const selectedDay = event.target.value;
-    currentDate = selectedDay;
+  console.log(event.target)
 
-    toggleDate();
+  if (isButton && notAfter && notBefore) {
+    currentDate = event.target.value;
+
+    setDatePicker();
     renderPage();
   }
 }
@@ -83,7 +85,8 @@ function moveBackwards() {
   if (startOfWeek === "2019/06/16") {
     currentDate = "2019/06/15";
   } else {
-    currentDate = dayjs(currentDate).subtract(7, "days").format("YYYY/MM/DD");
+    const weekBefore = dayjs(currentDate).subtract(7, "days");
+    currentDate = weekBefore.startOf("week").format("YYYY/MM/DD");
   }
 
   setDatePicker();
@@ -96,7 +99,8 @@ function moveForwards() {
   if (startOfWeek === "2019/09/15") {
     currentDate = "2019/09/22";
   } else {
-    currentDate = dayjs(currentDate).add(7, "days").format("YYYY/MM/DD");
+    const weekAfter = dayjs(currentDate).add(7, "days");
+    currentDate = weekAfter.startOf("week").format("YYYY/MM/DD");
   }
 
   setDatePicker();
@@ -104,29 +108,40 @@ function moveForwards() {
 }
 
 function setDatePicker() {
-  const dates = datePicker.querySelectorAll(".day-btn");
+  const dates = datePicker.querySelectorAll(".day-btn-label");
   let startOfWeek = dayjs(currentDate).startOf("week");
 
   dates.forEach(day => {
     day.value = startOfWeek.format("YYYY/MM/DD");
-    day.innerText = startOfWeek.format("MM/DD");
+    day.lastElementChild.innerText = startOfWeek.format("MM/DD");
     startOfWeek = startOfWeek.add(1, "day");
+
+    displayDisabled(day);
+    displaySelected(day);
   });
 
-  toggleDate();
   setNavButtons();
 }
 
-function toggleDate() {
-  const dates = datePicker.querySelectorAll(".day-btn");
-  
-  dates.forEach(day => {
-    if (day.value === currentDate) {
-      day.className = "day-btn selected";
-    } else {
-      day.className = "day-btn";
-    }
-  });
+function displayDisabled(day) {
+  const after = dayjs(day.value).diff(dayjs("2019/09/22")) >= 0;
+  const before = dayjs(day.value).diff(dayjs("2019/06/15")) <= 0;
+
+  if (after || before) {
+    day.className = "day-btn-label disabled";
+  } else {
+    day.className = "day-btn-label";
+  }
+}
+
+function displaySelected(day) {
+  if (day.value === currentDate) {
+    day.className = "day-btn-label selected";
+  } else if (day.classList.contains("disabled")) {
+    day.className = "day-btn-label disabled"
+  } else {
+    day.className = "day-btn-label"
+  }
 }
 
 function setNavButtons() {
@@ -159,6 +174,7 @@ function renderUserInfo() {
   const avgStepGoal = Math.round(userRepo.calcAvgStepGoal());
 
   greeting.innerText = `Hey, ${firstName}!`;
+  mobileGreeting.innerText = `Hey, ${firstName}!`;
   strideLength.innerText = user.strideLength;
   stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
 }
@@ -183,18 +199,18 @@ function renderTotalStats() {
 }
 
 function renderTotalActivity() {
-  averageSteps.innerText = userActivity.calcTotalStat("numSteps");
-  averageMinutes.innerText = userActivity.calcTotalStat("minutesActive");
-  averageStairs.innerText = userActivity.calcTotalStat("flightsOfStairs");
+  averageSteps.innerText = Math.round(userActivity.calcTotalStat("numSteps"));
+  averageMinutes.innerText = Math.round(userActivity.calcTotalStat("minutesActive"));
+  averageStairs.innerText = Math.round(userActivity.calcTotalStat("flightsOfStairs"));
 }
 
 function renderTotalHydration() {
-  averageOunces.innerText = userHydration.calcAvgTotalOunces();
+  averageOunces.innerText = userHydration.calcAvgTotalOunces().toFixed(1);
 }
 
 function renderTotalSleep() {
-  averageQuality.innerText = userSleep.calcAvgTotalQuality();
-  averageHours.innerText = userSleep.calcAvgTotalHrs();
+  averageQuality.innerText = userSleep.calcAvgTotalQuality().toFixed(1);
+  averageHours.innerText = userSleep.calcAvgTotalHrs().toFixed(1);
 }
 
 function renderDailyStats(forDate) {
@@ -209,10 +225,10 @@ function renderDailyActivity(forDate) {
   const miles = userActivity.calcMilesWalked(forDate, user.strideLength).toFixed(2);
   const flights = userActivity.getDailyStat(forDate, "flightsOfStairs");
 
-  const avgUserSteps = userRepo.calcAvgStepGoal();
-  const avgUserMinutes = activityRepo.calcAvgStat(forDate, "minutesActive");
+  const avgUserSteps = Math.round(activityRepo.calcAvgStat(forDate, "numSteps"));
+  const avgUserMinutes = Math.round(activityRepo.calcAvgStat(forDate, "minutesActive"));
   const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData).toFixed(2);
-  const avgUserFlights = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
+  const avgUserFlights = Math.round(activityRepo.calcAvgStat(forDate, "flightsOfStairs"));
 
   stepCount.innerText = `${steps}`;
   userAvgSteps.innerText = `${avgUserSteps}`;
