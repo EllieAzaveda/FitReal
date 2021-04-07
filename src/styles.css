@@ -286,11 +286,11 @@ label {
   body {
     background: transparent;
     height: 100%;
-    max-width: 100%;
+    width: 20em;
     margin: 1em;
+    display: grid;
     grid-template-columns: 10% 10% auto 10% 10%;
     grid-template-rows: 10%;
-    justify-content: center;
   }
 
   .leaderboard-btn {
@@ -329,6 +329,16 @@ label {
     display: inline-block;
   }
 
+  .userInfoDropdown {
+    background-color: #FFFFFF;
+    margin-top: 1em;;
+    width: 94%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
   .nav-dates {
     background-color: #808080;
     height: 4.5em;
@@ -336,16 +346,7 @@ label {
     margin: 1em;
     border-radius: 0;
     display: flex;
-    align-self: flex-end;
-  }
-
-  .currentweek-nav-bar {
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1 / span 6;
-    grid-row: 2;
+    align-self: stretch;
   }
 
   .mobile-header {
@@ -362,9 +363,20 @@ label {
   }
 
   .daily-stats-container {
-    width: 95vw;
-    margin-right: 2em;
+    width: 95%;
     grid-row-start: 3;
+    align-self: center;
+  }
+
+  .currentweek-nav-bar {
+    color: #FFFFFF;
+    margin-top: 1em;
+    grid-column-start: 1 / span 6;
+    grid-row-start: 2;
+  }
+
+  .hidden {
+    display: none;
   }
 }
 
@@ -445,6 +457,10 @@ label {
 
   .user-info-aside {
     display: none;
+  }
+
+  .widget {
+    visibility: visible;
   }
 
   .daily-stats-container {

@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="mobile-header">
+    <div class="mobile-header" id="userInfoBtn">
       <button class="user-icon-container hidden">
         <img class="user-icon-mobile" src="../assets/human.png"/>
+          <section class="user-info userInfoDropdown hidden" id="userInfoDropdown"></section>
       </button>
       <h3 class="greeting-mobile hidden" id="greeting">Hey,</h3>
       <img class="leaderboard-btn-mobile hidden" id="leaderboardBtn" src="../assets/crown.png"/>
@@ -53,8 +54,8 @@
             <td class="user-info-top">Step Goal CHANGE</td>
           </tr>
           <tr class="user-info-data">
-            <td class="user-info-bottom" id="strideLength">-</td>
-            <td class="user-info-bottom" id="stepComparison">-</td>
+            <td class="user-info-bottom">-</td>
+            <td class="user-info-bottom">-</td>
           </tr>
         </table>
         <h4 class="user-info-title">Friends</h4>
@@ -106,7 +107,7 @@
       </section>
     </aside>
     <main class="daily-stats-container">
-      <section class="activity-widget widget">
+      <section class="activity-widget widget" id="widget">
         <h3 class="activity-title">Activity</h3>
         <section class="daily-stats">
           <table class="your-stats-table">
@@ -128,7 +129,7 @@
             </tr>
           </table>
         </section>
-        <section class="weekly-progress">
+        <section class="weekly-progress" id="activityWidget">
           <h4 class="stat-sub-title">Weekly Progress</h4>
           <article class="progress-display">
             <h5 class="progress-title">Steps</h5>
@@ -222,7 +223,7 @@
           </table>
         </section>
       </section>
-      <section class="hydration-widget widget">
+      <section class="hydration-widget widget" id="hydrationWidget">
         <h3 class="hydration-title">Hydration</h3>
         <section class="daily-stats">
           <table>
@@ -259,7 +260,7 @@
             </table>
           </section>
       </section>
-      <section class="sleep-widget widget">
+      <section class="sleep-widget widget" id="activityWidget">
         <h3 class="sleep-title">Sleep</h3>
         <section class="daily-stats">
           <table>
