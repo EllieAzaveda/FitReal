@@ -7,38 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <button class="user-icon-container hidden">
-      <img class="user-icon-mobile" src="../assets/human.png"/>
-    </button>
-    <h3 class="greeting-mobile hidden" id="greeting">Hey,</h3>
-    <button class="leaderboard-btn-mobile hidden" id="leaderboardBtn">👑</button>
+    <div class="mobile-header">
+      <button class="user-icon-container hidden">
+        <img class="user-icon-mobile" src="../assets/human.png"/>
+      </button>
+      <h3 class="greeting-mobile hidden" id="greeting">Hey,</h3>
+      <img class="leaderboard-btn-mobile hidden" id="leaderboardBtn" src="../assets/crown.png"/>
+    </div>
     <header class="currentweek-nav-bar">
       <nav class="nav-dates" id="datePicker">
         <button class="nav-btn" id="backButton"><</button>
-        <label for="sun">Sun<br />
+        <label class="day-btn-label" for="sun">Sun<br />
         <button class="day-btn" id="sun"></button>
         </label>
-        <label for="sun">Mon<br />
+        <label class="day-btn-label" for="sun">Mon<br />
         <button class="day-btn" id="mon"></button>
         </label>
-        <label for="sun">Tue<br />
+        <label class="day-btn-label" for="sun">Tue<br />
         <button class="day-btn" id="tue"></button>
         </label>
-        <label for="sun">Wed<br />
+        <label class="day-btn-label" for="sun">Wed<br />
         <button class="day-btn" id="wed"></button>
         </label>
-        <label for="sun">Thu<br />
+        <label class="day-btn-label" for="sun">Thu<br />
         <button class="day-btn" id="thu"></button>
         </label>
-        <label for="sun">Fri<br />
+        <label class="day-btn-label" for="sun">Fri<br />
         <button class="day-btn" id="fri"></button>
         </label>
-        <label for="sun">Sat<br />
+        <label class="day-btn-label" for="sun">Sat<br />
         <button class="day-btn" id="sat"></button>
         </label>
         <button class="nav-btn visible" id="forwardButton">></button>
       </nav>
-      <button class="leaderboard-btn" id="leaderboardBtn">👑</button>
+      <img class="leaderboard-btn" id="leaderboardBtn" src="../assets/crown.png"/>
     </header>
     <aside class="user-info-aside">
       <h3 class="greeting" id="greeting">Hey,</h3>
@@ -175,7 +177,7 @@
             </table>
           </article>
           <article class="progress-display">
-            <h5 class="progress-title">Stairs</h5>  
+            <h5 class="progress-title">Stairs</h5>
             <table class="progress-table">
               <tr>
                 <td>Sun</td>
