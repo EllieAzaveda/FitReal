@@ -1,13 +1,9 @@
 /* GENERAL */
 html {
-  background-color: #DDCECD;
-  /* background-image: url("../assets/colorful_smoke.jpeg"); */
+  background-image: url("../assets/it_is_a_rainbox.png");
   background-repeat: no-repeat;
-  height: 100%;
   display: flex;
   justify-content: center;
-  align-content: center;
-  align-items: center;
 }
 
 body {
