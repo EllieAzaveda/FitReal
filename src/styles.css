@@ -419,7 +419,7 @@ label {
     background-color: #808080;
     height: 4.5em;
     width: 100%;
-    margin: 1em;
+    margin: 1em 0;
     border-radius: 0;
     display: flex;
     align-self: flex-end;
@@ -458,6 +458,37 @@ label {
     height: fit-content;
   }
 
+  .leaderboard-btn {
+    display: none;
+  }
+
+  .leaderboard-btn-mobile {
+    background-color: transparent;
+    height: 4vh;
+    width: 4vh;
+    font-size: 3vh;
+    margin: 1em;
+    padding: 0;
+    display: block;
+  }
+
+  .nav-dates {
+    background-color: #808080;
+    border-radius: 0;
+  }
+
+  .currentweek-nav-bar {
+    color: #FFFFFF;
+    height: 3em;
+    width: 90%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / span 6;
+    grid-row: 2;
+  }
+
   .activity-widget {
     grid-column: 1 / span 10;
     grid-row: 1 / span 4;
@@ -471,8 +502,6 @@ label {
   .sleep-widget {
     grid-column: 1 / span 10;
     grid-row: 7 / span 3;
-  }
-}
   }
 }
 
