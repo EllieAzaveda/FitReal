@@ -239,40 +239,49 @@ label {
     background-color: rgba(0,213,251, 0.5);
     border-radius: .5em;
     height: 100%;
-    width: 30em;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(5, 20%);
     grid-template-rows: repeat(5, 20%);
   }
-  .user-icon-container{
-    background-color: transparent;
-    border: none;
-    display: inline;
-    align-self: flex-end;
-  }
   .user-icon-mobile {
-    height: 3em;
-    width: 3em;
+    height: 6vh;
+    width: 6vh;
+    display: inline-flex;
+  }
+  .greeting-mobile {
+    font-size: 3vh;
+    align-self: center;
+    display: inline;
+    grid-column: 3;
   }
   .leaderboard-btn {
+    display: none;
+  }
+  .leaderboard-btn-mobile {
     background-color: transparent;
     height: 6vh;
     width: 6vh;
     font-size: 5vh;
     margin-right: 10%;
     padding 0;
+    display: inline-flex;
     grid-column-start: 6;
     align-self: flex-start;
   }
-  .greeting {
-    font-size: 2.5vh;
-    align-self: center;
-    grid-column: 3;
+  .user-icon-container{
+    background-color: transparent;
+    border: none;
+    display: inline-flex;
+    align-self: flex-start;
   }
   .currentweek-nav-bar {
     color: #FFFFFF;
     display: flex;
     justify-content: center;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 6;
   }
   .nav-dates {
     background-color: #808080;
@@ -283,8 +292,6 @@ label {
     justify-content: center;
     align-items: center;
     align-content: stretch;
-    grid-column-start: 1;
-    grid-column-end: 6;
   }
   .user-info-aside {
     display: none;
@@ -295,6 +302,7 @@ label {
     margin: 3vh;
     grid-column: 1 / span 6;
     grid-row: 2 / span 6;
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
