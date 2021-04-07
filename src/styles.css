@@ -141,6 +141,14 @@ body {
   height: 50%;
   width: 100%;
   font-size: 2vh;
+  outline: none;
+
+}
+
+.selected {
+  padding: 5px;
+  border: solid 1px white;
+  border-radius: 10px;
 }
 
 .leaderboard-btn {

@@ -45,6 +45,11 @@ const weeklyFlights = document.getElementById("weeklyFlights");
 const weeklyHours = document.getElementById("weeklyHours");
 const weeklyQuality = document.getElementById("weeklyQuality");
 
+const userAvgSteps = document.getElementById("userAvgSteps");
+const userAvgMin = document.getElementById("userAvgMin");
+const userAvgMiles = document.getElementById("userAvgMiles");
+const userAvgStairs = document.getElementById("userAvgStairs");
+
 // Event Listeners
 window.addEventListener("load", setInitialPage)
 
@@ -60,12 +65,14 @@ function setInitialPage() {
 
 function setDailyStats(event) {
   const isButton = event.target.className === "day-btn";
-  const isCurrent = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
+  const notAfter = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
+  const notBefore = dayjs(event.target.value).diff(dayjs("2019/06/15")) >= 0;
 
-  if (isButton && isCurrent) {
+  if (isButton && notAfter && notBefore) {
     const selectedDay = event.target.value;
     currentDate = selectedDay;
 
+    toggleDate();
     renderPage();
   }
 }
@@ -106,7 +113,20 @@ function setDatePicker() {
     startOfWeek = startOfWeek.add(1, "day");
   });
 
+  toggleDate();
   setNavButtons();
+}
+
+function toggleDate() {
+  const dates = datePicker.querySelectorAll(".day-btn");
+  
+  dates.forEach(day => {
+    if (day.value === currentDate) {
+      day.className = "day-btn selected";
+    } else {
+      day.className = "day-btn";
+    }
+  });
 }
 
 function setNavButtons() {
@@ -114,13 +134,13 @@ function setNavButtons() {
   const startOfWeek = dayjs(currentDate).startOf("week");
 
   if (endOfWeek.diff(dayjs("2019/06/16")) <= 0) {
-    backButton.className = "nav-btn visible";
+    backButton.className = "nav-btn invisible";
   } else {
     backButton.className = "nav-btn";
   }
 
   if (startOfWeek.diff(dayjs("2019/09/22")) >= 0) {
-    forwardButton.className = "nav-btn visible";
+    forwardButton.className = "nav-btn invisible";
   } else {
     forwardButton.className = "nav-btn";
   }
@@ -194,10 +214,17 @@ function renderDailyActivity(forDate) {
   const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData).toFixed(2);
   const avgUserFlights = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
 
-  stepCount.innerText = `${steps} / ${avgUserSteps}`;
-  minutesActive.innerText = `${minutes} / ${avgUserMinutes}`;
-  milesWalked.innerText = `${miles} / ${avgUserMiles}`;
-  stairsClimbed.innerText = `${flights} / ${avgUserFlights}`;
+  stepCount.innerText = `${steps}`;
+  userAvgSteps.innerText = `${avgUserSteps}`;
+
+  minutesActive.innerText = `${minutes}`;
+  userAvgMin.innerText = `${avgUserMinutes}`;
+
+  milesWalked.innerText = `${miles}`;
+  userAvgMiles.innerText = `${avgUserMiles}`;
+
+  stairsClimbed.innerText = `${flights}`;
+  userAvgStairs.innerText = `${avgUserFlights}`;
 }
 
 function renderDailyHydration(forDate) {
