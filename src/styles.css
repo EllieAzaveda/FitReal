@@ -4,10 +4,11 @@ html {
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
+  font-family: 'Bebas Neue', cursive;
 }
 
 body {
-  background-color: rgba(0,213,251, 0.2);
+  background-color: rgba(176,215,255, 0.4);
   border-radius: .5em;
   height: 90%;
   width: 80%;
@@ -48,7 +49,8 @@ body {
 }
 
 .user-info-data {
-  background-color: #8E8EA4;
+  color: #FFFFFF;
+  background-color: #2D3142;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -85,11 +87,15 @@ body {
 /* DROPDOWN BUTTONS */
 
 .your-avgs-button {
-  background-color: #8E8EA4;
+  background-color: #2D3142;
   height: 6vh;
   width: 95%;
-  margin-bottom: 0;
-  font-size: 1.1em;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  font-family: 'Bebas Neue', cursive;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  border-left: 0;
   border-radius: 0 .3em .3em 0;
   display: flex;
   justify-content: center;
@@ -136,8 +142,8 @@ body {
 }
 
 .day-btn {
-  color: #FFFFFF;
-  background-color: #66667F;
+  /* color: #FFFFFF; */
+  background-color: #B0D7FF;
   height: 50%;
   width: 100%;
   font-size: 2vh;
@@ -165,8 +171,8 @@ body {
 }
 
 .nav-dates {
-  background-color: #8E8EA4;
-  height: 40%;
+  background-color: #2D3142;
+  height: 45%;
   width: 90%;
   border-radius: .4em;
   display: flex;
@@ -193,6 +199,7 @@ label {
 
 .daily-stats-container {
   background-color: #DFCFD2;
+  font-size: 1.2em;
   border-radius: .4em;
   margin-bottom: 3vh;
   margin-right: 3vh;
@@ -204,7 +211,7 @@ label {
 }
 
 .activity-widget {
-  background-color: #F0E8DF;
+  background-color: #9C7C91;
   grid-row: 1 / span 10;
   grid-column: 1 / span 6;
   display: flex;
@@ -257,7 +264,7 @@ label {
 }
 
 .hydration-widget {
-  background-color: #C2DEF0;
+  background-color: #B1B2CD;
   grid-row: 1 / span 4;
   grid-column: 7 / span 4;
   display: flex;
@@ -267,7 +274,7 @@ label {
 }
 
 .sleep-widget {
-  background-color: #DDD4F7;
+  background-color: #ADACB5;
   grid-row: 5 / span 5;
   grid-column: 7 / span 4;
   display: flex;
@@ -297,11 +304,11 @@ label {
   body {
     background: transparent;
     height: 100%;
-    max-width: 100%;
+    width: 20em;
     margin: 1em;
+    display: grid;
     grid-template-columns: 10% 10% auto 10% 10%;
     grid-template-rows: 10%;
-    justify-content: center;
   }
 
   .leaderboard-btn {
@@ -340,23 +347,33 @@ label {
     display: inline-block;
   }
 
+  .userInfoDropdown {
+    background-color: #FFFFFF;
+    margin-top: 1em;;
+    width: 94%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .currentweek-nav-bar {
+    color: #FFFFFF;
+    width: 100%;
+    margin-top: 1em;
+    margin-left: 0;
+    padding-top: 3em;
+    grid-column-start: 1 / span 6;
+    grid-row-start: 2;
+  }
+
   .nav-dates {
     background-color: #808080;
     height: 4.5em;
     width: 100%;
     margin: 1em;
     border-radius: 0;
-    display: flex;
-    align-self: flex-end;
-  }
-
-  .currentweek-nav-bar {
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1 / span 6;
-    grid-row: 2;
+    align-self: stretch;
   }
 
   .mobile-header {
@@ -373,9 +390,14 @@ label {
   }
 
   .daily-stats-container {
-    width: 95vw;
-    margin-right: 2em;
+    width: 95%;
     grid-row-start: 3;
+    align-self: center;
+    margin-left: 1em;
+  }
+
+  .hidden {
+    display: none;
   }
 }
 
@@ -456,6 +478,10 @@ label {
 
   .user-info-aside {
     display: none;
+  }
+
+  .widget {
+    visibility: visible;
   }
 
   .daily-stats-container {
