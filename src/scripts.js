@@ -63,9 +63,9 @@ backButton.addEventListener("click", moveBackwards);
 forwardButton.addEventListener("click", moveForwards);
 userInfoBtn.addEventListener("click", showUserInfo);
 
-activityDropdownBtn.addEventListener("click", showDropdownInfo);
-
-
+activityDropdownBtn.addEventListener("click", showActivityDropdown);
+hydrationDropdownBtn.addEventListener("click", showHydrationDropdown);
+sleepDropdownBtn.addEventListener("click", showSleepDropdown);
 
 // Handlers/Helpers
 function setInitialPage() {
@@ -309,9 +309,9 @@ function showActivityDropdown() {
 }
 
 function showHydrationDropdown() {
-  activityDropdown.classList.toggle("hidden");
+  hydrationDropdown.classList.toggle("hidden");
 }
 
 function showSleepDropdown() {
-  activityDropdown.classList.toggle("hidden");
+  sleepDropdown.classList.toggle("hidden");
 }
