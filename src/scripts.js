@@ -47,9 +47,13 @@ const weeklyQuality = document.getElementById("weeklyQuality");
 
 const userInfoBtn = document.getElementById("userInfoBtn");
 const userInfoDropdown = document.getElementById("userInfoDropdown");
-const  dropdownTables = document.querySelectorAll(".dropdown-table");
-// const hydrationWidget = document.getElementById("hydrationWidget");
-// const sleepWidget = document.getElementById("sleepWidget");
+const activityDropdown = document.getElementById("activityDropdown");
+const activityDropdownBtn = document.getElementById("activityDropdownBtn");
+const hydrationDropdown = document.getElementById("hydrationDropdown");
+const hydrationDropdownBtn = document.getElementById("hydrationDropdownBtn");
+const sleepDropdown = document.getElementById("sleepDropdown");
+const sleepDropdownBtn = document.getElementById("sleepDropdownBtn");
+
 
 // Event Listeners
 window.addEventListener("load", setInitialPage)
@@ -59,9 +63,8 @@ backButton.addEventListener("click", moveBackwards);
 forwardButton.addEventListener("click", moveForwards);
 userInfoBtn.addEventListener("click", showUserInfo);
 
-for(const dropdownTable of dropdownTables) {
-dropdownTable.addEventListener("click", showDropdownInfo)
-};
+activityDropdownBtn.addEventListener("click", showDropdownInfo);
+
 
 
 // Handlers/Helpers
@@ -301,10 +304,14 @@ function showUserInfo() {
   }
 }
 
-function showDropdownInfo() {
-  if(dropdownTable.style.display === none) {
-    dropdownTable.style.display = block
-  } else {
-    dropdownTable.style.display = none;
-  }
+function showActivityDropdown() {
+  activityDropdown.classList.toggle("hidden");
+}
+
+function showHydrationDropdown() {
+  activityDropdown.classList.toggle("hidden");
+}
+
+function showSleepDropdown() {
+  activityDropdown.classList.toggle("hidden");
 }
