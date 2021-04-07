@@ -186,12 +186,12 @@ function renderDailyStats(forDate) {
 function renderDailyActivity(forDate) {
   const steps = userActivity.getDailyStat(forDate, "numSteps");
   const minutes = userActivity.getDailyStat(forDate, "minutesActive");
-  const miles = userActivity.calcMilesWalked(forDate, user.strideLength);
+  const miles = userActivity.calcMilesWalked(forDate, user.strideLength).toFixed(2);
   const flights = userActivity.getDailyStat(forDate, "flightsOfStairs");
 
   const avgUserSteps = userRepo.calcAvgStepGoal();
   const avgUserMinutes = activityRepo.calcAvgStat(forDate, "minutesActive");
-  const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData);
+  const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData).toFixed(2);
   const avgUserFlights = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
 
   stepCount.innerText = `${steps} / ${avgUserSteps}`;
