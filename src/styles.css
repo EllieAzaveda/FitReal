@@ -48,7 +48,7 @@ body {
 }
 
 .user-info-data {
-  background-color: #009999;
+  background-color: #8E8EA4;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -85,10 +85,11 @@ body {
 /* DROPDOWN BUTTONS */
 
 .your-avgs-button {
-  background-color: #99ffcc;
+  background-color: #8E8EA4;
   height: 6vh;
   width: 95%;
   margin-bottom: 0;
+  font-size: 1.1em;
   border-radius: 0 .3em .3em 0;
   display: flex;
   justify-content: center;
@@ -98,7 +99,7 @@ body {
 .dropdown-table {
   background-color: #FFFFFF;
   margin-top: 0;
-  width: 95%;
+  width: 94%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +108,6 @@ body {
 /* ASIDE CONTAINER */
 
 .user-info-aside {
-  background-color: #ff3300 solid;
   display: flex;
   flex-direction: column;
   grid-row-start: 1;
@@ -136,7 +136,8 @@ body {
 }
 
 .day-btn {
-  background-color: #666699;
+  color: #FFFFFF;
+  background-color: #66667F;
   height: 50%;
   width: 100%;
   font-size: 2vh;
@@ -146,16 +147,16 @@ body {
   background-color: transparent;
   height: 6vh;
   width: 6vh;
-  margin-right: 2vw;
+  margin: 2em;
   padding: .1em;
   grid-column-start: 6;
-  align-self: center;
+  align-self: flex-start;
 }
 
 .nav-dates {
-  background-color: #808080;
+  background-color: #8E8EA4;
   height: 40%;
-  width: 80%;
+  width: 90%;
   border-radius: .4em;
   display: flex;
   justify-content: space-around;
