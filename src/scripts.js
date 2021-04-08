@@ -83,8 +83,6 @@ function setDailyStats(event) {
   const notAfter = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
   const notBefore = dayjs(event.target.value).diff(dayjs("2019/06/15")) >= 0;
 
-  console.log(event.target)
-
   if (isButton && notAfter && notBefore) {
     currentDate = event.target.value;
 
