@@ -1,3 +1,6 @@
+// Dependencies for testing:
+// const dayjs = require("dayjs");
+
 class UserActivity {
   constructor(data = []) {
     this.data = data;
