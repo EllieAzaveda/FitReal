@@ -334,13 +334,7 @@ function showUserInfo() {
           <td class="user-info-bottom">-</td>
           <td class="user-info-bottom">-</td>
         </tr>
-    </table>
-    <h4 class="user-info-title">Friends</h4>
-    <ul class="friends-list" id="friends">
-      <li class="friend">Friend 1</li>
-      <li class="friend">Friend 2</li>
-      <li class="friend">Friend 3</li>
-    </ul>`
+    </table>`
   }
 }
 
