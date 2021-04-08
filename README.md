@@ -16,7 +16,7 @@ FitReal is a sleek and easy-to-use fitness tracking application that gives you a
 ### Notable Features
 * Provides Weekly Progress displays to show a high level fitness overview for each week
 * Responsively designed to ensure both desktop and mobile compatibility
-* Responsibly designed to ensure accessiblity for all athletes
+* Responsibly designed to ensure accessibility for all athletes
 
 ![FitReal_gif](https://user-images.githubusercontent.com/76409536/113961768-cac1c900-97e3-11eb-9f19-16e1f49d0e50.gif)<p><img src="./assets/mobile.png" alt="Win condition met" height="400px" height="auto" style="border-radius:5px"/><br></p>
 
