@@ -18,23 +18,20 @@ FitReal is a sleek and easy-to-use fitness tracking application that gives you a
 * Responsively designed to ensure both desktop and mobile compatibility
 * Responsibly designed to ensure accessiblity for all athletes
 
+![FitReal_gif](https://user-images.githubusercontent.com/76409536/113961768-cac1c900-97e3-11eb-9f19-16e1f49d0e50.gif)<p><img src="./assets/mobile.png" alt="Win condition met" height="400px" height="auto" style="border-radius:5px"/><br></p>
+
 ## Installation
-2. Clone this repo via `git clone https://github.com/EllieAzaveda/FitReal.git`
-3. Access cloned directory
-4. Run `index.html`
+1. Clone this repo via `git clone https://github.com/EllieAzaveda/FitReal.git`
+2. Access cloned directory
+3. Run `index.html`
 
 ## Walkthrough
-1. Once you access the page, you are immediately brought to the main landing page.
 
-<p align="center"><img src="https://media.giphy.com/media/zLdLCgCSXIR5PtVaUk/giphy.gif" alt="Player one placing token" width="450" height="auto" style="border-radius:5px"/><br></p>
+1. Once you access the page, you are immediately brought to the main landing page.
 
 2. To see stats for a specific date, select one of the dates from the date picker.
 
-<p align="center"><img src="https://media.giphy.com/media/b67C7ukvWwhw5iflzN/giphy.gif" alt="Player two placing token" width="450" height="auto" style="border-radius:5px"/><br></p>
-
 3. To move to a previous week, select the back arrow. To move forward, select the forward arrow.
-
-<p align="center"><img src="https://media.giphy.com/media/kohxuE60KLmjWrREbV/giphy.gif" alt="Win condition met" width="450" height="auto" style="border-radius:5px"/><br></p>
 
 ## Authors
 <table>
