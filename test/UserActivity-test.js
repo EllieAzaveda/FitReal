@@ -179,17 +179,6 @@ describe("Activity", () => {
     })
   })
 
-  describe("getMinutesActive()", () => {
-
-    it("should return the number of minutes a user was active on a given day", () => {
-      const minutesDay1 = userActivity.getMinutesActive("2021/03/13");
-      const minutesDay2 = userActivity.getMinutesActive("2021/03/14");
-
-      expect(minutesDay1).to.equal(userActivity.data[0].minutesActive);
-      expect(minutesDay2).to.equal(userActivity.data[1].minutesActive);
-    });
-  });
-
   describe("calcAvgWeeklyMinutes()", () => {
 
     it("should calculate and return a user's average minutes active for a given week", () => {

@@ -1,3 +1,7 @@
+// Dependencies for Testing:
+// const UserRepository = require("./UserRepository.js");
+// const User = require("./User.js");
+
 class ActivityRepository {
   constructor(data = []) {
     this.data = data;

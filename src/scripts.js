@@ -279,10 +279,13 @@ function renderWeeklyActivity(forDate) {
 function renderTable(statTable, forDate, stat) {
   const statDisplays = statTable.querySelectorAll("td");
   const weeklyStats = userActivity.getWeeklyStat(forDate, stat);
+  console.log(weeklyStats);
 
   statDisplays.forEach((display, index) => {
     if (weeklyStats[index]) {
       display.innerText = weeklyStats[index];
+    } else {
+      display.innerText = "-";
     }
   });
 }
@@ -294,6 +297,8 @@ function renderWeeklyHydration(forDate) {
   statDisplays.forEach((display, index) => {
     if (weeklyHydration[index]) {
       display.innerText = weeklyHydration[index];
+    } else {
+      display.innerText = "-";
     }
   });
 }
@@ -308,12 +313,16 @@ function renderWeeklySleep(forDate) {
   hourDisplays.forEach((display, index) => {
     if (foundHours[index]) {
       display.innerText = foundHours[index];
+    } else {
+      display.innerText = "-";
     }
   });
 
   qualityDisplays.forEach((display, index) => {
     if (foundQuality[index]) {
       display.innerText = foundQuality[index];
+    } else {
+      display.innerText = "-";
     }
   });
 }

@@ -1,3 +1,7 @@
+// Dependencies for testing:
+// const UserSleep = require("./UserSleep");
+// const dayjs = require("dayjs");
+
 class SleepRepository {
   constructor(data) {
     this.data = data;
