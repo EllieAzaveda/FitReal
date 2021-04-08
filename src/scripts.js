@@ -20,6 +20,7 @@ const backButton = document.getElementById("backButton");
 const forwardButton = document.getElementById("forwardButton");
 
 const greeting = document.getElementById("greeting");
+const mobileGreeting = document.getElementById("mobileGreeting");
 const strideLength = document.getElementById("strideLength");
 const stepComparison = document.getElementById("stepComparison");
 const friends = document.getElementById("friends");
@@ -45,6 +46,11 @@ const weeklyFlights = document.getElementById("weeklyFlights");
 const weeklyHours = document.getElementById("weeklyHours");
 const weeklyQuality = document.getElementById("weeklyQuality");
 
+const userAvgSteps = document.getElementById("userAvgSteps");
+const userAvgMin = document.getElementById("userAvgMin");
+const userAvgMiles = document.getElementById("userAvgMiles");
+const userAvgStairs = document.getElementById("userAvgStairs");
+
 const userInfoBtn = document.getElementById("userInfoBtn");
 const userInfoDropdown = document.getElementById("userInfoDropdown");
 const activityDropdown = document.getElementById("activityDropdown");
@@ -53,7 +59,6 @@ const hydrationDropdown = document.getElementById("hydrationDropdown");
 const hydrationDropdownBtn = document.getElementById("hydrationDropdownBtn");
 const sleepDropdown = document.getElementById("sleepDropdown");
 const sleepDropdownBtn = document.getElementById("sleepDropdownBtn");
-
 
 // Event Listeners
 window.addEventListener("load", setInitialPage)
@@ -74,13 +79,14 @@ function setInitialPage() {
 }
 
 function setDailyStats(event) {
-  const isButton = event.target.className === "day-btn";
-  const isCurrent = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
+  const isButton = event.target.className === "day-btn-label";
+  const notAfter = dayjs(event.target.value).diff(dayjs("2019/09/22")) <= 0;
+  const notBefore = dayjs(event.target.value).diff(dayjs("2019/06/15")) >= 0;
 
-  if (isButton && isCurrent) {
-    const selectedDay = event.target.value;
-    currentDate = selectedDay;
+  if (isButton && notAfter && notBefore) {
+    currentDate = event.target.value;
 
+    setDatePicker();
     renderPage();
   }
 }
@@ -91,7 +97,8 @@ function moveBackwards() {
   if (startOfWeek === "2019/06/16") {
     currentDate = "2019/06/15";
   } else {
-    currentDate = dayjs(currentDate).subtract(7, "days").format("YYYY/MM/DD");
+    const weekBefore = dayjs(currentDate).subtract(7, "days");
+    currentDate = weekBefore.startOf("week").format("YYYY/MM/DD");
   }
 
   setDatePicker();
@@ -104,7 +111,8 @@ function moveForwards() {
   if (startOfWeek === "2019/09/15") {
     currentDate = "2019/09/22";
   } else {
-    currentDate = dayjs(currentDate).add(7, "days").format("YYYY/MM/DD");
+    const weekAfter = dayjs(currentDate).add(7, "days");
+    currentDate = weekAfter.startOf("week").format("YYYY/MM/DD");
   }
 
   setDatePicker();
@@ -112,16 +120,40 @@ function moveForwards() {
 }
 
 function setDatePicker() {
-  const dates = datePicker.querySelectorAll(".day-btn");
+  const dates = datePicker.querySelectorAll(".day-btn-label");
   let startOfWeek = dayjs(currentDate).startOf("week");
 
   dates.forEach(day => {
     day.value = startOfWeek.format("YYYY/MM/DD");
-    day.innerText = startOfWeek.format("MM/DD");
+    day.lastElementChild.innerText = startOfWeek.format("MM/DD");
     startOfWeek = startOfWeek.add(1, "day");
+
+    displayDisabled(day);
+    displaySelected(day);
   });
 
   setNavButtons();
+}
+
+function displayDisabled(day) {
+  const after = dayjs(day.value).diff(dayjs("2019/09/22")) >= 0;
+  const before = dayjs(day.value).diff(dayjs("2019/06/15")) <= 0;
+
+  if (after || before) {
+    day.className = "day-btn-label disabled";
+  } else {
+    day.className = "day-btn-label";
+  }
+}
+
+function displaySelected(day) {
+  if (day.value === currentDate) {
+    day.className = "day-btn-label selected";
+  } else if (day.classList.contains("disabled")) {
+    day.className = "day-btn-label disabled"
+  } else {
+    day.className = "day-btn-label"
+  }
 }
 
 function setNavButtons() {
@@ -129,13 +161,13 @@ function setNavButtons() {
   const startOfWeek = dayjs(currentDate).startOf("week");
 
   if (endOfWeek.diff(dayjs("2019/06/16")) <= 0) {
-    backButton.className = "nav-btn visible";
+    backButton.className = "nav-btn invisible";
   } else {
     backButton.className = "nav-btn";
   }
 
   if (startOfWeek.diff(dayjs("2019/09/22")) >= 0) {
-    forwardButton.className = "nav-btn visible";
+    forwardButton.className = "nav-btn invisible";
   } else {
     forwardButton.className = "nav-btn";
   }
@@ -154,8 +186,9 @@ function renderUserInfo() {
   const avgStepGoal = Math.round(userRepo.calcAvgStepGoal());
 
   greeting.innerText = `Hey, ${firstName}!`;
-  // strideLength.innerText = user.strideLength;
-  // stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
+  mobileGreeting.innerText = `Hey, ${firstName}!`;
+  strideLength.innerText = user.strideLength;
+  stepComparison.innerText  = `${user.dailyStepGoal} / ${avgStepGoal}`;
 }
 
 function renderFriends() {
@@ -178,18 +211,18 @@ function renderTotalStats() {
 }
 
 function renderTotalActivity() {
-  averageSteps.innerText = userActivity.calcTotalStat("numSteps");
-  averageMinutes.innerText = userActivity.calcTotalStat("minutesActive");
-  averageStairs.innerText = userActivity.calcTotalStat("flightsOfStairs");
+  averageSteps.innerText = Math.round(userActivity.calcTotalStat("numSteps"));
+  averageMinutes.innerText = Math.round(userActivity.calcTotalStat("minutesActive"));
+  averageStairs.innerText = Math.round(userActivity.calcTotalStat("flightsOfStairs"));
 }
 
 function renderTotalHydration() {
-  averageOunces.innerText = userHydration.calcAvgTotalOunces();
+  averageOunces.innerText = userHydration.calcAvgTotalOunces().toFixed(1);
 }
 
 function renderTotalSleep() {
-  averageQuality.innerText = userSleep.calcAvgTotalQuality();
-  averageHours.innerText = userSleep.calcAvgTotalHrs();
+  averageQuality.innerText = userSleep.calcAvgTotalQuality().toFixed(1);
+  averageHours.innerText = userSleep.calcAvgTotalHrs().toFixed(1);
 }
 
 function renderDailyStats(forDate) {
@@ -204,15 +237,22 @@ function renderDailyActivity(forDate) {
   const miles = userActivity.calcMilesWalked(forDate, user.strideLength).toFixed(2);
   const flights = userActivity.getDailyStat(forDate, "flightsOfStairs");
 
-  const avgUserSteps = userRepo.calcAvgStepGoal();
-  const avgUserMinutes = activityRepo.calcAvgStat(forDate, "minutesActive");
+  const avgUserSteps = Math.round(activityRepo.calcAvgStat(forDate, "numSteps"));
+  const avgUserMinutes = Math.round(activityRepo.calcAvgStat(forDate, "minutesActive"));
   const avgUserMiles = activityRepo.calcAvgMiles(forDate, userData).toFixed(2);
-  const avgUserFlights = activityRepo.calcAvgStat(forDate, "flightsOfStairs");
+  const avgUserFlights = Math.round(activityRepo.calcAvgStat(forDate, "flightsOfStairs"));
 
-  stepCount.innerText = `${steps} / ${avgUserSteps}`;
-  minutesActive.innerText = `${minutes} / ${avgUserMinutes}`;
-  milesWalked.innerText = `${miles} / ${avgUserMiles}`;
-  stairsClimbed.innerText = `${flights} / ${avgUserFlights}`;
+  stepCount.innerText = `${steps}`;
+  userAvgSteps.innerText = `${avgUserSteps}`;
+
+  minutesActive.innerText = `${minutes}`;
+  userAvgMin.innerText = `${avgUserMinutes}`;
+
+  milesWalked.innerText = `${miles}`;
+  userAvgMiles.innerText = `${avgUserMiles}`;
+
+  stairsClimbed.innerText = `${flights}`;
+  userAvgStairs.innerText = `${avgUserFlights}`;
 }
 
 function renderDailyHydration(forDate) {
