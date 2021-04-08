@@ -279,7 +279,6 @@ function renderWeeklyActivity(forDate) {
 function renderTable(statTable, forDate, stat) {
   const statDisplays = statTable.querySelectorAll("td");
   const weeklyStats = userActivity.getWeeklyStat(forDate, stat);
-  console.log(weeklyStats);
 
   statDisplays.forEach((display, index) => {
     if (weeklyStats[index]) {

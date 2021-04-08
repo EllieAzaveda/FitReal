@@ -132,6 +132,8 @@ describe("Activity", () => {
       "dailyStepGoal": 8000,
       "friends": [ 2, 3, 4 ]
     };
+
+    console.log(userActivity);
   });
 
   beforeEach("setup initial UserActivity and User", () => {
@@ -166,19 +168,6 @@ describe("Activity", () => {
     });
   });
 
-  describe("checkStepsReached", () => {
-    
-    it("should calculate and return whether a user has reached their daily step goal", () => {
-      const stepGoal = user.dailyStepGoal;
-
-      const hasReached1 = userActivity.checkStepsReached("2021/03/13", stepGoal);
-      const hasReached2 = userActivity.checkStepsReached("2021/03/17", stepGoal);
-
-      expect(hasReached1).to.be.false;
-      expect(hasReached2).to.be.true;
-    })
-  })
-
   describe("calcAvgWeeklyMinutes()", () => {
 
     it("should calculate and return a user's average minutes active for a given week", () => {
@@ -196,6 +185,26 @@ describe("Activity", () => {
     });
   });
 
+  describe("calcTotalStat()", () => {
+
+    it("should calculate the average of a specific stat for a user for all-time", () => {
+      const totalSteps = activityData.reduce((totalSteps, activity) => {
+        return totalSteps + activity.numSteps;
+      }, 0);
+      const avgSteps = totalSteps / activityData.length;
+
+      expect(userActivity.calcTotalStat("numSteps")).to.equal(avgSteps);
+    })
+  });
+
+  describe("getDailyStat()", () => {
+
+    it("should find and return a specified stat for a certain date", () => {
+      const numSteps = 7402;
+      expect(userActivity.getDailyStat("2021/03/15", "numSteps")).to.equal(numSteps);
+    });
+  });
+  
   describe("getStepsExceeded()", () => {
 
     it("should find all days where a user has exceeded their step goal", () => {
@@ -217,6 +226,19 @@ describe("Activity", () => {
       expect(userActivity.getStairsRecord()).to.equal(stairsRecord);
     });
   });
+
+  describe("checkStepsReached", () => {
+    
+    it("should calculate and return whether a user has reached their daily step goal", () => {
+      const stepGoal = user.dailyStepGoal;
+
+      const hasReached1 = userActivity.checkStepsReached("2021/03/13", stepGoal);
+      const hasReached2 = userActivity.checkStepsReached("2021/03/17", stepGoal);
+
+      expect(hasReached1).to.be.false;
+      expect(hasReached2).to.be.true;
+    })
+  })
 
   describe("organizeWeeklyData()", () => {
 
