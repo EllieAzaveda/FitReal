@@ -440,65 +440,70 @@ label {
   grid-row: 7 / span 3;
 }
 
-.leaderboard-btn {
-  display: none;
-}
+  .leaderboard-btn {
+    display: none;
+  }
 
-.leaderboard-btn-mobile {
-  background-color: transparent;
-  height: 6vh;
-  width: 6vh;
-  font-size: 5vh;
-  margin-right: 1em;
-  padding: 0;
-  display: block;
-  align-self: auto;
-}
+  .leaderboard-btn-mobile {
+    background-color: transparent;
+    height: 6vh;
+    width: 6vh;
+    font-size: 5vh;
+    margin-right: 1em;
+    padding: 1em;
+    display: block;
+    align-self: auto;
+  }
 
-.user-info-dropdown {
-  margin-top: 1em;
-  width: 94%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
+  .user-info {
+    margin-top: .5em;
+    width: 94%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-.nav-dates {
-  background-color: #808080;
-  height: 4.5em;
-  width: 100%;
-  margin: 1em;
-  border-radius: 0;
-  align-self: stretch;
-}
+  .nav-dates {
+    background-color: #808080;
+    height: 4.5em;
+    width: 100%;
+    margin: 1em;
+    border-radius: 0;
+    align-self: stretch;
+  }
 
-.mobile-header {
-  margin-top: 1em;
-  display: flex;
-  justify-content: flex-end;
-  grid-column: 1 / span 6;
-  grid-row: 1;
-}
+  .mobile-header {
+    margin-top: 1em;
+    display: flex;
+    justify-content: flex-end;
+    grid-column: 1 / span 6;
+    grid-row: 1;
+  }
 
-.user-info-aside {
-  padding-top: 3em;
-  align-self: flex-end;
-  grid-column: 1;
-  grid-row-start: 1 / span 6;
-}
+  .user-info-aside {
+    align-self: flex-start;
+    grid-column: 1;
+    grid-row-start: 1 / span 6;
+  }
 
-.greeting-mobile {
-  font-size: 2em;
-  margin: .5em;
-  padding-right: 5em;
-  display: inline;
-  grid-column: 3;
-}
+  .greeting-mobile {
+    font-size: 2em;
+    margin: .5em;
+    padding-top: 1em;
+    padding-right: 4em;
+    display: inline;
+    grid-column: 3;
+  }
 
-.greeting,
-.user-icon-mobile {
-  display: none;
+  .user-icon {
+    padding-top: 3em;
+  }
+
+  .greeting,
+  .user-icon-mobile {
+    display: none;
+  }
 }
 
   @media screen and (max-width: 480px) {
@@ -609,10 +614,6 @@ label {
     }
 
     .user-info-aside {
-      display: none;
-    }
-
-    .hidden {
       display: none;
     }
   }
